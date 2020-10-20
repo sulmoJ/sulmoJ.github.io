@@ -1,9 +1,1826 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Sulmo]]></title><description><![CDATA[서브타이틀이 어디에 작성되는가]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 16 Oct 2020 18:54:26 GMT</lastBuildDate><item><title><![CDATA[블로그 시작!]]></title><description><![CDATA[ 블로그의 시작을 알리는 글입니다. 어떤거 할지 적어볼려구여]]></description><link>https://jeoungsulmo.github.io/posts/</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/</guid><pubDate>Fri, 16 Oct 2020 17:48:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;블로그-시작&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%9C%EC%9E%91&quot; aria-label=&quot;블로그 시작 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;블로그 시작!&lt;/h1&gt;
-&lt;p&gt;어느정도 gatsby를 마무리 짓고 첫 글을 뭘로 써야 할까 하다 블로그의 전체적인 느낌이랑 주로 쓸 글들에 대해 적어볼까 합니다. 그래서 이번 글은 sulmo라는 카테고리로 하고 싶은 말을 가끔 쓰기도 하고 일기 같은 느낌도 주는카테고리로 시작합니다. &lt;del&gt;(맞습니다 잡탕입니다.)&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;블로그에서 목적으로 단순히 글을 잘 쓰고 싶은 욕구도 있고 개발 로그를 꾸준히 써보려는 목표도 있습니다. 글을 읽기 좋게 누군가에게 도움이 되게 적어보고 싶지만 그러한 준비를 끝내고 시작하려면 영영 시작 못할 거 같아서 배우는 걸 기록하자마자 최대한 바로바로 올려볼 겁니다. 이때까지 웹 개발을 주로 해왔지만 올라오는 컴파일러부터 시작할 거 같네요;; 3학년 2학기가 되니 컴파일러 같은 뭔가 고인 과목들만 개론 수업이고 나머진 다 프로젝트? 같은 느낌의 수업이다 보니..&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Sulmo]]></title><description><![CDATA[서브타이틀이 어디에 작성되는가]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 20 Oct 2020 12:00:25 GMT</lastBuildDate><item><title><![CDATA[COMPILER 03장 정규언어(3) : 정규언어의 속성]]></title><description><![CDATA[3장 정규언어의 마지막 챕터입니다. 정규언어의 표현방법인 정규문법, 정규표현, 유한오토마타의 관계 및 변환 방법을 학습하였습니다.]]></description><link>https://jeoungsulmo.github.io/posts/compiler/6</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/compiler/6</guid><pubDate>Sun, 11 Oct 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;정규언어의-속성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EC%96%B8%EC%96%B4%EC%9D%98-%EC%86%8D%EC%84%B1&quot; aria-label=&quot;정규언어의 속성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규언어의 속성&lt;/h2&gt;
+&lt;p&gt;정규언어를 표현하는 3가지 방법을 배워왔다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;정규문법(rg)&lt;/li&gt;
+&lt;li&gt;정규표현(re)&lt;/li&gt;
+&lt;li&gt;유한오토마타(fa)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 세가지를 종합하는 단계이다. 서로 상호간에 전환이 가능하고 이 방법들을 볼 것이다.&lt;/p&gt;
+&lt;h2 id=&quot;정규문법과-유한오토마타의-관계&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EB%AC%B8%EB%B2%95%EA%B3%BC-%EC%9C%A0%ED%95%9C%EC%98%A4%ED%86%A0%EB%A7%88%ED%83%80%EC%9D%98-%EA%B4%80%EA%B3%84&quot; aria-label=&quot;정규문법과 유한오토마타의 관계 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규문법과 유한오토마타의 관계&lt;/h2&gt;
+&lt;p&gt;정규문법과 유한오토마타의 차이는 종결상태의 표시 여부이다.
+G = (VN, VT, P, S) , M = (Q, ∑, δ, q0, F)&lt;/p&gt;
+&lt;h3 id=&quot;정규문법을-유한오토마타로-변환하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EB%AC%B8%EB%B2%95%EC%9D%84-%EC%9C%A0%ED%95%9C%EC%98%A4%ED%86%A0%EB%A7%88%ED%83%80%EB%A1%9C-%EB%B3%80%ED%99%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;정규문법을 유한오토마타로 변환하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규문법을 유한오토마타로 변환하기&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Q = VN U {f}, where f is a new final state&lt;/li&gt;
+&lt;li&gt;∑ = VT&lt;/li&gt;
+&lt;li&gt;q0 = S&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;정규문법에서 전이 함수가 없이 끝나는 함수인 &lt;code class=&quot;language-text&quot;&gt;S -&amp;gt; 1&lt;/code&gt; 이 있다면 이에 종결 전의 함수 f를 붙여주면 fa로 만들 수 있다. &lt;code class=&quot;language-text&quot;&gt;S -&amp;gt; 1f&lt;/code&gt; 와같이 만들고 새로 생성된 상태 f는 입력값에 의해 공집합으로 보내면 변환이 완료된다.&lt;/p&gt;
+&lt;h3 id=&quot;유한오토마타를-정규문법으로-변환하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9C%A0%ED%95%9C%EC%98%A4%ED%86%A0%EB%A7%88%ED%83%80%EB%A5%BC-%EC%A0%95%EA%B7%9C%EB%AC%B8%EB%B2%95%EC%9C%BC%EB%A1%9C-%EB%B3%80%ED%99%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;유한오토마타를 정규문법으로 변환하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;유한오토마타를 정규문법으로 변환하기&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;VN = Q&lt;/li&gt;
+&lt;li&gt;VT = ∑&lt;/li&gt;
+&lt;li&gt;S = q0&lt;/li&gt;
+&lt;li&gt;종결상태에대해서 ε을 꼭 추가해야한다. 추가하지 않을시 전이함수가 끝없이 이어져 다른 문법이된다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;유한오토마타를-정규표현식으로-변환하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9C%A0%ED%95%9C%EC%98%A4%ED%86%A0%EB%A7%88%ED%83%80%EB%A5%BC-%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D%EC%9C%BC%EB%A1%9C-%EB%B3%80%ED%99%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;유한오토마타를 정규표현식으로 변환하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;유한오토마타를 정규표현식으로 변환하기&lt;/h3&gt;
+&lt;p&gt;fa -&gt; rg -&gt; re&lt;/p&gt;
+&lt;p&gt;정규 문법으로 변환 후 정규 표현식으로 표현한다.&lt;/p&gt;
+&lt;p&gt;이전에 배운 변환 방법들을 잘 숙지해왔다면 쉽게 변환할 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt; 유한 오토마타를 정규문법으로 바꾸는방법 &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt; 정규문법을 정규표현식으로 나타내는 방법 &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;정규표현식을-유한오토마타로-변환하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D%EC%9D%84-%EC%9C%A0%ED%95%9C%EC%98%A4%ED%86%A0%EB%A7%88%ED%83%80%EB%A1%9C-%EB%B3%80%ED%99%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;정규표현식을 유한오토마타로 변환하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규표현식을 유한오토마타로 변환하기&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;뭔가 이부분이 꽃인거같은데&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;기본 표현&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 832px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ade3a4569902c4f8057e21f2added529/ef6b9/20201012-0.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 39.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB2UlEQVQozy1SSW/aQBTmt/fQS6VKUaX20qq9VT3kkEMVUNIegBiyIGyDMYM3jIFgGxsEBS8sX79BOYyeZvzetz1XulaERkfguvaAO8XAcFFgFJUwWZ3ogGApaw737U1+E+EBVljCi3kPC4zjkj0FLNaKmP6D0p+i1jLxMphdGgWPxSGH9c+oxI3BwVcCLE8XwJ6/gRsfeI4QJL0f7nHTz9Cb5ai40RF2Aths1t0UYpHDmO/hLw/oTkp8bGT4UC9QM3bQnRgdJ0G7F0DlUJf3308ePikF3lVT3A4JKGjDpuzh6x6av6LlDH0CCiox5gV+qgW+d0q8+BkEeySZSVJT9vDem2zwS83w9XEHxcskIPNJjnCSM8arM7zVCcaCYJKIuRjzHJ1JBi+h5fQIkxYHjGLE6iyP8DnTm+3RDUjI/ooIT3gSEZr9AIoxQ10bXxbjUaE+LfHtucCXxxJ1e4/BdEtFzFzzoXkb6P4WLRHjx3OGq/oWDYeWHWanMYsHAraHC7RFCJsKA7KrBLxqZsyxQNXcQfVS6N4ag/EaOk9/nOKvGuBzK8f7uzXuhQSkkgmteOmJts6w3jYpVbr8DRQ3R5Vhy+1b3KpNohEXKe3KOZ8RNan+dpBdsv0Pm45E+Sa2HJoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/ade3a4569902c4f8057e21f2added529/8ac56/20201012-0.webp 240w,
+/static/ade3a4569902c4f8057e21f2added529/d3be9/20201012-0.webp 480w,
+/static/ade3a4569902c4f8057e21f2added529/de44a/20201012-0.webp 832w&quot;
+          sizes=&quot;(max-width: 832px) 100vw, 832px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/ade3a4569902c4f8057e21f2added529/8ff5a/20201012-0.png 240w,
+/static/ade3a4569902c4f8057e21f2added529/e85cb/20201012-0.png 480w,
+/static/ade3a4569902c4f8057e21f2added529/ef6b9/20201012-0.png 832w&quot;
+          sizes=&quot;(max-width: 832px) 100vw, 832px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/ade3a4569902c4f8057e21f2added529/ef6b9/20201012-0.png&quot;
+          alt=&quot;+&quot;
+          title=&quot;+&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;일반적인 기본구성으로 &lt;code class=&quot;language-text&quot;&gt;a&lt;/code&gt; 또는 &lt;code class=&quot;language-text&quot;&gt;ε&lt;/code&gt;이 필요한 부분에서 위와같이 표시한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;연산시 표현&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;N1 + N2&lt;/li&gt;
+&lt;li&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d994e45ff6b5179d33f4cfd1ba288d5c/73b94/20201012-1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 34.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABmUlEQVQozy1RXU/bQBDM7+etlVDf+hdQJQS0CKhKBLi0kPhix3dO/JnEsROTYBuf7RhN944+rM6+nZudmR1cGjaGZoCbUQCRvcPNDrATCb6WsFc1roQEi0rEaYGnSOJ2LjGlvpU0hOngKCy9EVmnz8GULt1Nj3jTwg4LmFT39grPXo4h3+GTAXxnL2Amw4nV49joMfJfweMSY28PY5rAigsS0sJJiVCkLZ4WLU5ZhVFUw8skRNpQdaSkwe1MwllJxFkFM65x70ndc6nEukG4bXHBcpxZBakkwmjb4eesw9GvBnf+AXHeQ6n2s17bVw98siNo+owGLfPuwx79e+TM3xzw9XeNL3c1nHWLwZyaDhEMRQkrLDFdSa2MU36TRYUfvMU4qBAme/wNG1zzBvbyTavmS1JP2KGzhTEvaRARKu/qg1NNFqXO49FJwIIcD+4OnynDc7bHZMzwbdJQhu/4Q9mZUUFZ7jRWKZ/TDjidA0UmNh2sdattuGRBSZ9tPzb34NdajZ/VYHGFx6DW9w7FofA8VcugTP9v+R//Nv9t3vi1iQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/d994e45ff6b5179d33f4cfd1ba288d5c/8ac56/20201012-1.webp 240w,
+/static/d994e45ff6b5179d33f4cfd1ba288d5c/d3be9/20201012-1.webp 480w,
+/static/d994e45ff6b5179d33f4cfd1ba288d5c/e46b2/20201012-1.webp 960w,
+/static/d994e45ff6b5179d33f4cfd1ba288d5c/22cc9/20201012-1.webp 1004w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/d994e45ff6b5179d33f4cfd1ba288d5c/8ff5a/20201012-1.png 240w,
+/static/d994e45ff6b5179d33f4cfd1ba288d5c/e85cb/20201012-1.png 480w,
+/static/d994e45ff6b5179d33f4cfd1ba288d5c/d9199/20201012-1.png 960w,
+/static/d994e45ff6b5179d33f4cfd1ba288d5c/73b94/20201012-1.png 1004w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/d994e45ff6b5179d33f4cfd1ba288d5c/d9199/20201012-1.png&quot;
+          alt=&quot;+&quot;
+          title=&quot;+&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;앞에 &lt;a href=&quot;&quot;&gt;NFA닫힘성질&lt;/a&gt;에서 배운것과 같이 &lt;code class=&quot;language-text&quot;&gt;ε&lt;/code&gt;을 이용하여 새로운 시작상태를 하나 생성하여 각각의 fa(유한오토마타)를 연결하고 종결상태까지 연결한다.&lt;/li&gt;
+&lt;li&gt;N1N2&lt;/li&gt;
+&lt;li&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/905003f6848a59b47f0885cf3e1625a1/3c492/20201012-2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 20.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABYlAAAWJQFJUiTwAAABAUlEQVQY0xWPTU+DUBBF+ftuXbnWH+DKGE2U6MKa2g/atMCjD1rAUgpNbGrhAVaP08VN5kxu5s617l5GPH8o7IHCifcE5Qm1bYl2HapocfOGQHhRdCzKjrmwylu0zGePu+3whCPh885yM4O3aZita4ZxRbg1RIVhnNSyawiLE4HIk0O+KJRALTxODJO0ZiVenRv6y0r8Bissf4h3LfduxWXvl7fpiplKuBrA7dTgJ3vc9JuRLukHBfP0yFQXXA87bpw/nMmcviq5sCue/CPWQl7WIic2PPqStj4QZnvswPAe1ZIun0kDtZGaUt3LGvSm5lUbepFhmX2hPg88uBKUGv4B3RkjYwuLmFAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/905003f6848a59b47f0885cf3e1625a1/8ac56/20201012-2.webp 240w,
+/static/905003f6848a59b47f0885cf3e1625a1/d3be9/20201012-2.webp 480w,
+/static/905003f6848a59b47f0885cf3e1625a1/e46b2/20201012-2.webp 960w,
+/static/905003f6848a59b47f0885cf3e1625a1/063bf/20201012-2.webp 1300w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/905003f6848a59b47f0885cf3e1625a1/8ff5a/20201012-2.png 240w,
+/static/905003f6848a59b47f0885cf3e1625a1/e85cb/20201012-2.png 480w,
+/static/905003f6848a59b47f0885cf3e1625a1/d9199/20201012-2.png 960w,
+/static/905003f6848a59b47f0885cf3e1625a1/3c492/20201012-2.png 1300w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/905003f6848a59b47f0885cf3e1625a1/d9199/20201012-2.png&quot;
+          alt=&quot;.&quot;
+          title=&quot;.&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;ε&lt;/code&gt;으로 두 곱연산을 할 두 fa를 이어준다.&lt;/li&gt;
+&lt;li&gt;N1*&lt;/li&gt;
+&lt;li&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f6b9319b52e1a740fc0baba76b1316c6/d56e1/20201012-3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 32.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAABXElEQVQY0yWRS0+DUBCF+f/LrlxpdGPcNnFnTTQaFZG2vC7vVxEKNNhS2ltom+NAF5MLl28Oc84Ij68zTL5tmMsDzLyDmVEtO1j0bBcd2LKl84R5uMEnS4f7C9cOnJm3Azfc0bsgEiT7fwS28IsjAiqnB0iIERSuTlC9FbSQGPqp7JWwfhuE5RkOfbeI68U86onLI4SwOiOgJjFqcS11ePcPCHKOH6eESY0f3g63EscsrOH6CZ7sFvcyB0s5jHgNJaigJhx30g5jbQ+BZf1kHb7CDqM3jmfWwFjUZLEGo4YJ2+BKAkSvhuMEGBtH3MhnaNEWalRT9VEUGL384WHKIbgk1lt0yxbzRQMlXEMnQY1KT7bQ0x3UeAM3a8hJCyvdUkQVlGgNLb5wRlJD8qphD4JN2fX5DbkVl7BZugfL+HBOaRkKTTKnSUQ7h0Liem83PQy2e86l7Gwqi5byD5DUtcio71JoAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/f6b9319b52e1a740fc0baba76b1316c6/8ac56/20201012-3.webp 240w,
+/static/f6b9319b52e1a740fc0baba76b1316c6/d3be9/20201012-3.webp 480w,
+/static/f6b9319b52e1a740fc0baba76b1316c6/e46b2/20201012-3.webp 960w,
+/static/f6b9319b52e1a740fc0baba76b1316c6/bbe5b/20201012-3.webp 1130w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/f6b9319b52e1a740fc0baba76b1316c6/8ff5a/20201012-3.png 240w,
+/static/f6b9319b52e1a740fc0baba76b1316c6/e85cb/20201012-3.png 480w,
+/static/f6b9319b52e1a740fc0baba76b1316c6/d9199/20201012-3.png 960w,
+/static/f6b9319b52e1a740fc0baba76b1316c6/d56e1/20201012-3.png 1130w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/f6b9319b52e1a740fc0baba76b1316c6/d9199/20201012-3.png&quot;
+          alt=&quot;*&quot;
+          title=&quot;*&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;모든 터미널 심볼을 표현가능함을 의미하는 &lt;code class=&quot;language-text&quot;&gt;*&lt;/code&gt;은 &lt;code class=&quot;language-text&quot;&gt;ε&lt;/code&gt;또한 포함이고 이를 표현하기위해 새로은 시작상태와 종결상태를 만들고 &lt;code class=&quot;language-text&quot;&gt;ε&lt;/code&gt;으로 이어주며 내부의 N1의 종결상태와 시작상태를 &lt;code class=&quot;language-text&quot;&gt;ε&lt;/code&gt;으로 이어준다.&lt;del&gt;(이게 N1의 종결상태와 시작상태를 이어주는게 맞는지 확신이 안서서 질문을 해봐야할듯하다)&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;위의 모든것들을 간단한 예로 표현하면&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8fd3bc574ecde54f12cba3788b7b814b/0d98f/20201012-4.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 73.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAACd0lEQVQ4y1VT2Y7bMBDz/39d0Rbow7a7SfaKE1+6T5vlSNkCDcDYI40oDmc8fDsp/LwYPF0jLnPB8z3jdao4T6XhhfHlXnDiU+IT8Ye538/6X3z+2ieGE4O7rphtwmozlC+YdORawHUrWGyFiTtU2LGZ1Pa0r9CMV56ZTYQJknPAMm94GjPJeNBZKOeRMi9YFcZ1JWlBKAfqccDHhEUZTNbC+oAQIhbd4xgSaqnYD2AQuYvdkWtFqjsPoz0TE25UvvlMJR4+FWSe8LywMGnneyUiYyEyzJkoZHi+ZaojO4CyC45GKvHd7K30UetGWLmWeVmR/QbmCjnXV2PxNs0YXm6ioNI7T28CS6Yqbk4kkZIdfREVrpWsqdrAMM8Rs5TMXLHDub42PJHwbio3HL3kYiz0T+NKjKrQcNpBCZ5/yqeWZ0Oh4kohgbFHSGLXQdDDC9t+mTgaM7EUfKwVH0vF68LxYfzG9V9vBj8uqsWy1/fLf7FwnJk7vLAptzW0siLNyQLeVh6mN+NpbiYSJQRpTuneSU7LFZSOB6HIzo2wPBIkUYwXT1exg17JuxAu1kG70EZMSL/yi5QsHo6LEKausHnRO+nomaVPs7K4cgYd5836yMZozixnkfuecd37hEglw5mf2efdQLNjlgm3TWHlgCuq+pgXOCqX3773UakPcGJIUPE+LbAuYtMWn8xvn944O94UmsKNN7fbWZqS8aAqGQvDLyNxTayR8RLPvQjgMIsyrR151u5hLzm31jejpQH0KxORmFnuSOWtZKqR941VRF4gjYoPNA9/k/B9cm1YgxAIWfOxd1fWBPKlCFzMfS19rctzb9XJmb8aHIkUdjKXfgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/8fd3bc574ecde54f12cba3788b7b814b/8ac56/20201012-4.webp 240w,
+/static/8fd3bc574ecde54f12cba3788b7b814b/d3be9/20201012-4.webp 480w,
+/static/8fd3bc574ecde54f12cba3788b7b814b/e46b2/20201012-4.webp 960w,
+/static/8fd3bc574ecde54f12cba3788b7b814b/63399/20201012-4.webp 1276w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/8fd3bc574ecde54f12cba3788b7b814b/8ff5a/20201012-4.png 240w,
+/static/8fd3bc574ecde54f12cba3788b7b814b/e85cb/20201012-4.png 480w,
+/static/8fd3bc574ecde54f12cba3788b7b814b/d9199/20201012-4.png 960w,
+/static/8fd3bc574ecde54f12cba3788b7b814b/0d98f/20201012-4.png 1276w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/8fd3bc574ecde54f12cba3788b7b814b/d9199/20201012-4.png&quot;
+          alt=&quot;실질적인 예&quot;
+          title=&quot;실질적인 예&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;줄이기&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 900px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1de117bf3f9d2311c4918443017df85a/1cfc2/20201012-5.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 24.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAABRElEQVQY0y2QS0/CABCE+789cvHkxejFgx6MxkQTYhQNMSooIcirKEoftAUKQgsaBNQ+gM9FPWx2dmdnsztKexjT9CP0QYQh4QznaINVHWJ5EaZwTT/E9GIswfXeN+Y/Z0g0Zb7R/aTY6HNTsVFUV4Zeg9+lrdGSF3eK2vrAfltKPafeD6l251irJSJ2PqA7BVtwcxRT0Hyq5oia805B91E2MjP2KyElZ4wqzfxzl3y9w2N7TE7w3sOU9UuPtDnnuTPmPFPh9KZE1fIp9xZs3U05UGM5YsKj6JVEymfzbka60ubB8CjqA8rmXy4YQ7bvJ6ydOCQboFoeu8eX7ByeUdZcrhxIXPhs3E7I6mOM/hfK6UtM1grRX7+w/QXXJZu8+KGJZ/ogIOdEpLQFtU6AIbwcgjgi70rPDTiqRSSfAvE9Fk3EDzwRZmiXO5pgAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/1de117bf3f9d2311c4918443017df85a/8ac56/20201012-5.webp 240w,
+/static/1de117bf3f9d2311c4918443017df85a/d3be9/20201012-5.webp 480w,
+/static/1de117bf3f9d2311c4918443017df85a/131f1/20201012-5.webp 900w&quot;
+          sizes=&quot;(max-width: 900px) 100vw, 900px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/1de117bf3f9d2311c4918443017df85a/8ff5a/20201012-5.png 240w,
+/static/1de117bf3f9d2311c4918443017df85a/e85cb/20201012-5.png 480w,
+/static/1de117bf3f9d2311c4918443017df85a/1cfc2/20201012-5.png 900w&quot;
+          sizes=&quot;(max-width: 900px) 100vw, 900px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/1de117bf3f9d2311c4918443017df85a/1cfc2/20201012-5.png&quot;
+          alt=&quot;줄여보자1&quot;
+          title=&quot;줄여보자1&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1d36eb09decdd46306a6d908b4e2620d/95e59/20201012-6.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 70.41666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAACeElEQVQ4yz1Ty27cMAz0//9LfyKXnlq0TYEiQJLdeDfJ+inLkmW97OlQ3vZAkBKlEWdIVXUfcWojWp2RdyBm2rbDMwhpKzFdsZiPfRcyapXw3EXUfcIb/Zn21iVUsvF6B1SLw7x6Xt7RqgnjbMsjk1tpDtzGbVAY1YyfNuNBeVwFkHbuD9DqbZBFLoCDMZjswipSAdQECYybUTFewSKhrIVeVlxY4cu9MgE7iUmFjxeD7yfNcj1cBIzfeDljpk1Lgl43WL9jiTtM2OjlzH5U1aZCU4DES7XV04fD06dBM3lWmNHNkT6hnxNjmo7MBbz3Ho0OaJmXXIm1xBG3kRhjwONQKOdyaCSVxVNLpSl6hDILgRdY5wvlprMEsBi5twYCiiTU3PnA3IBfyuErH61e2JAP6qHdBiVmhSqNsdAVeje94TxSY+ZEjoZ6X8eIzymX3PuUcGEvLuxFdSb3DxWL6Atfk87Kq6U5rLTXBpfriPrc8bEV4zjhD6k+qIC6O0bm9G9sREOZQXnN+kRAqUDiDLNGLKQ2c113oVx8H2ZcW4VXlfF7EJD03wRUxq9qKHBrhM5WtBS7sQmNjve15Dd8sqKO5yTuZzZPs6vcu46+nBWcZt5Q+SQ/IpFmxEyRLQfbkL5xh9ek6Vi9mgwiz65RGASEvBWJlLFIjNcQYHi/kq8kiZkAmV9BTC6Jjvu+04CBnZ+s59eTmfRl4DMTUsxEwEAv5zt2vrIcVsehdfR2FR2FkiMlRw3zsRd2TOy2TXs5u8St6DwtATdliu6i/8pcdXyfVLr0erea7Zfpl89/7TK+DQFfBosfbN6Fv0POvNy7Kibr55svOH8BDoYxtnRRzyAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/1d36eb09decdd46306a6d908b4e2620d/8ac56/20201012-6.webp 240w,
+/static/1d36eb09decdd46306a6d908b4e2620d/d3be9/20201012-6.webp 480w,
+/static/1d36eb09decdd46306a6d908b4e2620d/e46b2/20201012-6.webp 960w,
+/static/1d36eb09decdd46306a6d908b4e2620d/f992d/20201012-6.webp 1440w,
+/static/1d36eb09decdd46306a6d908b4e2620d/7bd19/20201012-6.webp 1460w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/1d36eb09decdd46306a6d908b4e2620d/8ff5a/20201012-6.png 240w,
+/static/1d36eb09decdd46306a6d908b4e2620d/e85cb/20201012-6.png 480w,
+/static/1d36eb09decdd46306a6d908b4e2620d/d9199/20201012-6.png 960w,
+/static/1d36eb09decdd46306a6d908b4e2620d/07a9c/20201012-6.png 1440w,
+/static/1d36eb09decdd46306a6d908b4e2620d/95e59/20201012-6.png 1460w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/1d36eb09decdd46306a6d908b4e2620d/d9199/20201012-6.png&quot;
+          alt=&quot;줄여보자2&quot;
+          title=&quot;줄여보자2&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;실습&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8B%A4%EC%8A%B5&quot; aria-label=&quot;실습 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;실습&lt;/h4&gt;
+&lt;p&gt;(ab)*(ba)*
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/81211532c08cf75e25dc54d48e1935bd/47311/20201012-7-1.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHhZIgq2WIiv//EABgQAAIDAAAAAAAAAAAAAAAAABARASAh/9oACAEBAAEFAssxIY//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ak//xAAbEAADAAMBAQAAAAAAAAAAAAAAAREQITFBUf/aAAgBAQABPyFabHPMcG0/JhR8KNXZCwTVD6f/2gAMAwEAAgADAAAAEHvJjP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EAB0QAQACAgMBAQAAAAAAAAAAAAEAESExQVFhEIH/2gAIAQEAAT8QAxqpu4E5AfvwQmlc31KDg6jXEZlCrhNzHJS4zWvJozwagg01qbF1xFaXaz//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/81211532c08cf75e25dc54d48e1935bd/8ac56/20201012-7-1.webp 240w,
+/static/81211532c08cf75e25dc54d48e1935bd/d3be9/20201012-7-1.webp 480w,
+/static/81211532c08cf75e25dc54d48e1935bd/e46b2/20201012-7-1.webp 960w,
+/static/81211532c08cf75e25dc54d48e1935bd/260c2/20201012-7-1.webp 1080w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/81211532c08cf75e25dc54d48e1935bd/09b79/20201012-7-1.jpg 240w,
+/static/81211532c08cf75e25dc54d48e1935bd/7cc5e/20201012-7-1.jpg 480w,
+/static/81211532c08cf75e25dc54d48e1935bd/6a068/20201012-7-1.jpg 960w,
+/static/81211532c08cf75e25dc54d48e1935bd/47311/20201012-7-1.jpg 1080w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/81211532c08cf75e25dc54d48e1935bd/6a068/20201012-7-1.jpg&quot;
+          alt=&quot;7-1&quot;
+          title=&quot;7-1&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9dd89f90e21f31f9911e03e26c8e1381/47311/20201012-7-2.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHgyoy0JrFIK//EABgQAAIDAAAAAAAAAAAAAAAAABARAAEg/9oACAEBAAEFAiw5Wv/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABUQAQEAAAAAAAAAAAAAAAAAADAx/9oACAEBAAY/Aon/xAAaEAACAwEBAAAAAAAAAAAAAAABEQAQMUFh/9oACAEBAAE/IfNRU0ZFAB2J9Fmv/9oADAMBAAIAAwAAABAYKrD/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAeEAEAAQQDAQEAAAAAAAAAAAABEQAQITFBUXFhgf/aAAgBAQABPxDYAcJpgbnv5YCMw+ViMmsYpeADBGikMvzuoxPLiLpQl4t//9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/9dd89f90e21f31f9911e03e26c8e1381/8ac56/20201012-7-2.webp 240w,
+/static/9dd89f90e21f31f9911e03e26c8e1381/d3be9/20201012-7-2.webp 480w,
+/static/9dd89f90e21f31f9911e03e26c8e1381/e46b2/20201012-7-2.webp 960w,
+/static/9dd89f90e21f31f9911e03e26c8e1381/260c2/20201012-7-2.webp 1080w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/9dd89f90e21f31f9911e03e26c8e1381/09b79/20201012-7-2.jpg 240w,
+/static/9dd89f90e21f31f9911e03e26c8e1381/7cc5e/20201012-7-2.jpg 480w,
+/static/9dd89f90e21f31f9911e03e26c8e1381/6a068/20201012-7-2.jpg 960w,
+/static/9dd89f90e21f31f9911e03e26c8e1381/47311/20201012-7-2.jpg 1080w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/9dd89f90e21f31f9911e03e26c8e1381/6a068/20201012-7-2.jpg&quot;
+          alt=&quot;7-2&quot;
+          title=&quot;7-2&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9d4818140cd3798d9c0b60ffeac642be/47311/20201012-7-3.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHgVIgrTKKiv//EABUQAQEAAAAAAAAAAAAAAAAAACAB/9oACAEBAAEFAlF//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFhAAAwAAAAAAAAAAAAAAAAAAEDAx/9oACAEBAAY/AjU//8QAHBAAAgICAwAAAAAAAAAAAAAAAREAQRAxICFR/9oACAEBAAE/IU4qvAA8ZAG4gX3Dvb4f/9oADAMBAAIAAwAAABALx4D/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPxAh/8QAHBABAAICAwEAAAAAAAAAAAAAAQARIUEgMXFh/9oACAEBAAE/EBdIuzGkcNRYKEvFZr2eQRUjomUpY1Rv6QAgANm+H//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/9d4818140cd3798d9c0b60ffeac642be/8ac56/20201012-7-3.webp 240w,
+/static/9d4818140cd3798d9c0b60ffeac642be/d3be9/20201012-7-3.webp 480w,
+/static/9d4818140cd3798d9c0b60ffeac642be/e46b2/20201012-7-3.webp 960w,
+/static/9d4818140cd3798d9c0b60ffeac642be/260c2/20201012-7-3.webp 1080w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/9d4818140cd3798d9c0b60ffeac642be/09b79/20201012-7-3.jpg 240w,
+/static/9d4818140cd3798d9c0b60ffeac642be/7cc5e/20201012-7-3.jpg 480w,
+/static/9d4818140cd3798d9c0b60ffeac642be/6a068/20201012-7-3.jpg 960w,
+/static/9d4818140cd3798d9c0b60ffeac642be/47311/20201012-7-3.jpg 1080w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/9d4818140cd3798d9c0b60ffeac642be/6a068/20201012-7-3.jpg&quot;
+          alt=&quot;7-3&quot;
+          title=&quot;7-3&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1d6c61fae0fec10c4d017fb638b3bad8/47311/20201012-7-4.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAECAwX/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAfCW5claNYsQV//EABcQAAMBAAAAAAAAAAAAAAAAAAABIBH/2gAIAQEAAQUCMpz/AP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEABj8CT//EABoQAQACAwEAAAAAAAAAAAAAAAEAECExQWH/2gAIAQEAAT8hDHIpo1OZjuvA+R3RX//aAAwDAQACAAMAAAAQ7wS8/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8QpD//xAAeEAEAAQQDAQEAAAAAAAAAAAABEQAQITFBUWGB8P/aAAgBAQABPxBkfWispGXoLShLxUxDQz3WSe6GNrHjUGQg8n9NBEOyyQc615b/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/1d6c61fae0fec10c4d017fb638b3bad8/8ac56/20201012-7-4.webp 240w,
+/static/1d6c61fae0fec10c4d017fb638b3bad8/d3be9/20201012-7-4.webp 480w,
+/static/1d6c61fae0fec10c4d017fb638b3bad8/e46b2/20201012-7-4.webp 960w,
+/static/1d6c61fae0fec10c4d017fb638b3bad8/260c2/20201012-7-4.webp 1080w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/1d6c61fae0fec10c4d017fb638b3bad8/09b79/20201012-7-4.jpg 240w,
+/static/1d6c61fae0fec10c4d017fb638b3bad8/7cc5e/20201012-7-4.jpg 480w,
+/static/1d6c61fae0fec10c4d017fb638b3bad8/6a068/20201012-7-4.jpg 960w,
+/static/1d6c61fae0fec10c4d017fb638b3bad8/47311/20201012-7-4.jpg 1080w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/1d6c61fae0fec10c4d017fb638b3bad8/6a068/20201012-7-4.jpg&quot;
+          alt=&quot;7-4&quot;
+          title=&quot;7-4&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;정규언어의-닫힘-성질&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EC%96%B8%EC%96%B4%EC%9D%98-%EB%8B%AB%ED%9E%98-%EC%84%B1%EC%A7%88&quot; aria-label=&quot;정규언어의 닫힘 성질 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규언어의 닫힘 성질&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;만약 L1, L2가 정규언어이면,&lt;/p&gt;
+&lt;p&gt;L1 | L2&lt;br&gt;
+L1L2&lt;br&gt;
+L1*는 정규언어이다.\&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ex)&lt;br&gt;
+P1 : S → aS | bA A → aA | a&lt;br&gt;
+P2 : X → 0X | 1Y Y → 0Y | 1&lt;br&gt;
+⇒ P : S → aS | bA A → aA | aX X → 0X | 1Y Y → 0Y | 1&lt;/p&gt;</content:encoded></item><item><title><![CDATA[COMPILER 3장 정규언어(2) : 유한오토마타]]></title><description><![CDATA[3장 정규언어입니다. 정규 언어를 표현하는 방식인 정규문법, 정규표현, 유한오토마타를 배웁니다. 이번 포스트에선 유한오토마타에대한 정리입니다.]]></description><link>https://jeoungsulmo.github.io/posts/compiler/5</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/compiler/5</guid><pubDate>Sun, 04 Oct 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;인식기recognizer--automata&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B8%EC%8B%9D%EA%B8%B0recognizer--automata&quot; aria-label=&quot;인식기recognizer  automata permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;인식기(Recognizer) : automata&lt;/h2&gt;
+&lt;p&gt;입력과 제어장치(규칙에의해 만들어지는)가 있고 스트링을 받아드리면 언어의 규칙에 맞게 만들어지는지의 여부를 boolean으로 출력&lt;/p&gt;
+&lt;p&gt;Definition : fa&lt;/p&gt;
+&lt;p&gt;기본 정의&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; Q : finite, non-empty set of states.(반환 상태 집합)
+ ∑ : finite input alphabet.(입력 심벌의 집합)
+ δ : mapping function.(전이 함수)
+ q0 ∈ Q : start(or initial) state.(시작상태)
+ F ⊆ Q : set of final states.(종결상태)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;dfadeterministic-finite-automata&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dfadeterministic-finite-automata&quot; aria-label=&quot;dfadeterministic finite automata permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;DFA(Deterministic Finite Automata)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;결정적 유한 오토마타 : FA의 전이 함수가 δ(q,a)가 한 상태만을 갖는 경우에 DFA라 부르고 전이함수가 &lt;strong&gt;δ(q,a)=p&lt;/strong&gt;로 표현한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A finite automaton M over an alphabet ∑ is a system
+M = (Q, ∑, δ, q0, F)&lt;/p&gt;
+&lt;p&gt;정의&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; Q : finite, non-empty set of states.(반환 상태 집합)
+ ∑ : finite input alphabet.(입력 심벌의 집합)
+ δ : δ(q,a)=p (전이 함수) // 이론적으로 표나 상태전이도로 나타낸다.프로그램에선 함수로 작성되어있는 집합이 되는듯 하다.
+ q0 ∈ Q : start(or initial) state.(시작상태)
+ F ⊆ Q : set of final states.(종결상태)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이전의 문법 정의와 비교&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;G = (VN, VT, P, S)&lt;/li&gt;
+&lt;li&gt;M = (Q, ∑, δ, q0, F)&lt;/li&gt;
+&lt;li&gt;G 와 M의 구성이 똑같으며 F만 추가된 느낌&lt;/li&gt;
+&lt;li&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/75c2ba383df2081ad9a1c6af05cf0466/798d4/200928-1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 104.58333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAABYlAAAWJQFJUiTwAAAEhklEQVQ4yy1V13LaWhTl//8gD3cycyfXkx4cbBNj04tAQhJIAnWJXgTGJY67ve46Ig9njhDSOnuvspXxFnf4Ve8jV9WRKyqoagFkd4Vyx0HbmqGiRyh1bEjWFPV+DKk/5j5Cx10jvga87QuC7SuiHRDxOjMkoGRNUFE9HNc05MpdHIkDKipaxgian6BBoO8FKb1/0uijw+fN6AL9moKhM4fpr2EoDqLVHTLu+ilFt5f3kAYzfDyq4GdFR3u4QC++wphV9ONLHBwWcS57aFhzqKoPx1tD+Z4nkA21rKD94Ru8aItMtH6Gs3xEsHmBGlzgIFfDcVllaxPYi0f4yTM6zhofj2uoyA5qepwCWr0QVrCBZS8wYsshiwqTJ2Q8VhhvRJUv0OMtjqoySjJP9ZYY7+4x2j2jZU5IRw818tv1NwjHO9hs1V09wiQtVteFO/uD6dUrMv7qCSHJDIMbOMYjCm2gM7yFZL6g2gWoCWaXQMBKR9wnXDErCrZvmLAqIYw7uYGtuIhnN8iErFC05czvUGz6FCNC9lxHQ0tw2pzhpO6mKnfJWZHKl6QhFFJQ68UUbczD5zAIKPHkgTxExlmTv+QR3voBZx0LP87q+OfLCVqDMX4Uanj/KYeK5kMLEhzSWqctCzqVF/ZqGDEPWkFylpDI5VBzySFbdrgEH+HmlQ9N6MkeFDdh+x5tYqUdhBd74uMLei8hRRdv+3tsX/z2+e5A8/Yqu5tnxNENdO0OBQXo2g9o6a+gG0DLwRcv0QVTAo4JKEDC1NBv6f0JwcVBdj/cVzjaEnTxBz9LKr6fdfExV6U9xig0LWRp6MNzGVU9xBFNnxXXXYfp6uHrr2bKZY38nUoDuGaATMAKR8krbAJ37SWK7SE+0XNVei1f1fD+6ylkmtxePqDJXWXkXArYcVaQGc3h7JY8btAjH64Z0zYUw1xe8487OIyhTIILPE2Yu6wGafyccItoco3R/Db1W58JCthyzFb95CmlQLTsCMD++gaVictkTJmSUhqxf7NFvPsvi8/5OozhFMuzMua5YyzzBeTzNbz7kIUR7zC+oj8ZCptOEW5xehQloELD+QM+ndTxJd9AtijzoVeoo1u0/Ct0omu0vB2a/g5lc4HaYI3qYIWSMUepP0PD3ULhMy7jO6C9MhEtIeJnz/+kPFnkZ0TVVaoust2x56yAeQ6vOIk0Hqhy6pj4dibj4LiBur1CmwLa5NYx/qocb8kDS/cJLKaPiFknvEafI0ohp2J4GLN7kp9AJ/liMgnfptfcWw5F4VgL7fFeZTElbL4kPClAA1bY9i+hhpdUdgVjfAtt9BttRk5xN9Di39B4r2lM0RsxdvEtemcSfHfBLCf7yjyxc3kiigRUWKEWXUFiVoeLe5h0gcbBqZMGY3qXViYm94BUtUmPybyHq3tkxB8CxOfykv2yeUCdQnTZUmvA8NNr+uQ35OgSSrBjtTcp1zUCmtzL1gq9rsdPwDMyMasR/EXkMfq7xxcctqyuyfYk8iazdbEk8dtJ0CaoQvAmBemOSQWHrsfPgLDR/xLa1A/G2u0cAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/75c2ba383df2081ad9a1c6af05cf0466/8ac56/200928-1.webp 240w,
+/static/75c2ba383df2081ad9a1c6af05cf0466/d3be9/200928-1.webp 480w,
+/static/75c2ba383df2081ad9a1c6af05cf0466/e46b2/200928-1.webp 960w,
+/static/75c2ba383df2081ad9a1c6af05cf0466/a8e2b/200928-1.webp 976w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/75c2ba383df2081ad9a1c6af05cf0466/8ff5a/200928-1.png 240w,
+/static/75c2ba383df2081ad9a1c6af05cf0466/e85cb/200928-1.png 480w,
+/static/75c2ba383df2081ad9a1c6af05cf0466/d9199/200928-1.png 960w,
+/static/75c2ba383df2081ad9a1c6af05cf0466/798d4/200928-1.png 976w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/75c2ba383df2081ad9a1c6af05cf0466/d9199/200928-1.png&quot;
+          alt=&quot;1&quot;
+          title=&quot;1&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;nfanondeterministic-finite-automata&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#nfanondeterministic-finite-automata&quot; aria-label=&quot;nfanondeterministic finite automata permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;NFA(Nondeterministic Finite Automata)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;비결정적 유한 오토마타 : FA의 전이 함수가 δ(q,a)가 한 상태가아닌 여러가지 또는 공집합을 갖는 경우에 NFA라 부르고 전이함수가 &lt;strong&gt;δ(q,a)={p1,p2,…}&lt;/strong&gt; 로 표현한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;정의&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; Q : finite, non-empty set of states.(반환 상태 집합)
+ ∑ : finite input alphabet.(입력 심벌의 집합)
+ δ : δ(q,a)={p1,p2,p3 ...} (전이 함수)
+ q0 ∈ Q : start(or initial) state.(시작상태)
+ F ⊆ Q : set of final states.(종결상태)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;정의 식
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 604px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4ba80bbe18661edc6d32673ef4b62622/87254/201005-3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 28.750000000000004%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAABcklEQVQY0x2RaU/iYBSF+/9/wHx2iRrHjINmFCeKVNwQSikDtnSjFNBSCiPBqCzK420/nNz3nLuevIqbrHBGC6pOjPX0hjf+pOJPaPVnBP/BHi7Q7Ih29IEntXa8kLjEHi1pDec4wtMaR7gvc5Sy+UzNjTk8K1GoWORUnb2Ta4xwRkn3OL9/zHLN3iud8ZJOMpehH9R7M6x4JZCB0Rw3nhNITmnJVaYI5vN7tvm+HVM0Arz0OmlopI3RO50XMs0XmIMZaiOknXxiDWWJaN5kjT/5Qtk+umTr8BzNG/OnZFCseViDN5rSeVzQOTh7oGxFHKk1cgUte9+ZT6i6z9+bf2ztn4quc6l12P5dQNk5LvJj8xd5sbafv2FPeLXVpywX7OYu2Ph5ynXdI3/7KGhS706pugmq5mI4I9SHNidXBreNLsWKiRK8rAnEjp18ZWd35R2mURBOQRwLX2U1vmjOeE1FPvAqddJ/pS81XbEcTtcMBN+uKqp124O6bgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/4ba80bbe18661edc6d32673ef4b62622/8ac56/201005-3.webp 240w,
+/static/4ba80bbe18661edc6d32673ef4b62622/d3be9/201005-3.webp 480w,
+/static/4ba80bbe18661edc6d32673ef4b62622/059a8/201005-3.webp 604w&quot;
+          sizes=&quot;(max-width: 604px) 100vw, 604px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/4ba80bbe18661edc6d32673ef4b62622/8ff5a/201005-3.png 240w,
+/static/4ba80bbe18661edc6d32673ef4b62622/e85cb/201005-3.png 480w,
+/static/4ba80bbe18661edc6d32673ef4b62622/87254/201005-3.png 604w&quot;
+          sizes=&quot;(max-width: 604px) 100vw, 604px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/4ba80bbe18661edc6d32673ef4b62622/87254/201005-3.png&quot;
+          alt=&quot;3&quot;
+          title=&quot;3&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;예제
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 824px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/77945255110efbe6017e02c30c62ce3e/c1c45/201005-4.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 49.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACNElEQVQozyVS13baUBDU/39KHlKOD6HYGAQIEAgk1K4qvTfTEsDYnoyUB85dVruzs7Mj5RQbhZqFtligpA9QUgXq5gi13hAlLUKNuVfVQ91doNqJkKv2UDGGaDozVPi/aU8h98YoNly03TkklYmOt4QxeEODoJlyF/m6jeeWx2YTLyzMyAZU1qjuDHInRt2ZQuUvGVRs+VCIkeWgbriBFO4+Ee++MNh/Qcwu6Ts6AuH2E/7mkcajA1i8xpAv50IsrwjYMz4B3vyKcHXH5AzifECymUjYOdMT5C6n22OI+RnNYAWFKxiDA1Qxwwul0JhzJgfU7Ak6zGvBGoo5hGKNWbcn+IUMFzfo0Rt6ozPyTRdPXM+e/kHLW0HzFuj4G/woaum3X6UujOGRABM4pJ6tmMgqLn4W25Rhxj4CDtYPCAJE6zuqeoyXdgCxekePrO3+Hs6YgxQTr22fzTaSjTR/hf7yjjJry5qP31UdnWgHl+QklwXdaAsxPvAYFvI1k2yPXHOeMjEpnGoN8C0j86JcNd6hyjU1HkBnXCGgYo1gxNuUveRzkphcEC5vKNImMqfGZK2TXdIUcKBL9XMNkdb5M8rhL2EzTr491x2UaaMkDuZ/IUUEtCiww4JCU7DATiVoBf81dLlymys+yTp6/R1MSpHYxiYbZ3TC90KTFvMpzSmVRxKrG7zFFfH2I71mxeijT+tY9IFOv0S0jsk3W02OdUK4fofOizrsSeLEh0lfuH0goH3+AecZxZMTZ+0pAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/77945255110efbe6017e02c30c62ce3e/8ac56/201005-4.webp 240w,
+/static/77945255110efbe6017e02c30c62ce3e/d3be9/201005-4.webp 480w,
+/static/77945255110efbe6017e02c30c62ce3e/5758c/201005-4.webp 824w&quot;
+          sizes=&quot;(max-width: 824px) 100vw, 824px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/77945255110efbe6017e02c30c62ce3e/8ff5a/201005-4.png 240w,
+/static/77945255110efbe6017e02c30c62ce3e/e85cb/201005-4.png 480w,
+/static/77945255110efbe6017e02c30c62ce3e/c1c45/201005-4.png 824w&quot;
+          sizes=&quot;(max-width: 824px) 100vw, 824px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/77945255110efbe6017e02c30c62ce3e/c1c45/201005-4.png&quot;
+          alt=&quot;4&quot;
+          title=&quot;4&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; δ(q0, 1001) = δ(q1, 001) || δ(q3, 001)
+             = δ(q1, 01) || δ(q2, 01) || ø
+             = δ(q1, 1) || δ(q2, 1) || δ(qf, 1)
+             = { q1,q3,qf }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;상태-전이표&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%81%ED%83%9C-%EC%A0%84%EC%9D%B4%ED%91%9C&quot; aria-label=&quot;상태 전이표 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;상태 전이표&lt;/h2&gt;
+&lt;p&gt;유한 오토마타의 각 상태와 결과등을 표로 나타낸 것
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 546px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d710ec9f78515aeee2a5c3f445fa7089/76aed/201005-2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACk0lEQVQozyWSS3PiVhSE+f/L7FKVlBezyHiceDxhsDGDrQoYsBEvSTzFQxbiIcwzGBgbe+ZLQxaqq3tv39N9+nTkr6xHrBRyWRpxZY2JlYfEK2MuzD5RnUVNn8uCT9ISpqh98f/7vwv9493XYqCzgIQ94Uy1Irf6CZbgTd/pPL3iPr3xOP+JPdjSnkOq4PLhNMavJ5/4+MUgnra1Jjk5i/PLb3/w+8cofyZyBCtha09EEpURgzVkbI+T06+0VLAZvnLf+5dMe4nZWXJjdoilHVLOAMORmnwLo+LzreQRL/S4sQIq/S1XpQGRq/KIkQpa7pjrjENvLoXTN6xgK9CGwQYS9w0SuTrDLXQnLzTHL/hS5M3eMVTcnf1QVz9IVkMiF/mAmpCOGOzxG3kpc/wNd+6CjD5L5+nahEx9Qln/pd6SdGNG3ltTFDbfmvKg1ZaAaFEKr9XySGz245rPt0Vakz2+/KwHO2qDHV0x39eH3Nl9ggU0hztM71nWCNN/Jpmp0gn3eMJ9c6QwVghwx3uyjZDTZElMO6piy7cX5DQVa/SCUegSS9m01EGxuyLVmlMOvmO6U77c6o2/1n6jtAyJXComvdlPHDHnqgHNyavY95iPGxwV7szfVXx6fORKlSXCsrztyr+qrDJKPRyR+ot34vaYSFQZqw6/i3nBh4sbio/P1EZbzN6CfHdJRXfXmma2GeIoSg9SmO/Mj28OZ5+uUhreM9XRjs8HDy/lYVeKDhksuOER2J3tNYy1VG+py9OCyMzeirYi5ag1O5CHilYjfKHUDtXRK+3ZG4dakfN7n2xnxZ0yd/6PstacHfdGY0paE8x6G87v6txUAqlbk1R4jfqUXOfg5Ywzw9LEV5r0mrMHn/8AhDkK8mRFnvUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/d710ec9f78515aeee2a5c3f445fa7089/8ac56/201005-2.webp 240w,
+/static/d710ec9f78515aeee2a5c3f445fa7089/d3be9/201005-2.webp 480w,
+/static/d710ec9f78515aeee2a5c3f445fa7089/a3666/201005-2.webp 546w&quot;
+          sizes=&quot;(max-width: 546px) 100vw, 546px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/d710ec9f78515aeee2a5c3f445fa7089/8ff5a/201005-2.png 240w,
+/static/d710ec9f78515aeee2a5c3f445fa7089/e85cb/201005-2.png 480w,
+/static/d710ec9f78515aeee2a5c3f445fa7089/76aed/201005-2.png 546w&quot;
+          sizes=&quot;(max-width: 546px) 100vw, 546px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/d710ec9f78515aeee2a5c3f445fa7089/76aed/201005-2.png&quot;
+          alt=&quot;2&quot;
+          title=&quot;2&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;상태-전이도&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%81%ED%83%9C-%EC%A0%84%EC%9D%B4%EB%8F%84&quot; aria-label=&quot;상태 전이도 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;상태 전이도&lt;/h2&gt;
+&lt;p&gt;상태 전이도는 유한 오토마타의 각 상태를 노드로 나타내고, 전이 함수 δ(q, a) = p에 대해서 상태 q에서 p로 가고 레이블이 a인 지시선으로 나타낸다.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 938px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c66e10d2c483c20398a850052053c724/dc333/201005-1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 22.083333333333332%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABYlAAAWJQFJUiTwAAABCUlEQVQY0xWPy07CYBCF+/okLl34ALoxcSMuXBijGCQ0CtSWFtr+YIvcWlBLKb2A+ZwuZjFnzpyL5q1L7GWBsyrx1xVWkGD4S1SUM5J9HJ+YyEzjinBb4UclY8FrvoqPqNUBQ8W8mp84ixytPgbfoDZ/WLM9ZrCjNU7RgwIlZm9ejP21pxtUgh1xaxN59EXMmJfcm7/YYUrXqUMc0exFwUPbojta8THZctdRNB5TLto7+m4kzgEv5pzzVsLZU0rHFzMrRB/OuNR/aDyX3PY2EmYngic0L6oww4ThPMNZ5gyCPdf9jKaZMphsePdjwRKaVsaNcRBOgSe1Xan66GZc9XL0aSb1Jblo/QNA7CDWYFnQTwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/c66e10d2c483c20398a850052053c724/8ac56/201005-1.webp 240w,
+/static/c66e10d2c483c20398a850052053c724/d3be9/201005-1.webp 480w,
+/static/c66e10d2c483c20398a850052053c724/e5056/201005-1.webp 938w&quot;
+          sizes=&quot;(max-width: 938px) 100vw, 938px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/c66e10d2c483c20398a850052053c724/8ff5a/201005-1.png 240w,
+/static/c66e10d2c483c20398a850052053c724/e85cb/201005-1.png 480w,
+/static/c66e10d2c483c20398a850052053c724/dc333/201005-1.png 938w&quot;
+          sizes=&quot;(max-width: 938px) 100vw, 938px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/c66e10d2c483c20398a850052053c724/dc333/201005-1.png&quot;
+          alt=&quot;1&quot;
+          title=&quot;1&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;원 두겹 : 결과&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;nfa를-dfa로-변환하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#nfa%EB%A5%BC-dfa%EB%A1%9C-%EB%B3%80%ED%99%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;nfa를 dfa로 변환하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;NFA를 DFA로 변환하기&lt;/h2&gt;
+&lt;p&gt;하는 이유 : 일반적으로 NFA는 언어의 구조를 쉽게 표현할 수 있는 반면에 DFA보다 프로그램으로 구현하기 어려워서&lt;/p&gt;
+&lt;p&gt;NFA M = (Q, ∑, δ, q0, F)에 의해 인식되는 언어를 L이라 하면, L을 인식하는 DFA M` = (Q`, ∑`, δ`, q0`, F`)은 다음과 같이 구성한다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Q`(상태 집합) = 2&lt;sup&gt;Q&lt;/sup&gt;(Q의 부분집합)
+Q의 한 상태는 [q1,q2,q3,…]와 같이 리스트 처럼 표기&lt;/li&gt;
+&lt;li&gt;q0` = [q0]&lt;/li&gt;
+&lt;li&gt;F` = { q ∈ Q` | q는 F의 상태들 중에 적어도 하나를 포함하는 상태 }&lt;/li&gt;
+&lt;li&gt;δ({q1,q2,…,qn}, a) = {p1,p2,…,pn} 이면, δ([q1,q2,…,qn], a) = [p1,p2,…,pn] 이다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;예제
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0f2cc88693ee709f556925da33c8e94b/58354/201005-5.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 99.58333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAADu0lEQVQ4y02V6XLiSBCE9f6PMxE7MYcBc4pD4hSgW+IyEoeXOdaAZJyb1cKe+dEhotXKrsqvqtD+qQ5g+gd8a1n4XB+hNd3gseei1HXQslb4pk9R6ft47AeomT6s1S/4+1e4aQY7uaqnzyVPd5dBm61/w96+YLI8oe+nqAwjWE8vMJwE1vIH5pvfGMfP0J0UE4q5yRkeP/T3Vz6vsChqp1f4u6va1+wk50YGb39jpHt8qphoTVb43nZQpXjXTdGYLFFhdAP/CDk/v4s4u3tkSca9ImLNE7H0AifN0fP2+FIbomut8dCeoTbwMVr+RH28pA0OnM0LIxGRy100Q7TLEXDJvsNLtHBfCAb0ZRidlI8+ox36O4wXJ95+RZmeNsYLGO4O8VH8Y3qpCBRLooz2mdrXIgrZ6Ss3bsrc+fZc3JgWach7N7mofW9bCM34lMi8u1iQFr/lvNaebVQE7ekaOldtFKNB7xp8Numd7MtzSlCLf4HgcFPmyxLPHGVZIaygzEixNgjQHMfo2hs051uWSUDBCPVhqHxsTmLU6Ks+f0KXy5EsJMV3yklB/IOy1J4Qbdtb9Fgeo+AZhnckjAX3GSnrsa3q00dtuMTs6ayAvEfnCfltpkBpQid6viFkOkK5zzLRKaQzzdVPgJXC9UYYb1jyTPz8pqJ5pxzeKQe7Dyi8iab73BSKHUnZDFA3XVTZIeWOTW83RWcQRkgxdf4e4Xu3KB0RFGWhJrd4PKg+XP8HK/6BPsvIik+wCUTaTWiGrAaXSyKTbgmPIpZ/FLdWEKLg4ZVQtnhgAZcYVZ2eGt6OsOjjIGTUHkZhqmCVeWYUH1Exznjo5DBdacU7ZVWkQkgV5hk9AvnEgVHu2jApaHopB4OL+jRhSV3Y40e2aKrOjuIMLfvKHi96WbLThI74IGm7TGvO9vrenOKrbivKBqmUDFcJldsZu4cNwG6R9FwGER1k2vxFWerJV9QusOnLnP41BhFqfY9QPI6wNcVnqA88GPYBsxX9OxS+O/wuFsG/KYf3HhRqYrzFcVbth2iy2KVzhpyVJaYv9Wl6B3QmCzUbpxxtjyb47oZRlGN9koklEUpvJsWQlJtEsEEIVcOjZws0CafJNpTxZbCkBFbJ4BTiRZXehqPuiL5zZuHn6DgKSvbRmwJmzCFaEtKMqqomtYd+cMAXTu5Hiko79jh8DcL6qk/Q9das3wsnfsZ3+R/K0pfBIcdIUma7yeivs0T06ar4mH8JD/K3wJSFfs/ZqjOt+QYdmyD1nOcz/A9WIaVkPcdU7gAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/0f2cc88693ee709f556925da33c8e94b/8ac56/201005-5.webp 240w,
+/static/0f2cc88693ee709f556925da33c8e94b/d3be9/201005-5.webp 480w,
+/static/0f2cc88693ee709f556925da33c8e94b/e46b2/201005-5.webp 960w,
+/static/0f2cc88693ee709f556925da33c8e94b/29105/201005-5.webp 1396w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/0f2cc88693ee709f556925da33c8e94b/8ff5a/201005-5.png 240w,
+/static/0f2cc88693ee709f556925da33c8e94b/e85cb/201005-5.png 480w,
+/static/0f2cc88693ee709f556925da33c8e94b/d9199/201005-5.png 960w,
+/static/0f2cc88693ee709f556925da33c8e94b/58354/201005-5.png 1396w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/0f2cc88693ee709f556925da33c8e94b/d9199/201005-5.png&quot;
+          alt=&quot;5&quot;
+          title=&quot;5&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;정의에 따라 상태, 이력 심벌, 함수, 시작심벌, 종결심벌 을 준비한다.&lt;/li&gt;
+&lt;li&gt;함수에 맞는 모든 심벌을 반환하고 공집합으로 연결되지 않는 노드는 제외 한다.&lt;/li&gt;
+&lt;li&gt;2개 이상의 상태를 가져왔을때 합집합으로 계산한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;위와같이 정석적으로 계산시 상태가 2&lt;sup&gt;N-1&lt;/sup&gt; 개가 나와 상태의 수가 늘어날 수록 계산해야할 값이 많아진다. 모든 경우의 수를 계산하지 않는 방법은 다음과같다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;시작 심벌로 함수를 실행한다.&lt;/li&gt;
+&lt;li&gt;나온 결과 심벌이 노드(상태)가 있는 심벌이라면 지시선만 그리고 그렇지 않다면 노드를 생성한다.&lt;/li&gt;
+&lt;li&gt;더이상 상태가 추가되지 않을때까지 진행한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;위와 같이 dfa를 구하면 의미없는 종결 상태를 구하지 않고 dfa의 결과를 만들 수 있다.&lt;/p&gt;
+&lt;h2 id=&quot;ε-전이를-갖는-nfa를-dfa로-변환하기--ε-nfa&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%CE%B5-%EC%A0%84%EC%9D%B4%EB%A5%BC-%EA%B0%96%EB%8A%94-nfa%EB%A5%BC-dfa%EB%A1%9C-%EB%B3%80%ED%99%98%ED%95%98%EA%B8%B0--%CE%B5-nfa&quot; aria-label=&quot;ε 전이를 갖는 nfa를 dfa로 변환하기  ε nfa permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ε-전이를 갖는 NFA를 DFA로 변환하기 : ε-NFA&lt;/h2&gt;
+&lt;p&gt;ε-NFA : 입력으로 ε이 올 수 있으며 ε을 보고 한 상태로부터 다음 상태로의 이동이 가능한 NFA&lt;/p&gt;
+&lt;p&gt;ε-NFA를 DFA로 바꾸기 위해서는 한상태에서 ε을 보고 갈 수 있는 상태들을 모두 구하는 작업이 필요하다.&lt;/p&gt;
+&lt;p&gt;이기능을 하는 함수를 &lt;strong&gt;ε-CLOSURE&lt;/strong&gt; 라 한다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/70e251927f12e2b1b233561dc81b9b59/e2cbf/201005-6.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 67.91666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC4klEQVQ4y01U13LbQAzU/39G3pM4jpM4RbHjseMiq5lilUhRjSpUYS9qm72Tx5MHDK7glosFwErD9lF9stDoLfGnaePFWcNeHtCdb2HRhDdnXNN6/o5nOxgzcV5KL++4Ft6YlaioXgZjEkNxV2g5S3zrRLhQU3SGG2iTRAK6wQ7mIsSzNccPNcTHdgzLi3De3uCMa3Mc4H0zwKWWoNKdZrjrl/hlpnD9LdqjErVBge6iwHc1xvMow9ebEu/OMrirAsowRcONYfBD2iiF4RVkV6A9zmFMt2RIZtdWiqqZQx9HeLTWBM3R90t8USI8DTLcNktc3pXor3dwmLY2jqEOQ1x1fNw7uTzrLSgDrWL7B25KaAxQBxuct0J8VmJog4AMInSpi70SYAUZFNSSsZMcJuX4rQeoGinsxauOZF3RBeU1GZVHqGsC0frFAWZUwM7pw5xnCXrpDuoqgrY63dsZdQ1T9LMSyjSARVBdFKXHqrW8Jf66Lh4GQ9Q8D63lEkaa43E0xtNkgubCR6/cwtky3SjG43iCZ2+K+mwOLY7xMg9lxQXTikjJ3GSwt6SdZqhPZ1A3IXoFGSQUPU7lY2e7h7s/wMpyxpF1GKE29qBs2A2+kObUZhVL6BIWGAB8cIRdss8I1Cv3GBwhgQRIfTrHPTNozBfQ40TemUkGZ79HZx7IPn3TsEu9RMDgcIRDQJ1pObsD3IP4AKuXMyY7WYNp6lGCEQmIDw3pFQFIMJ2FIcOSDHP5uE8QwVBZBzDTQjLu5pQkPT0Ud1oY494d4tZ28DgUGjPtRfSfhjJlAh6PElSIL4pgFVv0X/fdopQZCG+RbZ9aOru9jFOjCCqn6E1DsTCWKaw4oxWybdqzJfQgPe3ZKh1/g27CaZivWNGVbBd9E6Pp+TDChFOyOs28ANQ4yzf8Kfx80PChWqPXcXFdx03LwaerBseuTWvhXh2xzzhuY4LxjTBlkrHJUzl6FsdWY8f8AwjlCIMHYp1iAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/70e251927f12e2b1b233561dc81b9b59/8ac56/201005-6.webp 240w,
+/static/70e251927f12e2b1b233561dc81b9b59/d3be9/201005-6.webp 480w,
+/static/70e251927f12e2b1b233561dc81b9b59/e46b2/201005-6.webp 960w,
+/static/70e251927f12e2b1b233561dc81b9b59/f992d/201005-6.webp 1440w,
+/static/70e251927f12e2b1b233561dc81b9b59/882b9/201005-6.webp 1920w,
+/static/70e251927f12e2b1b233561dc81b9b59/b3a2e/201005-6.webp 2138w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/70e251927f12e2b1b233561dc81b9b59/8ff5a/201005-6.png 240w,
+/static/70e251927f12e2b1b233561dc81b9b59/e85cb/201005-6.png 480w,
+/static/70e251927f12e2b1b233561dc81b9b59/d9199/201005-6.png 960w,
+/static/70e251927f12e2b1b233561dc81b9b59/07a9c/201005-6.png 1440w,
+/static/70e251927f12e2b1b233561dc81b9b59/29114/201005-6.png 1920w,
+/static/70e251927f12e2b1b233561dc81b9b59/e2cbf/201005-6.png 2138w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/70e251927f12e2b1b233561dc81b9b59/d9199/201005-6.png&quot;
+          alt=&quot;6&quot;
+          title=&quot;6&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;약간 생성자처럼 ε에대한 설정을 먼저 처리후 진행하는듯 하다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;ε이 있는 노드는 자기자신포함 결과 심볼과 결과심볼에서 ε으로 연결된 결과 심볼까지 포함한 합집합이 대체된다.&lt;/li&gt;
+&lt;li&gt;위의 예제상황이면 ε전이가 있는 1,3 에서 [1]은 [1,3,4] [3]은 [3,4] 로 정의되고 이에 맞춰 전이도를 만든다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;dfa-상태수-최소화&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dfa-%EC%83%81%ED%83%9C%EC%88%98-%EC%B5%9C%EC%86%8C%ED%99%94&quot; aria-label=&quot;dfa 상태수 최소화 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;DFA 상태수 최소화&lt;/h2&gt;
+&lt;p&gt;전이표의 크기를 줄임으로 기억공간을 적게 차지하고 어휘분석 프로그램을 최적화하는데 도움을 준다.&lt;/p&gt;
+&lt;p&gt;동치관계를 합침으로 최소화한다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b3ccc531cf24d897d3cc9b84e06d84c6/3ceac/201005-8.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACI0lEQVQ4y01T6ZqkIBDz/Z9wd3amu7XbE0RQvPDIBLBn9ke+SgmEShUmn9WEP8WAQjmUekPRRVR6R8G8ZKz0gWe7IqslHlWDrJEoW/2DSmkUsgsxGd2JE4A7Tqz7iZ18mBfoYcTGb7PbmK8UdsiExFdVU7zD4nbM6xbiwj3z4nj+QGLXAwdFqBUE/IZG9yilwsIDrRnwZGV555AKctHjJS3a3kF5DNwzOEhybXck3bhSxMHYCVWnQ0XuqsxOS4imt0Hw1UX7vh0vFVtTEjnh85LriZk2rNuOkdVoCoyLv81S3GCcybseaSlQG1pk9evOvcsazzBq7t1oz04zpDLR8n6e2M5f22aaaGmAY0+m1dESLzAb+mmlyBYu87wbJg7FwNJlQ7FCKCQ5JymHgzjR9AcaRmXJKVAzby2gRiBtOZRgM9r1PPe8Jf9vLUnFxMn1+Co0Pom/L4WPvOM3g48r9+updLgLP5gIzx9EJrcQY76xQjVQoOQbE5DaoGkVBKOiTUXb/psZpzCAxyWSUiRcIF2IPznXkqxd8FXTfzvR6h6gxwPdGLmPhnmm4oG7uCqS75yXyN88SeWCXC14ypnWBnyWPe6VDfwf+a22uBMPuYYD3mL2tk/+9Jav3K8lT2VxawQFGj5ggVy0hMKrafk7qYCav5R/h9Gu7+EW8O7hu6+hh69upnrHSfW0tsIuO+wcn4iPwxV9D30Vt7eojPzd08eVfwPEld6/JhUx+QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/b3ccc531cf24d897d3cc9b84e06d84c6/8ac56/201005-8.webp 240w,
+/static/b3ccc531cf24d897d3cc9b84e06d84c6/d3be9/201005-8.webp 480w,
+/static/b3ccc531cf24d897d3cc9b84e06d84c6/e46b2/201005-8.webp 960w,
+/static/b3ccc531cf24d897d3cc9b84e06d84c6/f992d/201005-8.webp 1440w,
+/static/b3ccc531cf24d897d3cc9b84e06d84c6/5377c/201005-8.webp 1456w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/b3ccc531cf24d897d3cc9b84e06d84c6/8ff5a/201005-8.png 240w,
+/static/b3ccc531cf24d897d3cc9b84e06d84c6/e85cb/201005-8.png 480w,
+/static/b3ccc531cf24d897d3cc9b84e06d84c6/d9199/201005-8.png 960w,
+/static/b3ccc531cf24d897d3cc9b84e06d84c6/07a9c/201005-8.png 1440w,
+/static/b3ccc531cf24d897d3cc9b84e06d84c6/3ceac/201005-8.png 1456w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/b3ccc531cf24d897d3cc9b84e06d84c6/d9199/201005-8.png&quot;
+          alt=&quot;8&quot;
+          title=&quot;8&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5e1f63319093f04f9912a89bee8d4971/5f78c/201005-7.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 90.41666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABYlAAAWJQFJUiTwAAADiklEQVQ4yz1UR5PiVhjk79s+bJXvPtpV3trL1sZJpCGuCAMIJSSR05BBAwhwtft7Us3hK9B7X+7ul+jML+i8XmkXWPMQDn9dfls8b45DmNMjWoM92uMztP4Z7uKqfGzeOyo2MpuxEpOwZ2dY0xOdQti8aI1PsCdv+Fdb40N6h0xrjKLew8fSDL8l98jaG94H0KdnlUAln0mhC9qzEIn28IhK5xWt/pYVQ9TsOZr+Gk/WG/6p7FHxt7AGW5S8Ez7WDqgNjihbU+i9LbqcpO4uUHGXcBY3uNKhx85avTU+Nw+4a+9gj9/gcax2fw19sEOHjrIWd37m2QrGKGBXVxjDA74093i0DozfwGJ34pfoMrgxCPAhtcVfhTUPQ3SZpNXfwWRCSe7Mr/A4VqO7hjM5wV/euNMT/swwphzQbw+PRWSPCVWdQfXxFVo3QLWzgDncI+lwj5Ut2kyg9zcouAH+1nYE6owXf0lb0/+IBuOkqCQToBKyNzF/KWiF3Fm09E/1A35/WCGlQOnjkzbHH+kABS/giCsmPsFbXuETjE5sChR7dlXzG9MIdv/1BmdGtCchqkNSh6Pr3Q0MUqgyvCgfMZcxFrvVR6QV9yo5hG4Jn1WscYCyOUWy0sFz3ad5yDc8djZEttHDt3QNDwUduZqNDO+f6PdYMpDWHHzPVPA5qSGvj+KEnF+6qFgzpCoOsi9d/My+4OmXjWzNQ67R538HeSZ65Fla6+ChaOC+ZOIhr+OxbOE7/aVAquoSFGl1+R80c4KvmbpKepdros4xBXGToFgksSNEJtIOrc0RjfER5ugNxuQIe3pS4hC/hMjG4MglY8iqbXx5buBHrsHOusg3e2rZxiySpIAmjPBWNxixSuRbfJRS5jEoBrMLPUxWsOWXy26SW1V3Rb4dFcdMoipqEF99JOSPwDNZTEwo04mUcuFl+K5LX5TBsTRzpAAochV1clM6NoY7TjJBkrtymFgKSawtiL+jrMQdKh3K62ErSpyRrrlIaTaa1GyhPcY99yqSE6B+PL+gNQxUcSeWnBvHKqXY7wfRpVQWFCWhztFzzT7u8y3uDiiRSoKsTi1LQnsWPV+RQGKlRMuW5ytUbJezp7KJn/kGKbVBkqN/zdSojBtHHuGu2EKdhaK3M4zexEUUm7CmFzW/snixJlVS5K6EVwJM1X5FpurT54JffN7SHNsieA4BNeNYO570f3uaFtaVtvB9AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/5e1f63319093f04f9912a89bee8d4971/8ac56/201005-7.webp 240w,
+/static/5e1f63319093f04f9912a89bee8d4971/d3be9/201005-7.webp 480w,
+/static/5e1f63319093f04f9912a89bee8d4971/e46b2/201005-7.webp 960w,
+/static/5e1f63319093f04f9912a89bee8d4971/f992d/201005-7.webp 1440w,
+/static/5e1f63319093f04f9912a89bee8d4971/0ace6/201005-7.webp 1606w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/5e1f63319093f04f9912a89bee8d4971/8ff5a/201005-7.png 240w,
+/static/5e1f63319093f04f9912a89bee8d4971/e85cb/201005-7.png 480w,
+/static/5e1f63319093f04f9912a89bee8d4971/d9199/201005-7.png 960w,
+/static/5e1f63319093f04f9912a89bee8d4971/07a9c/201005-7.png 1440w,
+/static/5e1f63319093f04f9912a89bee8d4971/5f78c/201005-7.png 1606w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/5e1f63319093f04f9912a89bee8d4971/d9199/201005-7.png&quot;
+          alt=&quot;7&quot;
+          title=&quot;7&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;종결상태인지 아닌지로 동치류로 분할 후 네이밍&lt;/li&gt;
+&lt;li&gt;분할된 동치류가 각 입력 심벌에 대해 어느 동치류로 전이 되는지 표로 나타낸다.&lt;/li&gt;
+&lt;li&gt;동치류안에서 동치관계인 심벌끼리 또 나눈다.(동치관계란 같은 입력 심볼에의해 같은 결과를 가지는 동치류의 심벌을 말한다.)&lt;/li&gt;
+&lt;li&gt;새로 나뉜 동치류에대해 다시 입력심볼에대해 어떻게 구분되는가를 표로 나타낸다.&lt;/li&gt;
+&lt;li&gt;나뉘지 않을떄까지 2,3,4를 반복하고 더이상 나뉘지 않을때 동치류를 노드로 바꾸면 줄어든 상태의 수를 볼수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;유한오토마타의-닫힘-성질&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9C%A0%ED%95%9C%EC%98%A4%ED%86%A0%EB%A7%88%ED%83%80%EC%9D%98-%EB%8B%AB%ED%9E%98-%EC%84%B1%EC%A7%88&quot; aria-label=&quot;유한오토마타의 닫힘 성질 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;유한오토마타의 닫힘 성질&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;만약 L1,L2가 FAL이면, 다음도 역시 FAL이다.&lt;/p&gt;
+&lt;p&gt;L1 | L2&lt;br&gt;
+L1L2&lt;br&gt;
+L1*&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;증명(합집합을 예로)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;새로운 시작 상태를 하난 만들어 각각의 FAL의 문법에 시작상태에 온 것처럼 연결한다.&lt;/li&gt;
+&lt;li&gt;그리고 시작 상태로부터 도달하지 못하는 노드는 제거한다.&lt;/li&gt;
+&lt;li&gt;그 모양은 합집합의 모습과 일치 한다.&lt;/li&gt;
+&lt;li&gt;ε(입실론)을 인식하면 새로 만든 시작 상태도 종결 상태로 만든다.&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[COMPILER 3장 정규언어(1) : 정규언어[정규문법, 정규표현]]]></title><description><![CDATA[3장 정규언어입니다. 정규 언어를 표현하는 방식인 정규문법, 정규표현, 유한오토마타를 배웁니다. 이번 포스트에선 정규문법과 정규표현에대한 이론 및 개념을 정리합니다.]]></description><link>https://jeoungsulmo.github.io/posts/compiler/4</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/compiler/4</guid><pubDate>Sun, 27 Sep 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;정규문법과-정규언어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EB%AC%B8%EB%B2%95%EA%B3%BC-%EC%A0%95%EA%B7%9C%EC%96%B8%EC%96%B4&quot; aria-label=&quot;정규문법과 정규언어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규문법과 정규언어&lt;/h2&gt;
+&lt;h3 id=&quot;정규언어를-표현하는-방식&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EC%96%B8%EC%96%B4%EB%A5%BC-%ED%91%9C%ED%98%84%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D&quot; aria-label=&quot;정규언어를 표현하는 방식 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규언어를 표현하는 방식&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;정규문법&lt;/li&gt;
+&lt;li&gt;정규표현&lt;/li&gt;
+&lt;li&gt;유한오토마타(finite autumata)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;정규-언어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C-%EC%96%B8%EC%96%B4&quot; aria-label=&quot;정규 언어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규 언어&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;정규문법&lt;/li&gt;
+&lt;li&gt;정규표현&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;정규문법의-형태&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EB%AC%B8%EB%B2%95%EC%9D%98-%ED%98%95%ED%83%9C&quot; aria-label=&quot;정규문법의 형태 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규문법의 형태&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;RLG (Right-Linear Grammar)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;nonterminal 심볼이 right-hand side에서 오른쪽 끝에 위치할때&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;LLG (Left-Linear Grammar)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;nonterminal 심볼이 left-hand side에서 오른쪽 끝에 위치할때&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;정규문법의-조건&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EB%AC%B8%EB%B2%95%EC%9D%98-%EC%A1%B0%EA%B1%B4&quot; aria-label=&quot;정규문법의 조건 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규문법의 조건&lt;/h3&gt;
+&lt;p&gt;(1) A-&gt; aB, A-&gt; a | where a ∈ Vt &amp;#x26;&amp;#x26; A,B ∈ Vn
+(2) if S -&gt; ε , S가 다른 생성 규칙의 오른쪽에 나타나지 않아야 한다.&lt;/p&gt;
+&lt;h3 id=&quot;정규표현의-정의&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%9D%98-%EC%A0%95%EC%9D%98&quot; aria-label=&quot;정규표현의 정의 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규표현의 정의&lt;/h3&gt;
+&lt;p&gt;(1) (P + Q) is a regular expression denoting Lp U Lq. (union)
+(2) (P • Q) is a regular expression denoting Lp ▪ Lq. (concatenation)
+(3) (P*) is a regular expression denoting (closure)
+{e} U Lp U Lp2 U … U Lpn …&lt;/p&gt;
+&lt;h3 id=&quot;정규표현식은-대수학을-기반으로-만들어져-수학적-접근이-가능하다-가능한공식은-아래와-같다&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D%EC%9D%80-%EB%8C%80%EC%88%98%ED%95%99%EC%9D%84-%EA%B8%B0%EB%B0%98%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A0%B8-%EC%88%98%ED%95%99%EC%A0%81-%EC%A0%91%EA%B7%BC%EC%9D%B4-%EA%B0%80%EB%8A%A5%ED%95%98%EB%8B%A4-%EA%B0%80%EB%8A%A5%ED%95%9C%EA%B3%B5%EC%8B%9D%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EB%8B%A4&quot; aria-label=&quot;정규표현식은 대수학을 기반으로 만들어져 수학적 접근이 가능하다 가능한공식은 아래와 같다 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규표현식은 대수학을 기반으로 만들어져 수학적 접근이 가능하다. 가능한공식은 아래와 같다.&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;α+β = β+α&lt;/li&gt;
+&lt;li&gt;(α+β) +γ = α+ (β+γ)&lt;/li&gt;
+&lt;li&gt;(αβ) γ = α (βγ)&lt;/li&gt;
+&lt;li&gt;α(β+γ) = αβ +αγ&lt;/li&gt;
+&lt;li&gt;(β + γ) α = βα + γα&lt;/li&gt;
+&lt;li&gt;α+α=α&lt;/li&gt;
+&lt;li&gt;α + ø = α&lt;/li&gt;
+&lt;li&gt;αø = ø = øα&lt;/li&gt;
+&lt;li&gt;εα = α = αε&lt;/li&gt;
+&lt;li&gt;α* = ε +α•α*&lt;/li&gt;
+&lt;li&gt;α* = (ε + α)*&lt;/li&gt;
+&lt;li&gt;(α*)* = α*&lt;/li&gt;
+&lt;li&gt;α* + α = α*&lt;/li&gt;
+&lt;li&gt;α* + α^+ = α*&lt;/li&gt;
+&lt;li&gt;(α + β)* = (α* β*)*&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;정규-표현-방정식&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84-%EB%B0%A9%EC%A0%95%EC%8B%9D&quot; aria-label=&quot;정규 표현 방정식 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규 표현 방정식&lt;/h3&gt;
+&lt;p&gt;α,β가 정규 표현이면, &lt;strong&gt;X = αX+β&lt;/strong&gt;가 정규 표현식이다.
+이때, X의 의미는 nonterminal 심볼이며
+우측의 식이 그 nonterminal이 생성하는 언어의 형태이다.&lt;/p&gt;
+&lt;p&gt;예제 3.8 (정규 표현 방정식을 통해 해를 구할 수 있다.)&lt;/p&gt;
+&lt;p&gt;생성규칙 : S -&gt; aS, S -&gt; bR, S -&gt; ε, R -&gt; aS&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L(S) = {a}L(S) | {b}L(R) | ε&lt;/li&gt;
+&lt;li&gt;L(R) = {a}L(S)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;정규언어형태 : (a+ba)*&lt;/p&gt;
+&lt;h3 id=&quot;예제&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%88%EC%A0%9C&quot; aria-label=&quot;예제 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;예제&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;S → aA | bS &lt;br&gt;
+A → aS | bB &lt;br&gt;
+B → aB | bB | ε &lt;br&gt;
+정규언어 형태 : (aa+b)* ab(a+b)*&lt;/li&gt;
+&lt;li&gt;A → 0B | 1A&lt;br&gt;
+B → 1A | 0C&lt;br&gt;
+C → 0C | 1C | ε&lt;br&gt;
+정규언어 형태 : (01+1)* 00(0+1)*&lt;/li&gt;
+&lt;li&gt;X1 = 0X2 + 1X1 + ε&lt;br&gt;
+X2 = 0X3 + 1X2&lt;br&gt;
+X3 = 0X1 + 1X3&lt;br&gt;
+정규언어형태 : → (1+01*01*0)*&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[COMPILER 2장 형식 언어 (2)]]></title><description><![CDATA[2장 형식언어입니다. 잘 정의된 언어를 형식언어라고 부르는데 언어를 형식적으로 정의하고 표현하기위해 세부적으로 언어, 문법, 문법의 분류를 학습합니다. 이중 해당 포스트는 문법과 문법의 분류를 정리합니다.]]></description><link>https://jeoungsulmo.github.io/posts/compiler/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/compiler/3</guid><pubDate>Sun, 20 Sep 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;문법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EB%B2%95&quot; aria-label=&quot;문법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문법&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;문법을 고안할 때&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;nonterminal symbol의 이름은 함수명과 같이 어떠한 구문구조(기능)를 대변할수있는 명칭으로 해야한다&lt;/p&gt;
+&lt;p&gt;예를들어 c언어에서 자료형인 식별자가 오려면 세미콜론이 온 이후에 올 수 있음으로 이와같은 구문구조를 가진 nonterminal은 &amp;#x3C; type &gt; 과 같이 작성한다. &amp;#x3C;&gt; 기호를 사용해 해당 기능에 맞는 이름을 입력할 수 있다.&lt;/p&gt;
+&lt;h3 id=&quot;예제--괄호문법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%88%EC%A0%9C--%EA%B4%84%ED%98%B8%EB%AC%B8%EB%B2%95&quot; aria-label=&quot;예제  괄호문법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;예제 : 괄호문법&lt;/h3&gt;
+&lt;p&gt;G = ({S}, {(,)}, {S -&gt; (S)S | ε }, S)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;대부분의 언어에서 사용되는 () 괄호에대한 문법이다.&lt;/li&gt;
+&lt;li&gt;짝수개로 열린 수만큼 닫히는 구조이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;문법의-분류&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EB%B2%95%EC%9D%98-%EB%B6%84%EB%A5%98&quot; aria-label=&quot;문법의 분류 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문법의 분류&lt;/h3&gt;
+&lt;p&gt;Noam Chomsky&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;생성규칙의 형태로 언어의 형태를 분류했다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;type 0 : No restrictions (유지) [a-&gt;b]&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;type 1 : context-sensitive grammar(&lt;strong&gt;CSG&lt;/strong&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a-&gt;b, |a|≤|b|&lt;/li&gt;
+&lt;li&gt;생성규칙의 오른쪽에 해당하는 b의 길이가 a보다 긴 규칙&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;type 2 : context-free grammar(&lt;strong&gt;CFG&lt;/strong&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A-&gt;a , where A: nonterminal, a는 terminal과 nonterminal 의 합집합&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;type 3 : Regular grammer&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A-&gt;tB, or A-&gt;t (right-linear) 우선형&lt;/li&gt;
+&lt;li&gt;A-&gt;Bt, or A-&gt;t (left-linear) 좌선형&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;일반적-언어-형태&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%BC%EB%B0%98%EC%A0%81-%EC%96%B8%EC%96%B4-%ED%98%95%ED%83%9C&quot; aria-label=&quot;일반적 언어 형태 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;일반적 언어 형태&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;단순 매칭 언어 (simple matching language) : Lm = {a&lt;sup&gt;n&lt;/sup&gt;b&lt;sup&gt;n&lt;/sup&gt; | n ≥ 0} CFL&lt;/li&gt;
+&lt;li&gt;중복 매칭 언어 (double matching language) : Ldm = {a&lt;sup&gt;n&lt;/sup&gt;b&lt;sup&gt;n&lt;/sup&gt;c&lt;sup&gt;n&lt;/sup&gt; | n ≥ 1} CSL&lt;/li&gt;
+&lt;li&gt;좌우 대칭 언어 (mirror image language) : Lmi = {ωω&lt;sup&gt;R&lt;/sup&gt; | ω ∈ VT*} CFL&lt;/li&gt;
+&lt;li&gt;회문 언어 (palindrome language) : Lr = {ω | ω = ω&lt;sup&gt;R&lt;/sup&gt; } CFL&lt;/li&gt;
+&lt;li&gt;괄호 언어 (parenthesis language) : Lp = {ω | ω: balanced parenthesis} CFL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;언어와-인식기recognizer&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%96%B8%EC%96%B4%EC%99%80-%EC%9D%B8%EC%8B%9D%EA%B8%B0recognizer&quot; aria-label=&quot;언어와 인식기recognizer permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;언어와 인식기(recognizer)&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Grammer&lt;/th&gt;
+&lt;th&gt;Language&lt;/th&gt;
+&lt;th&gt;Recognizer&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;type 0(무제한)&lt;/td&gt;
+&lt;td&gt;recursively enumerable set&lt;/td&gt;
+&lt;td&gt;Turing machine&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;type 1(context-sensitive)&lt;/td&gt;
+&lt;td&gt;context-sensitive lang&lt;/td&gt;
+&lt;td&gt;Linear Bounded Automata&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;type 2(context-free)&lt;/td&gt;
+&lt;td&gt;context-free lang&lt;/td&gt;
+&lt;td&gt;Pushdown Automata&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;type 3(regular)&lt;/td&gt;
+&lt;td&gt;regular lang&lt;/td&gt;
+&lt;td&gt;Finite Automata&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</content:encoded></item><item><title><![CDATA[COMPILER 2장 형식 언어 (1)]]></title><description><![CDATA[2장 형식언어입니다. 잘 정의된 언어를 형식언어라고 부르는데 언어를 형식적으로 정의하고 표현하기위해 세부적으로 언어, 문법, 문법의 분류를 학습합니다. 이중 해당 포스트는 언어와 문법 약간 정리합니다.]]></description><link>https://jeoungsulmo.github.io/posts/compiler/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/compiler/2</guid><pubDate>Sun, 13 Sep 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;언어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%96%B8%EC%96%B4&quot; aria-label=&quot;언어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;언어&lt;/h2&gt;
+&lt;h3 id=&quot;알파벳&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%95%8C%ED%8C%8C%EB%B2%B3&quot; aria-label=&quot;알파벳 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;알파벳&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;예&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;T1 = { ㄱ,ㄴ,ㄷ,…}&lt;/li&gt;
+&lt;li&gt;T2 = { A,B,C,…}&lt;/li&gt;
+&lt;li&gt;T3 = { auto, vreak, case, while, …}&lt;/li&gt;
+&lt;li&gt;알파벳 = {심벌1, 심벌2, 심벌3, …}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;string : 알파벳의 심벌 조합 또는 심벌 하나&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;length : string의 길이&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;w = a1a2a3…ak이면, |w| = k&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;empty string : ε(epsilon) = a&lt;sup&gt;0&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;접속(concatenation): 스트링끼리 연결시&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;u = a1a2a3…an, v = b1b2b3…bm , u • v = a1a2a3…anb1b2b3…bm&lt;/li&gt;
+&lt;li&gt;u • v를 보통 uv로 표기.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;a&lt;sup&gt;n&lt;/sup&gt; = a*n&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a&lt;sup&gt;3&lt;/sup&gt; = aaa&lt;/li&gt;
+&lt;li&gt;a&lt;sup&gt;0&lt;/sup&gt; = ε&lt;/li&gt;
+&lt;li&gt;W&lt;sup&gt;R&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;W={a1,a2,…,an}&lt;/li&gt;
+&lt;li&gt;W&lt;sup&gt;R&lt;/sup&gt; = {an, a(n-1), … a1}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;T&lt;sup&gt;*&lt;/sup&gt; 와 T&lt;sup&gt;+&lt;/sup&gt; = [T star] 와 [T dagger] : (이하 T={0}일때)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;T&lt;sup&gt;*&lt;/sup&gt;는 T의 알파벳으로 만들수있는 모든 스트링이다.&lt;/li&gt;
+&lt;li&gt;T&lt;sup&gt;*&lt;/sup&gt; = {ε,0,00,000,0000,…}&lt;/li&gt;
+&lt;li&gt;T&lt;sup&gt;+&lt;/sup&gt; = {0,00,000,0000,…}&lt;/li&gt;
+&lt;li&gt;T&lt;sup&gt;+&lt;/sup&gt; = T&lt;sup&gt;*&lt;/sup&gt; - {ε}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;알파벳 T에 대하여 언어 L은 T&lt;sup&gt;*&lt;/sup&gt;의 부분집합이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;T에대한 언어 L이기 때문에 언어 L은 T&lt;sup&gt;*&lt;/sup&gt;안에 부분이다.&lt;/li&gt;
+&lt;li&gt;유한언어(finite language) : L,…&lt;/li&gt;
+&lt;li&gt;무한언어(finite language) : T&lt;sup&gt;*&lt;/sup&gt;, T&lt;sup&gt;R&lt;/sup&gt;,…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;L = { a, b } 일때&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L&lt;sup&gt;0&lt;/sup&gt; = ε&lt;/li&gt;
+&lt;li&gt;L&lt;sup&gt;1&lt;/sup&gt; = {a,b}&lt;/li&gt;
+&lt;li&gt;L&lt;sup&gt;2&lt;/sup&gt; = {aa,ab,ba,bb}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;문법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EB%B2%95&quot; aria-label=&quot;문법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문법&lt;/h3&gt;
+&lt;p&gt;문법에서의 단위 요소&lt;/p&gt;
+&lt;p&gt;P : S → aA | bB | ε&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;terminal&lt;/strong&gt; : 정의된 언어의 알파벳(원소)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;소문자로 작성 abc&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;nonterminal&lt;/strong&gt; : 터미널을 연결하기위한 함수와같은 장치(재귀)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;대문자로 작성 : ABC&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;스트링을 생성하는 데 사용되는 중간 과정의 심볼&lt;/li&gt;
+&lt;li&gt;언어의 구조를 정의하는데 사용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;grammar symbol (V)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;g--vn-vt-p-s&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#g--vn-vt-p-s&quot; aria-label=&quot;g  vn vt p s permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;G = (VN, VT, P, S)&lt;/h4&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;VN : a finite set of nonterminal symbols
+
+VT : a finite set of terminal symbols
+   VN ∩ VT  = 공집합 ,   VN∪ VT = V
+
+P : a finite set of production rules (생성 규칙)
+  α  →  β,  α∈  V+,  β∈ V*
+ lhs   rhs
+    replace
+S : start symbol(sentence symbol)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;예제--시작-심벌로부터-시작해-abba를-유도해라&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%88%EC%A0%9C--%EC%8B%9C%EC%9E%91-%EC%8B%AC%EB%B2%8C%EB%A1%9C%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%B4-abba%EB%A5%BC-%EC%9C%A0%EB%8F%84%ED%95%B4%EB%9D%BC&quot; aria-label=&quot;예제  시작 심벌로부터 시작해 abba를 유도해라 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;예제 : 시작 심벌로부터 시작해 abba를 유도해라&lt;/h4&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;P : S → aA | bB  | ε
+    A → bS
+    B → aS
+  -----------------------------
+S ⇒ aA      (생성규칙 S → aA)
+⇒ abS      (생성규칙 A → bS)
+⇒ abbB    (생성규칙 S → bB)
+⇒ abbaS   (생성규칙 B → aS)
+⇒ abba     (생성규칙 S → )&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[COMPILER OT 및 1장 컴파일러 개론[20.08.31]]]></title><description><![CDATA[약간의 OT가 끝낮자마자 바로 진도나갑니다. 1장 컴파일래 개론으로 시작하고 프로그래밍 언어, 번역기와 컴파일러, 컴파일러의 일반적인 구조, 자동화 도구 까지의 개론 설명입니다.]]></description><link>https://jeoungsulmo.github.io/posts/compiler/1</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/compiler/1</guid><pubDate>Sun, 30 Aug 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;수업-목표&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%88%98%EC%97%85-%EB%AA%A9%ED%91%9C&quot; aria-label=&quot;수업 목표 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;수업 목표&lt;/h2&gt;
+&lt;p&gt;컴파일러의 일반적인 구조 및 유한 오토마타와 정규 표현식에 대한 이론을 학습한다.
+파싱과 연관된 어휘 분석 방법과 문법 구조를 명시하기 위한 문맥 자유 문법을 습득하고 구문 분석기의 분석 방법을 학습한다.
+중간 언어 생성과 코드 최적화를 학습한다.&lt;/p&gt;
+&lt;h2 id=&quot;compiler&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#compiler&quot; aria-label=&quot;compiler permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Compiler&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;일반적 컴파일러 구조
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 653px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/73a349a667d4adc14e9276eacf9c068e/e7dce/compiler1-1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 80%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABJ0AAASdAHeZh94AAADlklEQVQ4yz2UyXIaVxSGeYrssknlCfIa2SRZ5CmyyCJ7VzlVyT6LTE4pZcu2FFm21JIYxNSAGISYBTRNdwMSIBoBUmLLQjIavpxukBen7r3F4b//cPp6jOoZKztj/lgZ8ueKzZvohKebI54rzjoko11gjK7RBlfo9rVbxvCahpwb7n5Gc/gB4/SDe/bUji/Z1y+Jld+RrL2n0L4mUb8kJfusPqVu39I+v0EfzTAnM1pS1uQG6wzqpzcuSFMuaAqgLsAec3RDe+w0zDCk8dDSMPpDjv6DojUgUdBRizZq3iaaGxCWNVbsoWYPKRkjYX8r7K+pOewdQJeulOVQFhld008+p+LND1DUMtHAGlXft1jhr2gGv8EKfklp9wcUxUs4VaJzztwCwXDKo8vBGjp0RZLsD/2/Ev39O7SDkDDpkgw/xd7wYD330HjqQV/y0At+gc+rEotn6Yh0h6G58NKjOfpl88C0aA0ptc/dc7LYQt1dwQ5+zmnwUwaBzzgLfYIV+podb5RouiB+3uOQMlwPJZSqaG/Yc0DHA3NyS11uM8b3JAsakXAYNRYnElHZ2PTjDwSEWQK/z0soXcGUPt2+klAWHpqnM5euA1oXcKdM+aEljXt5jWgkzF48iirr67VNNpb/JhVX8QlgLFPBkj5N/luzP3o4l9oazRk2HIMFtCVSMsUGwVCIHTWLEsnxYiuFN17AF00Jwx2iAtiTaWj2TqkfT9BljBahzIT2XLbpeCGA7QmkC3W8oTg/efs83ury49YRj7YHPFF7BL0KvliBYveGfj9Fq9cSQvcSymJ+jMW0O3tNPDHGd6SLGrtqkp/9No/etHisCKDS569YX8Ly8jqwT6D2FivyC8ml79ELEflSHO32g9w5y+qJmDy6R92vsP5qjRcbIV5ux0SyyrKisrrhZ/XlMv5ETqyB/H6C/bBCTdPxWA+hiPS6lC5etsczOpJ2WXRHSxbJaouMVLZskK0YpCsWiaJBtX3mhtdwg7kVD+/moTQFtCMyNf0t28kp/swlSnxKrv4eO3fIcTzPSapMrnxEJGewm9GIldqoBblMVssdmWuXlAtoSjrmyZRq6V9+W7lgbfcdS+sXxOXB6PnDdJeecbKusO1N8GTVy7NXAbYiB/yzEyecrsv3fIexCNWjLfwznAHvXBI8mJLUpvL6XFHtXmE1upgiz6x1SR12iQmrvUqHbEMeCWGcN8c4D4wD5ozb/4XxWJHoFQrEAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/73a349a667d4adc14e9276eacf9c068e/8ac56/compiler1-1.webp 240w,
+/static/73a349a667d4adc14e9276eacf9c068e/d3be9/compiler1-1.webp 480w,
+/static/73a349a667d4adc14e9276eacf9c068e/d0839/compiler1-1.webp 653w&quot;
+          sizes=&quot;(max-width: 653px) 100vw, 653px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/73a349a667d4adc14e9276eacf9c068e/8ff5a/compiler1-1.png 240w,
+/static/73a349a667d4adc14e9276eacf9c068e/e85cb/compiler1-1.png 480w,
+/static/73a349a667d4adc14e9276eacf9c068e/e7dce/compiler1-1.png 653w&quot;
+          sizes=&quot;(max-width: 653px) 100vw, 653px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/73a349a667d4adc14e9276eacf9c068e/e7dce/compiler1-1.png&quot;
+          alt=&quot;1-1&quot;
+          title=&quot;1-1&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;운영체제에서 사용&lt;/li&gt;
+&lt;li&gt;전체를 읽고 실행&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;컴파일러의-종류&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC%EC%9D%98-%EC%A2%85%EB%A5%98&quot; aria-label=&quot;컴파일러의 종류 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;컴파일러의 종류&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Cross Compiler
+다른기종에 맞는 목적코드를 만들어 내는 컴파일러&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Interpreter&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;개발 시스템 또는 교육용 시스템&lt;/li&gt;
+&lt;li&gt;한줄한줄 읽어가며 중간에서도 실행이가능&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Preprocessor(전처리기)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Macro substitution : 자주쓰는 기능 지정 (매크로 기능)&lt;/li&gt;
+&lt;li&gt;Conditional compilation : # 이나 if처럼 수행할 코드와 수행하지 않을 코드 구분 (조건부 컴파일)&lt;/li&gt;
+&lt;li&gt;Inclusion of files : 외부 파일 불러오기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;컴파일러의-구조&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC%EC%9D%98-%EA%B5%AC%EC%A1%B0&quot; aria-label=&quot;컴파일러의 구조 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;컴파일러의 구조&lt;/h2&gt;
+&lt;p&gt;!이 그림 중요!
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 470px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d43dc05aa7e74f8cbdbf1f13b409b8be/f96db/compiler1-2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 79.58333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABJ0AAASdAHeZh94AAADqElEQVQ4y1WUy28bVRTGZ8OKDQuEVAmpG/gXuqELxIoFYgX8CwhYgISoEETqgoqughRBi1JIW9QkTUMejmOPH+MZ51HnZceO4+fYTuIkJX4kUQqNFDuO8+PcmxSJxRmfub7nu993vnPHyNVaFBodSs0ubq1Nbq+FWis2O5SbbTYkio2WDrfZkn1tKvJfoXaq9+XrbQoSJYn8Xhuj0DglXT0gXdrWG6uHHVwpTlX/Zq3aIb19ztpOl9T2GfHqGclql+z2Cwp/HVNqtC8OF7CK4Kh3w21CuZqmUI4JU0hs/oOd2iEYdohPfcLq6DVWRq+zNHKd5ZF3WPO8R8A/imkvaqCyRLEuKkXdhoAapUMBjPuI3vuCVOA+0dwhvqVNbCdKJfgumxNXKI5dJTdylczwm1Sn32Yu8oTp0LxIbGnAQu3it1wXwPLBOelsjpkZh7VMnp2jc1KVBiHLJhb6mXj4BxbMW8T8t5j39mCN38S2TExrFleYqT7nBTB7Kd3I753gCmj5CNx9pPkdloo1rEiULd9bJPsNioMGa/cNUr8Z1LyvMBsexG/FxMATbYiKokguKFMUeq52InTlNMk3DqT5rgK0mfHeZm7yG4kbzEzcwPnzSwKPv8axfASsOS31JTPVP+W04crD1X1o67HZOuiyUqxLDx3SY9dY6H8Vq+8NAr2vk3r4GumhK8zbIyJZTBQiytmXplS0KZczpK1Xucxj3K0TthyKzmcUzQ+wH32M9cdHJMbeJ+v/EP/UY3zhOT2z2hSlrnHhuOFKouZOD6lERSSvluoiOYIZiWNG0/jtJN7wKp7gMgODJh6PRxhGtTLF8KJtL02RxNWLqqnqNpyxIgwtK8Jda5OeJ1m+H0ry7cMleoZT9IZ2CdmzBAUwW7u4RcoUXS9h5C7RlX49S/sKsKYBR5wMA6Ecv5tp7vmS3J2K86s3wbQ/QDAyo+sye209j5si2/2fKWpBNlQPu/+57Ng2th0hFIoQDNoEAiZDQ8P4pr2aZUlGbKtRp1DNk5cbt9HUppxemiIsJS+LKUpyRHo4sHDIzfEKn/dO8dUdm+8eJfnl6TFhAfP4LTzJ55RLS+RiD8hmslLfEkCRqhjqr46Svt8lIYBer5cHZoK+yQS3B3z8ODBN3/gy/eY6k54pJrx+VnbPySwGce58yqrnJ4rywTAKl05laxd30pUD1ndfEFlcJzK/gvM0TnQxiaMiFseW9+BcgtmEKxPRIffsOdmdI7LPjnX9vxSeQcom9NZTAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/d43dc05aa7e74f8cbdbf1f13b409b8be/8ac56/compiler1-2.webp 240w,
+/static/d43dc05aa7e74f8cbdbf1f13b409b8be/4424c/compiler1-2.webp 470w&quot;
+          sizes=&quot;(max-width: 470px) 100vw, 470px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/d43dc05aa7e74f8cbdbf1f13b409b8be/8ff5a/compiler1-2.png 240w,
+/static/d43dc05aa7e74f8cbdbf1f13b409b8be/f96db/compiler1-2.png 470w&quot;
+          sizes=&quot;(max-width: 470px) 100vw, 470px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/d43dc05aa7e74f8cbdbf1f13b409b8be/f96db/compiler1-2.png&quot;
+          alt=&quot;1-2&quot;
+          title=&quot;1-2&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;전단부--lexicla-analyzer-syntax-analyzer-intermediate-code-generator-로-중간-코드생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%84%EB%8B%A8%EB%B6%80--lexicla-analyzer-syntax-analyzer-intermediate-code-generator-%EB%A1%9C-%EC%A4%91%EA%B0%84-%EC%BD%94%EB%93%9C%EC%83%9D%EC%84%B1&quot; aria-label=&quot;전단부  lexicla analyzer syntax analyzer intermediate code generator 로 중간 코드생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;전단부 : Lexicla Analyzer, Syntax Analyzer, Intermediate Code Generator 로 중간 코드생성&lt;/h3&gt;
+&lt;h4 id=&quot;1-lexical-analyzer-어휘-분석기scanner&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-lexical-analyzer-%EC%96%B4%ED%9C%98-%EB%B6%84%EC%84%9D%EA%B8%B0scanner&quot; aria-label=&quot;1 lexical analyzer 어휘 분석기scanner permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Lexical Analyzer (어휘 분석기:Scanner)&lt;/h4&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 706px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c9f13b089975438ff384ce7546c957cd/9f21b/compiler1-3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABJ0AAASdAHeZh94AAACqUlEQVQozy1TTXPSUBTNn3XrD+iqysqFe5d1HGd0Rp1Wq6PTD9vyTcNHQ8LLSwKEAAkhtLRAKZ89ngQXZ+7jct+7555zo8hwDeE60KUKOwKa0Rr2cI1y5xGF9hxlbwnVW6DY+Y/mFHa4YO0Ghj+F6PZg9fuQvT5E8ARF768QdPNoiV8QTh9a6zbBx8IIqZ8+UodNvD5sYf+LxCue356PkRURqs0xROYz9OMUqkcp2Jl3sP17KGa4QT93gPrBC8hPL2EJDUZ/jg+5EPvHfaS+t5H64WH/q43XRy7enNwiL0fQOg/oZN/DPtqD+LYHjw8KfwLFCJbQtTy04in0ShHCG0GOtrhuT3BpTpC2ZriwJriyZ0gTl40x9N4ckrLIwQPsIILlD0mCjAdLKIkWw2c074E24YyeIcIVL6zgjtZoRys40RJmuKS+cW5DDZcwqJcRxHpvYYVbSN4xggWUdM1Fwejhr2qhxHhVcZDVOjB5ocECm11NRknEv01OFOdkgkVihBPuznFOUWmtoGZlZ4QqUXZuKfhd8qfFrjYhgpjdBuZg95jFzYibOMxZnGTXYFer5I0uTosCN90ZZLRNViZmlyfbijuh+BOuCNfIHkLrzaD7T2wcoXn3jIzmImcOEuY37pgNuTZFa4hT1Ua9M+VYy8ThmjdFyYpg8nLNnVK/FQoyRJ1NLdZccwqTTXJiAI3CC3+BCmPcTGmPAW9GQxg7RO8BZPsIzeeYZKvSbWe4RKU7J8M5x1qj1p0nxqhc/nhUkw9W+YhkTsnoPfxJazinKb8Zz4pmsrRnJSspVmWE+GtSyfiGU+jESclGi9tQaATQybpBZI0ALWqqVGhEutZGjppdVFt02EODWhVFkJhQ9yaJ8Dqj4c+5g4+4loPEEM29Z+4pMTU+x/r/A5huXZ4O8P71AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/c9f13b089975438ff384ce7546c957cd/8ac56/compiler1-3.webp 240w,
+/static/c9f13b089975438ff384ce7546c957cd/d3be9/compiler1-3.webp 480w,
+/static/c9f13b089975438ff384ce7546c957cd/a2af0/compiler1-3.webp 706w&quot;
+          sizes=&quot;(max-width: 706px) 100vw, 706px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/c9f13b089975438ff384ce7546c957cd/8ff5a/compiler1-3.png 240w,
+/static/c9f13b089975438ff384ce7546c957cd/e85cb/compiler1-3.png 480w,
+/static/c9f13b089975438ff384ce7546c957cd/9f21b/compiler1-3.png 706w&quot;
+          sizes=&quot;(max-width: 706px) 100vw, 706px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/c9f13b089975438ff384ce7546c957cd/9f21b/compiler1-3.png&quot;
+          alt=&quot;1-3&quot;
+          title=&quot;1-3&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+토큰(Token) : 문법적으로 의미를 갖는 최소의 단위
+Token Number : 토큰마다 매칭되는 고유한 숫자가 있음&lt;/p&gt;
+&lt;h4 id=&quot;2-syntax-analyzer-구문-분석자-parser&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-syntax-analyzer-%EA%B5%AC%EB%AC%B8-%EB%B6%84%EC%84%9D%EC%9E%90-parser&quot; aria-label=&quot;2 syntax analyzer 구문 분석자 parser permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Syntax Analyzer (구문 분석자: Parser)&lt;/h4&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 577px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c38a04c7192c295e436a9ae0afc14045/065e2/compiler1-4.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.83333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABJ0AAASdAHeZh94AAADLUlEQVQ4y02UWW/bVhCF9V/70N/Qp74ULYoGBfqehwJJirZwVteOJXmpJVkSRVorxU2UqNWiVtdqoiWS83UupQB9GAwv772HZ+acYczwxlzmHU6uS+Rqbc4yNRI5i3TWZJiv4usWzuAjrRn400fJn2lKNMJPOOFG8kbyOlrbww0xw5+RMCyOr2sC1uRVMstvf6VIpIqU4im0ixxZJ8TwRhScO3L2gLTZxxos8UYbiU/Uh2sBW0frmD9+xJotuPFWnOlb4prHacYhWfD5/bzAm6syaSMgfl3lTULn+KLIcVKn2llgCyuzv4iAXHm2BDT2hW4wkZdBDc/TaDV1gtGM4B/ITyakRwOy05DUZEh6FlKYTWmMt3jhA91+lkTGoN5fRe8iQEXbGXyg9f57Ck+/ovbia4zbG/LOlOetHD/pr/ilfMoT7TU/F9/yrJ3HaM4xSmWa8e8oHP2IdvQEy/OJWQLoCMPGaE0vqODbWXxHw+7Noqb/3e0Q77W46AWc91skJc7bLUwRwPUD/JMfOH/6DebLb/F9l5gdqbOkGKzQmo+Y4Q7zTrKUYN4tcYey31tjdZfUe0vswZqyfy+irHBUZVJm814cMIfG9DMxL9xijme8u5nzx9mcS8Ph6CTFy/dpNFE3kbc5vtR5e1Hg+eskL95d8eufp9xUO5TES5o7QqsP0G1xQL2nGO5FaYhS/niDrnypOWTKbfzJjnSlzel1mWy1S1reJbN1MpUOhgBd3fqkis3It/FMlZNUZS+K6pUbbvbySxm+UK92HuSLffFeSFEE0AWgHNzLvpwZ7/BUqdNdFJ4YXpleGV4YbiKHRyHPykuqr8XWfVTObXMqeYxmD7ltzalLX/fn14ezku8OoXyoGDUkPNlQjt+Pk7CcbHGlZHfySFE6Xm4/SNN3WGr/cMc53PmydsPI2HsAT5Uclb6Osq9GqvcRQ8Dc0VbUXUWs91Oxn2H3cEex9cP9B6KS3WjA9z1UJbiHQ5XuB4rCzJS5NftLSu0F5c6/0Z77f8ADCbWOWYe+RQcEUBndkh6pv5Aj61pvQcYUWzQmeNKGsohVEebugZG6Uz9ooDD+A7YWMOJIxChxAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/c38a04c7192c295e436a9ae0afc14045/8ac56/compiler1-4.webp 240w,
+/static/c38a04c7192c295e436a9ae0afc14045/d3be9/compiler1-4.webp 480w,
+/static/c38a04c7192c295e436a9ae0afc14045/d261b/compiler1-4.webp 577w&quot;
+          sizes=&quot;(max-width: 577px) 100vw, 577px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/c38a04c7192c295e436a9ae0afc14045/8ff5a/compiler1-4.png 240w,
+/static/c38a04c7192c295e436a9ae0afc14045/e85cb/compiler1-4.png 480w,
+/static/c38a04c7192c295e436a9ae0afc14045/065e2/compiler1-4.png 577w&quot;
+          sizes=&quot;(max-width: 577px) 100vw, 577px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/c38a04c7192c295e436a9ae0afc14045/065e2/compiler1-4.png&quot;
+          alt=&quot;1-4&quot;
+          title=&quot;1-4&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;구문을 문법적으로 체크한다.&lt;/p&gt;
+&lt;p&gt;트리형태의 구문분석이 만들어진다.&lt;/p&gt;
+&lt;p&gt;Parse 트리와 추상 구문 트리로 두가지가 있다.&lt;/p&gt;
+&lt;h4 id=&quot;3-intermediate-code-generator&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-intermediate-code-generator&quot; aria-label=&quot;3 intermediate code generator permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. Intermediate Code Generator&lt;/h4&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 535px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6f6d19815acd6ff47b458494cd81cf01/b5245/compiler1-5.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.083333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAAB5ElEQVQoz0VSaW+bQBTk//+Tqp8aKYcipYnT2JZlQ3xw7C74CmAMOG5TUhs7WNP3Fpx8GMGbd+y82TUGMsPjcI7OJETXidEeLiheYBi8ovU8g4j+4Wm0RMua4eZpjOtfY9z1BH6aU1w+WLjp2GiZAW67LqxgA6PnrXA/UDRsSQh1sxXk8FY79P0cYrXHcP4bo/kWfZWiS/XcaE036Lkr9OQaJtWbfgYneodh+ht03Rjfb2NcdTLY4RvseIdxWEDmJ3jJASo7QuUf8DcVRHaCn1XEfSB4PVFNBZlWmpPpEYZPCUEYh9SQVFqRufiLwaLAaFnAXx8g1iVs4t2kRECxInjJnrgSkv6ZE5RzCIZPxRzItNRKLJXDJd9YQX9Kq9LwaX7UQ2vQgPRAg+phojngzBkiqQnZwCfZLL0nUjikyol2eJ6/QTHf1Kj1UVvhNwP1N6l5Q/FkjRJuo4K5ycsfvaJHxWy2yqiJauykVnbu4x6u45hhcMMkLnHxWODHwzvceK+NvmrbdJNbdOwIJn09Uug1ClkN++U2FkiKXQ1amXf3OLmqE+zpbHvCt+u2fkKCblwR52m1pV4r0LbUys428Ry+C+PTl/TLj4Cey+W9iY4TYbKgZ/RSfHoo9KFfHp4Pkc3l/AcOG9n70ZkZrgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/6f6d19815acd6ff47b458494cd81cf01/8ac56/compiler1-5.webp 240w,
+/static/6f6d19815acd6ff47b458494cd81cf01/d3be9/compiler1-5.webp 480w,
+/static/6f6d19815acd6ff47b458494cd81cf01/e0c9f/compiler1-5.webp 535w&quot;
+          sizes=&quot;(max-width: 535px) 100vw, 535px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/6f6d19815acd6ff47b458494cd81cf01/8ff5a/compiler1-5.png 240w,
+/static/6f6d19815acd6ff47b458494cd81cf01/e85cb/compiler1-5.png 480w,
+/static/6f6d19815acd6ff47b458494cd81cf01/b5245/compiler1-5.png 535w&quot;
+          sizes=&quot;(max-width: 535px) 100vw, 535px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/6f6d19815acd6ff47b458494cd81cf01/b5245/compiler1-5.png&quot;
+          alt=&quot;1-5&quot;
+          title=&quot;1-5&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Semantic checking : 타입 자료형을 체크(의미분석)&lt;/p&gt;
+&lt;p&gt;Intermediate Code Generation : 중간 코드 생성(예: Ucode 사용)&lt;/p&gt;
+&lt;h3 id=&quot;후단부--code-optimizer최적화-target-code-generator목적-코드-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%9B%84%EB%8B%A8%EB%B6%80--code-optimizer%EC%B5%9C%EC%A0%81%ED%99%94-target-code-generator%EB%AA%A9%EC%A0%81-%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;후단부  code optimizer최적화 target code generator목적 코드 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;후단부 : Code Optimizer(최적화), Target Code Generator목적 코드 생성&lt;/h3&gt;
+&lt;h4 id=&quot;4-code-optimizer&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-code-optimizer&quot; aria-label=&quot;4 code optimizer permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. Code optimizer&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Optional phase&lt;/li&gt;
+&lt;li&gt;코드 최적화 단계&lt;/li&gt;
+&lt;li&gt;비효율적인 code를 구분해 내서 더 효율적인 code로 바꾸어 준다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Meaning&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;major part : improve running time&lt;/li&gt;
+&lt;li&gt;minor part : reduce code size&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Criteria(기준)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;preserve the program meanings (보존성)&lt;/li&gt;
+&lt;li&gt;speed up on average&lt;/li&gt;
+&lt;li&gt;be worth the effort&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;지역 최적화&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;컴파일시간 상수 연산&lt;/li&gt;
+&lt;li&gt;중복된 코드제거, 불필요한 코드 제거&lt;/li&gt;
+&lt;li&gt;연산량 감소&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;전역 최적화&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;전체과정의 흐름을보고 줄이는것 최적화의 범위와 위치에따라 구분&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;5-목적코드-생성기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5-%EB%AA%A9%EC%A0%81%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0&quot; aria-label=&quot;5 목적코드 생성기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;5. 목적코드 생성기&lt;/h4&gt;
+&lt;p&gt;최적화가 완료된 중간코드를 사용될 기계에 맞는 목적 코드로 생성해준다.&lt;/p&gt;
+&lt;p&gt;목적코드생성기가 하는 일 4가지&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;목적 코드 선택 및 생성&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;변수들에 대한 기억 장소를 할당해야 하며 중간 코드의 의미와 일치하는 기계명령어들을 효과적으로 선택하는 코드 생성이 이뤄진다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;레지스터의 운영&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;컴퓨터가 빠르게 계산이 가능한 고속 레지스터가 존재하는데 이를 효율적으로 잘 사용할 알고리즘이 있어야 성능향상에 영향이있다. 고로 레지스터의 운영이 중요하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;기억 장소 할당&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;심벌 테이블에 컴파일러는 소스코드에서 만난 자료들을 기억하고 있어야한다. 이 정보를 관리하고 할당하여 목적코드를 알맞게 생성한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;기계 의존적인 코드 최적화&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;연속적인 명령어들을 의미적으로 동등한 하나의 명령어 또는 처리 속도가 빠른 명령어로 대체하여 기계어 코드의 성능을 향상시키는 방법&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;error-recovery&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#error-recovery&quot; aria-label=&quot;error recovery permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Error Recovery&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Error recovery : error가 다른 문장에 영향을 미치지 않도록 수정&lt;/li&gt;
+&lt;li&gt;Error repair : error가 발생하면 복구해 주는 것&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;컴파일러-자동화-도구&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC-%EC%9E%90%EB%8F%99%ED%99%94-%EB%8F%84%EA%B5%AC&quot; aria-label=&quot;컴파일러 자동화 도구 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;컴파일러 자동화 도구&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Compiler Generating Tools&lt;/li&gt;
+&lt;li&gt;Language가 발달할수록 많은 Compiler가 필요&lt;/li&gt;
+&lt;li&gt;N개의 language가 M개의 machine에서 구현하려면 N*M개의 compiler가 필요&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Compiler-Compiler Model
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 617px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2474e6224f51cade4c1c1bca6408b602/bc962/compiler2-1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAACl0lEQVQozzWTWU8TURTH+5H8OH4DHnwxBk3kwSVGH8RElhaFYGJQDNhqQC2CAUFS7EI3KO101tKVmW6yyFK2n2fa+PDP3HvOmbPc+7sezemQrRyRrR6j2qfostfqrs7JOz25MXoDcg7k664uxX9BrtwgpSniu0CVeEXiPGqtTsaMkCkZaG0wW1dYzQsKjTMpcCI6xpCkRqXIbvgmZuohmdox2b0rCpUtNPMHmjSiOmdkbUmo75qo60NsLo6gRoIk1TK/jUOCmQP8Wyd8Th8R2DonEMuz8NNL7vsNckYGrQVG4gvx97eIf+hHj81Lp9d4NFUhPd3P0mgfudk7hMJR5mNV3sb+MroJE2kYT8GYfL1rNSKRKSwZr9AEJbNFdHmO7fAvDNXEkmPxKKU28WyGHbOIXj3ElGDTOSGwfc7gSpu7E6vcm1xndOOEyfARuRrsOIdslAvE63ss6SqbzSZhp0a8bMvI1RqatYJaSEmyS2n7Ujo4k3E7jGx0eOzP8ujjDt5wh4nwPvOhPQLFCF5eMth8zgNlgGflJ/gYZqrqx2NZMvLMbRZ8fWjBp6xHEnyN17oje/+PLBpLiEL7/Nr+w7diCu+hD5/9mhfGECPVMV4djTNlzeHZ0SySi5MkFt+QX3tHZFvvXUq6yUysiT/WYDYqkvWnmN1FS3FOSZZbpCotllMZ+dZJV9ukKwdyhs5FF5fSvtxaq4eN4XIlTFmNDiWRKVwacgwuj4otFyJ+S3gsNsropTiq/Kc33f2l3LIE5W2XuTPhrZdEE6byslaFP1dmQzhsdLpFXHvPf01RW0MPDZNc9aPmUgK3JHQR0JxesOm+CruXyLW7Ns3urRWxdwF3i0hx9+Xko0Gi0/eJTA9gxIPygq75B5pcAgPAoJZ+AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/2474e6224f51cade4c1c1bca6408b602/8ac56/compiler2-1.webp 240w,
+/static/2474e6224f51cade4c1c1bca6408b602/d3be9/compiler2-1.webp 480w,
+/static/2474e6224f51cade4c1c1bca6408b602/20989/compiler2-1.webp 617w&quot;
+          sizes=&quot;(max-width: 617px) 100vw, 617px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/2474e6224f51cade4c1c1bca6408b602/8ff5a/compiler2-1.png 240w,
+/static/2474e6224f51cade4c1c1bca6408b602/e85cb/compiler2-1.png 480w,
+/static/2474e6224f51cade4c1c1bca6408b602/bc962/compiler2-1.png 617w&quot;
+          sizes=&quot;(max-width: 617px) 100vw, 617px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/2474e6224f51cade4c1c1bca6408b602/bc962/compiler2-1.png&quot;
+          alt=&quot;2-1&quot;
+          title=&quot;2-1&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;언어와 머신을 받아들여 해당 컴파일러로 자동화&lt;/p&gt;
+&lt;p&gt;1.어휘 분석기 생성기&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;LEX : 정규표현식과 액션 코드로 어휘 분석기를 생성&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 642px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/801785b909ef061fa71f1e66bba3947e/1bba8/compiler2-2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 51.25000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAACc0lEQVQozyWSyU9TURSH+yf5HxkNceuShQsERQU2QlAMEAxgLA6Y4MAgMYpC6UwH2r6x7Xt0eK8DhZShLS2fp7D4cu/Nme75nePRKx1UQRE0t4PuttEqbfSqvAVDMMWWrbUx66AXbTKHXjKFE7H10MVXkxjF7dycHs1tkSo0SRQuUMqXmLXb4GThHJ/ZxJ9tErUviVhnhKwuMf8w6vYdjPAgSlUKVC6leJuUI0kFj17SUe0oesEUAwTzl+wZTbyRJq+DPWZDXSY2S0z+OWEu3GHKD982x1GDQ6TFP12+uPldvwtTTo9l+fDvzBMPfyWePOTT921WtgIsBs94FYGZMDxe1RjfrjEbg5cBWN1XyVUuMKtXqNKhIq32pevjsX3LaEt3SS49ILE4gPn+PuVfE6zHG8z76rwLHLPgP2Vhv8Gy3Od2q2wlG9i1LplyG8O9pS+d7khCLRUi4/tMaGeNmG+TlH8dW4uilFpopQ62e8XPgwb+zAl5p4ta7Ae2boZ387PqtSTukXF6GJUuHrWUJ53dIX0MximYgtFABD/jn5MjVLdZ01R+HZlEGjYBp0javW0vW+uRyov21gFKPkrmqIin4ESwsqvEtAKJbI2DXF3uJ3wobTBWf86wMsIz8wkjyjBPs0+ZPp9m19JJ5i8IKTbO3wnC3ocUfg6ipX5LwuAKsbf3SC8PYAU+Epf1ieuneI9+MM0UL+wxRrQnjJqjTDYnmWm/Yd82UI5aRFWL4r+XxL48Qt8YQlPCeJTkLom9LxzsbZE1NIzatUxPBHdlD8s5AhWbkGux71gE3DyhclEGcEVOhmIKarlBrnosuh6Lli3+A/u7ujH59dPHAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/801785b909ef061fa71f1e66bba3947e/8ac56/compiler2-2.webp 240w,
+/static/801785b909ef061fa71f1e66bba3947e/d3be9/compiler2-2.webp 480w,
+/static/801785b909ef061fa71f1e66bba3947e/7eb86/compiler2-2.webp 642w&quot;
+          sizes=&quot;(max-width: 642px) 100vw, 642px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/801785b909ef061fa71f1e66bba3947e/8ff5a/compiler2-2.png 240w,
+/static/801785b909ef061fa71f1e66bba3947e/e85cb/compiler2-2.png 480w,
+/static/801785b909ef061fa71f1e66bba3947e/1bba8/compiler2-2.png 642w&quot;
+          sizes=&quot;(max-width: 642px) 100vw, 642px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/801785b909ef061fa71f1e66bba3947e/1bba8/compiler2-2.png&quot;
+          alt=&quot;2-1&quot;
+          title=&quot;2-1&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;2.파서 생성기&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;기본 PGS(parser generating system)
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 602px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/415609cc75ed8c718f8fde61329e053d/32056/compiler2-3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 49.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAACkUlEQVQozy2S22sTYRDF9w/wj1JQBH0TBLH4JD4IgiI+CdY+eKFFvFC0tVpaLFbxUhukUlubmia9JNvEpMlussluNknTZDdNrK2GbtLLzzH4MN8MH8OZM+eMkqu1yG7ukarukXb2yLotMhLWZpt8vY1Ra2NKT37Tw2ocYjtVrNgtkkaQTA1yNQ9D+s3NFmnJSqZ2QKrosGbE0W0bfeMP9tYh8VKTufQOC8ZvgqZH0NrFn93ne3iS6OwZCoGjaKVtGb6PXvWEjBBz2yhpR6a6Oez1eYpugrC5xVzS5Z1a58lSm6EY3P1coPudzqC6T78KI7MBtNB1ssIwL8wM1+uw6wCadfk0VliZ7CH06R5+3yhzaw4fVhs8XmwxGIXe6Qp3fDkG1EP6IzC8UEYv7wrYAbkOkIcpYP9WV+wt0GOLhF5343/Vg/rlJaVGi2hxj7Fwk4l4i9HlJkNLntQeb9RdfPE/5EVXS0D+6W64B526A5iubBNJrYop2+R+isgNxAjQkm8phs9RWr1EYr6LmL+LQuQiRfUCZuwmyfKOrLxPrlJDy+v/zfFk5UqWSnVKHNtBdxFHmxgCvBG9zNaEgjqgEH6qkBpWCDxSqH9UaAaOkCjWyYlczs8flKt+LNlUE6ZKyYxgf79PdOqZTJ5DNRuEM7+YjvQRyR9jNX+aUPI4wdQJVOuUSHGSQOI8Ub3IUsrBUsfRZnoJ+QYoJPwoljzx8WuERm9ghcY6tDOFJuPOLL08p+/gBVfk7q4mb3PPG+ABwzzcHiFqumjlJuXgIN8ed/Gl7yyVhWeiYamBtl4n47TJSuTlyM3aIcsbBu9LU0yUZvBVZpksz0j9lcn1aXz2PKmNJgU59JS5TiJjkZas2Q5/ASfhqpZiR78WAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/415609cc75ed8c718f8fde61329e053d/8ac56/compiler2-3.webp 240w,
+/static/415609cc75ed8c718f8fde61329e053d/d3be9/compiler2-3.webp 480w,
+/static/415609cc75ed8c718f8fde61329e053d/ff4b8/compiler2-3.webp 602w&quot;
+          sizes=&quot;(max-width: 602px) 100vw, 602px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/415609cc75ed8c718f8fde61329e053d/8ff5a/compiler2-3.png 240w,
+/static/415609cc75ed8c718f8fde61329e053d/e85cb/compiler2-3.png 480w,
+/static/415609cc75ed8c718f8fde61329e053d/32056/compiler2-3.png 602w&quot;
+          sizes=&quot;(max-width: 602px) 100vw, 602px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/415609cc75ed8c718f8fde61329e053d/32056/compiler2-3.png&quot;
+          alt=&quot;2-1&quot;
+          title=&quot;2-1&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+1.stanford PGS&lt;/p&gt;
+&lt;p&gt;2.wisconsin PGS&lt;/p&gt;
+&lt;p&gt;3.YACC (대표적인 PGS)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Unix에서 수행&lt;/li&gt;
+&lt;li&gt;C language로 제작
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 706px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/045d90d83e9212e18f1578a9bbfecd7a/9f21b/compiler2-4.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAACyUlEQVQozyWTy28TZxTF/eeAVLEq/0RVtqgLJKi6qEAgWHQDRUIqglaEJCwQiEUIghBQVEoJFWlKQuMkDp7YTsb22PPwPDw2fo3tPJwSP0L49Y5ZfJ8097v3zLnnnhsxGn0KwSeMSpu872IG+1hbYDUPKcib2xyg+WVy5Q+Yzc/YLSTWxwr6hLVmWN8YDPPMRo+ILZfVBMNSWZ4bI51cRE0qZC0fJwStd9E2X5NYesB6fBndtIXAAWa9h9PoDgFtAQyPXh8QsaTAaIOnraI9vcDyxEXy0+dx0+8wJW7Iz/zYFPGJH4lPnsVemaLQZkjCEramgIedWAIYso4U5MrJh1beIes2yHoBf8VyvNmoYNdaGMlfyehxMt4uSaPO83c6KbePY69iqnfRKv+hS/0XUAEcajjU6hCl2GMm+4lHSof70RbPNvd49eoSRvp3/tlxebb/gnvFaSabL5lu/EZ08QSmVxJppJN6X1oWQDMQnYIBxdaAWGGXO7EDRha3uPV3lTsKPFmrUKweMNOeY2Rwkxul64zv3WakN8a8l6IoYKGm4aCGQ8l6VfKVj3itz+SrXdbMFm/TAS8TNdZEwKS7iytaZcUFK77FrJ5nwdJZ9QrCSBwhIHo5wBanhK1HXG9O9Kli1bpsik6js32uTu1x5ckOv8wc8meig18/4H5uhu/U05xc+YGTiTNcyv6M6ncwfIdSaYG00xbpukTSf1wm+vgyuXyOmN7kwoNtTo81+X6sxqnxfSYXG/gfelxLjnJ05QjH57/mWPQrvnn/LYrbJLUeZWniHNGHP6FlVSIbGwpaRsWpdsQGhyypHvPrDgsJOYolrHfQRaNMeZ95RdpNGczG0kQzpaF9dL9OXlPJGZLrBDIUCbqyGbYU2UGPVLHDqqzKe3uLpNdh3dnm31yDZUlUHHkztkhJPG5vk6/1hlvmbguwyLIgVvsfwd/5mOk70EgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/045d90d83e9212e18f1578a9bbfecd7a/8ac56/compiler2-4.webp 240w,
+/static/045d90d83e9212e18f1578a9bbfecd7a/d3be9/compiler2-4.webp 480w,
+/static/045d90d83e9212e18f1578a9bbfecd7a/a2af0/compiler2-4.webp 706w&quot;
+          sizes=&quot;(max-width: 706px) 100vw, 706px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/045d90d83e9212e18f1578a9bbfecd7a/8ff5a/compiler2-4.png 240w,
+/static/045d90d83e9212e18f1578a9bbfecd7a/e85cb/compiler2-4.png 480w,
+/static/045d90d83e9212e18f1578a9bbfecd7a/9f21b/compiler2-4.png 706w&quot;
+          sizes=&quot;(max-width: 706px) 100vw, 706px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/045d90d83e9212e18f1578a9bbfecd7a/9f21b/compiler2-4.png&quot;
+          alt=&quot;2-1&quot;
+          title=&quot;2-1&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;컴파일러 자동화&lt;/li&gt;
+&lt;li&gt;PQCC: 전단부를 잘만듬, TCOL이라는 트리구조의 언어가 성능이 좋았다고 함.&lt;/li&gt;
+&lt;li&gt;ACK : 후단부를 자동화하기 위한 도구의 하나, 이식성과 재목적성이 높은 컴파일러를 만들기위한 실질적인 도구&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[블로그 시작!]]></title><description><![CDATA[ 블로그의 시작을 알리는 글입니다. 어떤거 할지 적어볼려구여]]></description><link>https://jeoungsulmo.github.io/posts/</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/</guid><pubDate>Tue, 28 Jul 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;블로그-시작&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%9C%EC%9E%91&quot; aria-label=&quot;블로그 시작 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;블로그 시작!&lt;/h1&gt;
+&lt;p&gt;어느정도 gatsby를 마무리 짓고 첫 글을 뭘로 써야 할까 하다 블로그의 전체적인 느낌이랑 주로 쓸 글들에 대해 적어볼까 합니다. 그래서 이번 글은 sulmo라는 카테고리로 하고 싶은 말을 가끔 쓰기도 하고 일기 같은 느낌도 주는카테고리로 시작합니다. &lt;del&gt;(맞습니다 잡탕입니다.)&lt;/del&gt;
+`
+블로그에서 목적으로 단순히 글을 잘 쓰고 싶은 욕구도 있고 개발 로그를 꾸준히 써보려는 목표도 있습니다. 글을 읽기 좋게 누군가에게 도움이 되게 적어보고 싶지만 그러한 준비를 끝내고 시작하려면 영영 시작 못할 거 같아서 배우는 걸 기록하자마자 최대한 바로바로 올려볼 겁니다. 이때까지 웹 개발을 주로 해왔지만 올라오는 컴파일러부터 시작할 거 같네요;; 3학년 2학기가 되니 컴파일러 같은 뭔가 고인 과목들만 개론 수업이고 나머진 다 프로젝트? 같은 느낌의 수업이다 보니..&lt;/p&gt;
 &lt;p&gt;개발을 진짜 시작 한진 얼마 되지 않았습니다. 정말 아무것도 몰랐고 몰랐기 때문에 알기 위해 이것저것 해봤어요. 너무나도 감사하게도 피로 그래밍이라는 동아리에서 활동할 수 있었고 내가 뭘 모르는지 뭘 해야 하는지 뭐가 하고 싶은지 원하는 모든 걸 얻었습니다. 이를 시작으로 1년 좀 넘게 개발을 열심히 꾸준히 해오고 있으며 동아리 활동 이후 다음 기수의 회장이라는 무거운 자리에 반자의 반타의에의해 올랐습니다.&lt;/p&gt;
-&lt;p&gt;처음엔 부담스러웠지만 받은 만큼 돌려준다라는 마인드로 모든 걸 부었습니다. 이때까지의 생에 몇 안 되는 정말 큰 경험이었고 개발 외적으로도 많은 것들을 얻었어요. 장문의 글과 책보단 공식 같을걸 선호했던 제가 글을 잘 쓰고 싶어 할 정도면 진짜 생각보다 크게 변한 거 같기도.. 여하튼 개발자가 되고 싶은 사람이고 이 덕분에 이 블로그에는 CS적인 부분과 가장 많이 해오던 웹 개발에서 프런트엔드 부분에 치중한 글을 많이 올려볼 예정입니다.&lt;/p&gt;
-&lt;p&gt;이때까지 쌓여있는 노션에 정리된 글과 md파일들을 어떻게 올려야 할지 흠.. 아무튼 제가 정리한 부분들을 하나하나 쌓아가 보겠습니다. 언젠가 평범한 거물이 되어있기를 바라며 개츠비와 깃헙 페이지 감사륀…&lt;/p&gt;
+&lt;p&gt;처음엔 부담스러웠지만 받은 만큼 돌려준다라는 마인드로 모든 걸 부었습니다. 이때까지의 생에 몇 안 되는 정말 큰 경험이었고 개발 외적으로도 많은 것들을 얻었어요. 개발 측면에선 정말 무에 가까웠기때문에 바뀐부분을 다 나열할순 없지만 개발 외적으로도 장문의 글과 책보단 공식 같을걸 선호했던 제가 글을 잘 쓰고 싶어 할 정도면 진짜 생각보다 크게 변한 거 같기도.. 여하튼 개발자가 되고 싶은 사람이고 이 덕분에 이 블로그에는 CS적인 부분과 가장 많이 해오던 웹 개발에서 프런트엔드 부분에 치중한 글을 많이 올려볼 예정입니다.&lt;/p&gt;
+&lt;p&gt;이때까지 쌓여있는 노션에 정리된 글과 md파일들을 어떻게 올려야 할지 흠.. 아무튼 제가 정리한 부분들을 하나하나 쌓아가 보겠습니다. 언젠가 평범한 거물이 되어있기를 바라며 개츠비와 깃헙 페이지 감사륀… (모든 척도는 다 개인적인 느낌의 바탕입니다.)&lt;/p&gt;
 &lt;p&gt;아 최근 장학금이랑 작은 외주한거 끌어모아 맥북사서 혼자만의 자랑아닌 자랑을 마무리로&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -48,45 +1865,4 @@
       &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;행복..&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Humane Typography in the Digital Age]]></title><description><![CDATA[An Essay on Typography by Eric Gill takes the reader back to the year 1930. The year when a conflict between two worlds came to its term. The machines of the industrial world finally took over the handicrafts.]]></description><link>https://jeoungsulmo.github.io/posts/humane-typography-in-the-digital-age</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/humane-typography-in-the-digital-age</guid><pubDate>Sat, 19 Aug 2017 22:40:32 GMT</pubDate><content:encoded>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#the-first-transition&quot;&gt;The first transition&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#the-digital-age&quot;&gt;The digital age&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#loss-of-humanity-through-transitions&quot;&gt;Loss of humanity through transitions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#chasing-perfection&quot;&gt;Chasing perfection&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;An Essay on Typography by Eric Gill takes the reader back to the year 1930. The year when a conflict between two worlds came to its term. The machines of the industrial world finally took over the handicrafts.&lt;/p&gt;
-&lt;p&gt;The typography of this industrial age was no longer handcrafted. Mass production and profit became more important. Quantity mattered more than the quality. The books and printed works in general lost a part of its humanity. The typefaces were not produced by craftsmen anymore. It was the machines printing and tying the books together now. The craftsmen had to let go of their craft and became a cog in the process. An extension of the industrial machine.&lt;/p&gt;
-&lt;p&gt;But the victory of the industrialism didn’t mean that the craftsmen were completely extinct. The two worlds continued to coexist independently. Each recognising the good in the other — the power of industrialism and the humanity of craftsmanship. This was the second transition that would strip typography of a part of its humanity. We have to go 500 years back in time to meet the first one.&lt;/p&gt;
-&lt;h2 id=&quot;the-first-transition&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#the-first-transition&quot; aria-label=&quot;the first transition permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;The first transition&lt;/h2&gt;
-&lt;p&gt;A similar conflict emerged after the invention of the first printing press in Europe. Johannes Gutenberg invented movable type and used it to produce different compositions. His workshop could print up to 240 impressions per hour. Until then, the books were being copied by hand. All the books were handwritten and decorated with hand drawn ornaments and figures. A process of copying a book was long but each book, even a copy, was a work of art.&lt;/p&gt;
-&lt;p&gt;The first printed books were, at first, perceived as inferior to the handwritten ones. They were smaller and cheaper to produce. Movable type provided the printers with flexibility that allowed them to print books in languages other than Latin. Gill describes the transition to industrialism as something that people needed and wanted. Something similar happened after the first printed books emerged. People wanted books in a language they understood and they wanted books they could take with them. They were hungry for knowledge and printed books satisfied this hunger.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;The 42–Line Bible, printed by Gutenberg.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;But, through this transition, the book lost a large part of its humanity. The machine took over most of the process but craftsmanship was still a part of it. The typefaces were cut manually by the first punch cutters. The paper was made by hand. The illustrations and ornaments were still being hand drawn. These were the remains of the craftsmanship that went almost extinct in the times of Eric Gill.&lt;/p&gt;
-&lt;h2 id=&quot;the-digital-age&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#the-digital-age&quot; aria-label=&quot;the digital age permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;The digital age&lt;/h2&gt;
-&lt;p&gt;The first transition took away a large part of humanity from written communication. Industrialisation, the second transition described by Eric Gill, took away most of what was left. But it’s the third transition that stripped it naked. Typefaces are faceless these days. They’re just fonts on our computers. Hardly anyone knows their stories. Hardly anyone cares. Flicking through thousands of typefaces and finding the “right one” is a matter of minutes.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;In the new computer age the proliferation of typefaces and type manipulations represents a new level of visual pollution threatening our culture. Out of thousands of typefaces, all we need are a few basic ones, and trash the rest.&lt;/p&gt;
-&lt;p&gt;— Massimo Vignelli&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Typography is not about typefaces. It’s not about what looks best, it’s about what feels right. What communicates the message best. Typography, in its essence, is about the message. “Typographical design should perform optically what the speaker creates through voice and gesture of his thoughts.”, as El Lissitzky, a famous Russian typographer, put it.&lt;/p&gt;
-&lt;h2 id=&quot;loss-of-humanity-through-transitions&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#loss-of-humanity-through-transitions&quot; aria-label=&quot;loss of humanity through transitions permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Loss of humanity through transitions&lt;/h2&gt;
-&lt;p&gt;Each transition took away a part of humanity from written language. Handwritten books being the most humane form and the digital typefaces being the least. Overuse of Helvetica is a good example. Messages are being told in a typeface just because it’s a safe option. It’s always there. Everyone knows it but yet, nobody knows it. Stop someone on the street and ask him what Helvetica is? Ask a designer the same question. Ask him where it came from, when, why and who designed it. Most of them will fail to answer these questions. Most of them used it in their precious projects but they still don’t spot it in the street.&lt;/p&gt;
-&lt;figure&gt;
-	&lt;blockquote&gt;
-		&lt;p&gt;Knowledge of the quality of a typeface is of the greatest importance for the functional, aesthetic and psychological effect.&lt;/p&gt;
-		&lt;footer&gt;
-			&lt;cite&gt;— Josef Mueller-Brockmann&lt;/cite&gt;
-		&lt;/footer&gt;
-	&lt;/blockquote&gt;
-&lt;/figure&gt;
-&lt;p&gt;Typefaces don’t look handmade these days. And that’s all right. They don’t have to. Industrialism took that away from them and we’re fine with it. We’ve traded that part of humanity for a process that produces more books that are easier to read. That can’t be bad. And it isn’t.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Humane typography will often be comparatively rough and even uncouth; but while a certain uncouthness does not seriously matter in humane works, uncouthness has no excuse whatever in the productions of the machine.&lt;/p&gt;
-&lt;p&gt;— Eric Gill&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;We’ve come close to “perfection” in the last five centuries. The letters are crisp and without rough edges. We print our compositions with high–precision printers on a high quality, machine made paper.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Type through 5 centuries.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;We lost a part of ourselves because of this chase after perfection. We forgot about the craftsmanship along the way. And the worst part is that we don’t care. The transition to the digital age made that clear. We choose typefaces like clueless zombies. There’s no meaning in our work. Type sizes, leading, margins… It’s all just a few clicks or lines of code. The message isn’t important anymore. There’s no more “why” behind the “what”.&lt;/p&gt;
-&lt;h2 id=&quot;chasing-perfection&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#chasing-perfection&quot; aria-label=&quot;chasing perfection permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Chasing perfection&lt;/h2&gt;
-&lt;p&gt;Human beings aren’t perfect. Perfection is something that will always elude us. There will always be a small part of humanity in everything we do. No matter how small that part, we should make sure that it transcends the limits of the medium. We have to think about the message first. What typeface should we use and why? Does the typeface match the message and what we want to communicate with it? What will be the leading and why? Will there be more typefaces in our design? On what ground will they be combined? What makes our design unique and why? This is the part of humanity that is left in typography. It might be the last part. Are we really going to give it up?&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Originally published by &lt;a href=&quot;http://matejlatin.co.uk/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Matej Latin&lt;/a&gt; on &lt;a href=&quot;https://medium.com/design-notes/humane-typography-in-the-digital-age-9bd5c16199bd?ref=webdesignernews.com#.lygo82z0x&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Medium&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;행복..&lt;/p&gt;</content:encoded></item></channel></rss>
