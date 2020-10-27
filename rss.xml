@@ -1,4 +1,257 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Sulmo]]></title><description><![CDATA[서브타이틀이 어디에 작성되는가]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 26 Oct 2020 00:13:28 GMT</lastBuildDate><item><title><![CDATA[COMPILER 03장 정규언어(3) : 정규언어의 속성]]></title><description><![CDATA[3장 정규언어의 마지막 챕터입니다. 정규언어의 표현방법인 정규문법, 정규표현, 유한오토마타의 관계 및 변환 방법을 학습하였습니다.]]></description><link>https://jeoungsulmo.github.io/posts/compiler/6</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/compiler/6</guid><pubDate>Sun, 11 Oct 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;정규언어의-속성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EC%96%B8%EC%96%B4%EC%9D%98-%EC%86%8D%EC%84%B1&quot; aria-label=&quot;정규언어의 속성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규언어의 속성&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Sulmo]]></title><description><![CDATA[서브타이틀이 어디에 작성되는가]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 27 Oct 2020 09:14:45 GMT</lastBuildDate><item><title><![CDATA[그래프를 정리하자]]></title><description><![CDATA[그래프를 기반한 모든것을 작성중입니다. 아직 다 만들어지진 않았으나 계속 수정되어 갈 예정입니다. 동규야 고맙다.]]></description><link>https://jeoungsulmo.github.io/posts/PS/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/PS/2</guid><pubDate>Mon, 26 Oct 2020 15:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;이 게시물은 제작중에있습니다:D 그래프에서 필요할거같다 싶은건 다적어볼 생각이에요&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;그래프의-종류&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B7%B8%EB%9E%98%ED%94%84%EC%9D%98-%EC%A2%85%EB%A5%98&quot; aria-label=&quot;그래프의 종류 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;그래프의 종류&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;단반향&lt;/li&gt;
+&lt;li&gt;양방향(무방향)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;순서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%88%9C%EC%84%9C&quot; aria-label=&quot;순서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;순서&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%EA%B7%B8%EB%9E%98%ED%94%84%EC%9D%98-%EC%A2%85%EB%A5%98&quot;&gt;그래프의 종류&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%EC%88%9C%EC%84%9C&quot;&gt;순서&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%EC%82%AC%EC%A0%84%EC%A7%80%EC%8B%9D&quot;&gt;사전지식&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#%EA%B7%B8%EB%9E%98%ED%94%84%EC%9D%98-%ED%91%9C%ED%98%84&quot;&gt;그래프의 표현&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%EC%9D%B8%EC%A0%91-%ED%96%89%EB%A0%AC-%EA%B7%B8%EB%9E%98%ED%94%84&quot;&gt;인접 행렬 그래프&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%EC%9D%B8%EC%A0%91-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EA%B7%B8%EB%9E%98%ED%94%84&quot;&gt;인접 리스트 그래프&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%EA%B7%B8%EB%9E%98%ED%94%84-%ED%83%90%EC%83%89&quot;&gt;그래프 탐색&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#bfs&quot;&gt;BFS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#dfs&quot;&gt;DFS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC&quot;&gt;다익스트라&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%99%80%EC%83%AC&quot;&gt;플로이드 와샬&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%ED%9E%99heap&quot;&gt;힙(Heap)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;사전지식&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%82%AC%EC%A0%84%EC%A7%80%EC%8B%9D&quot; aria-label=&quot;사전지식 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;사전지식&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;벡터&lt;/li&gt;
+&lt;li&gt;최소 힙(우선순위 큐)&lt;/li&gt;
+&lt;li&gt;우선순위 큐&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;그래프의-표현&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B7%B8%EB%9E%98%ED%94%84%EC%9D%98-%ED%91%9C%ED%98%84&quot; aria-label=&quot;그래프의 표현 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;그래프의 표현&lt;/h2&gt;
+&lt;h3 id=&quot;인접-행렬-그래프&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B8%EC%A0%91-%ED%96%89%EB%A0%AC-%EA%B7%B8%EB%9E%98%ED%94%84&quot; aria-label=&quot;인접 행렬 그래프 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;인접 행렬 그래프&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;구현이 쉽고 직관적이다.&lt;/li&gt;
+&lt;li&gt;모든정보를 저장해 정보량이 많다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;메모리초과&lt;/li&gt;
+&lt;li&gt;행렬로 정보저장을 실행함으로 그래프의 크기가 커지면 메모리 초과가 날수 있다.&lt;/li&gt;
+&lt;li&gt;필요없는 정보&lt;/li&gt;
+&lt;li&gt;불필요한 정보저장이 많이 생긴다.(노드가 늘어날 수록 모든노드와 개인별 노드간의 연결 정의가 다 추가되는데 이는 효율적이지 못하다.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;구현&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1과 0으로 연결여부를 나타내어 2차원 배열을 사용해 구현&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;인접-리스트-그래프&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B8%EC%A0%91-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EA%B7%B8%EB%9E%98%ED%94%84&quot; aria-label=&quot;인접 리스트 그래프 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;인접 리스트 그래프&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;메모리가 적고 계산량 또한 줄어든다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;인접행렬에비해 구현이 어렵다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;구현&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트나 벡터와 같은 자료구조 이용, 리스트 안에 리스트로 노드에대한 리스트 안에 해당노드와 연결되어있는 노드를 삽입하는 방식&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;그래프-탐색&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B7%B8%EB%9E%98%ED%94%84-%ED%83%90%EC%83%89&quot; aria-label=&quot;그래프 탐색 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;그래프 탐색&lt;/h3&gt;
+&lt;h4 id=&quot;bfs&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#bfs&quot; aria-label=&quot;bfs permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;BFS&lt;/h4&gt;
+&lt;p&gt;정의 : 넓이 우선 탐색
+구현 : 큐&lt;/p&gt;
+&lt;h4 id=&quot;dfs&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dfs&quot; aria-label=&quot;dfs permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;DFS&lt;/h4&gt;
+&lt;p&gt;정의 : 깊이 우선 탐색
+구현 : 재귀&lt;/p&gt;
+&lt;h4 id=&quot;다익스트라&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC&quot; aria-label=&quot;다익스트라 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;다익스트라&lt;/h4&gt;
+&lt;p&gt;정의 : 한 정점에서 모든 정점에대한 최단경로 탐색. 가중치가 있는 그래프이며 가중치는 양수를 기반함
+구현 방법 : 일반 큐&lt;code class=&quot;language-text&quot;&gt;O(V^2)&lt;/code&gt;나 최소 힙&lt;code class=&quot;language-text&quot;&gt;O(E+VlogV)&lt;/code&gt;을 사용한다.
+문제 : &lt;a href=&quot;https://www.acmicpc.net/problem/1753&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.acmicpc.net/problem/1753&lt;/a&gt;
+구현&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c++&quot;&gt;&lt;pre class=&quot;language-c++&quot;&gt;&lt;code class=&quot;language-c++&quot;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;queue&amp;gt;
+
+using namespace std;
+
+const int MAX_VERTEX = 20005;
+const int MAX_EDGE = 300001;
+const int INF = 0x7fffffff;
+int min_weight[20005]; // 노드별 최소 가중치
+int start_vertex, vertaxN, edgeN;
+
+struct node
+{
+    int to, val;
+    node(int a, int b)
+    {
+        to = a;
+        val = b;
+    }
+};
+// 연산자 오버로딩
+bool operator&amp;lt;(node newN, node oldN)
+{
+    return newN.val &amp;lt; oldN.val;
+};
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    vector&amp;lt;node&amp;gt; V[MAX_VERTEX]; // 그래프 정보
+    priority_queue&amp;lt;node&amp;gt; PQ; // 최소힙 : 노드의 가중치 기준으로 가장 작은 값의 노드를 가져옵니다.
+    cin &amp;gt;&amp;gt; vertaxN &amp;gt;&amp;gt; edgeN;
+    cin &amp;gt;&amp;gt; start_vertex;
+    int u, v, w;
+    for (int i = 0; i &amp;lt; edgeN; i++) // 그래프 정보 입력
+    {
+        cin &amp;gt;&amp;gt; u &amp;gt;&amp;gt; v &amp;gt;&amp;gt; w;
+        V[u].push_back(node(v, w));
+    }
+    for (int i = 1; i &amp;lt;= vertaxN; i++) // 노드별 최소 가중치의 배열에 최대값 초기화
+        min_weight[i] = INF;
+
+    min_weight[start_vertex] = 0; // 시작 노드는 최소 가중치를 0으로 초기화
+    PQ.push(node(start_vertex, 0)); // 시작을 위해 최소힙에 시작노드와 현재가중치 입력
+
+    // 노드별 최소가중치를 구하는 작업을 시작전에 해당코드에서 알고들어갈점
+    // priority_queue는 기본적으로 최대힙으로 작동하며 최소 힙을
+    // 사용하기위해 추가적인 인자들이 필요한대 그대신 값을 음수로 지정해
+    // 최대힙을 사용해도 최소힙과 같은효과를 받았다.
+    // PQ에서 노드의 val은 음수로 저장되어 사용되는 중이다.
+    while (!PQ.empty())
+    {
+        int currentNode = PQ.top().to; // 시작점 노드
+        int currentValue = -PQ.top().val; // 최소힙처럼 사용하기위해 - 추가
+        PQ.pop();
+        // 지금까지 노드별 최소가중치와 현재까지의 가중치와 비교 후 노드별 최소가중치가 더 작으면 아래의 간선에서 이동작업을 건너뛴다.
+        if (min_weight[currentNode] &amp;lt; currentValue)
+            continue;
+        // 현재 노드에서 연결된 간선 별로 처리
+        for (int i = 0; i &amp;lt; V[currentNode].size(); i++)
+        {
+            int dest = V[currentNode][i].to;
+            int nextValue = currentValue + V[currentNode][i].val;
+            if (min_weight[dest] &amp;gt; nextValue)
+            {
+                min_weight[dest] = nextValue;
+                PQ.push(node(dest, -nextValue));
+            }
+        }
+    }
+    for (int i = 1; i &amp;lt;= vertaxN; i++)
+    {
+        if (min_weight[i] == INF)
+            cout &amp;lt;&amp;lt; &amp;quot;INF\n&amp;quot;;
+        else
+            cout &amp;lt;&amp;lt; min_weight[i] &amp;lt;&amp;lt; &amp;quot;\n&amp;quot;;
+    }
+
+    return 0;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;플로이드-와샬&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%99%80%EC%83%AC&quot; aria-label=&quot;플로이드 와샬 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;플로이드 와샬&lt;/h4&gt;
+&lt;p&gt;정의 : 모든 정점에서 각 정점의 최단거리를 구하는 방법&lt;/p&gt;
+&lt;h3 id=&quot;힙heap&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%9E%99heap&quot; aria-label=&quot;힙heap permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;힙(Heap)&lt;/h3&gt;
+&lt;p&gt;정수형 리스트에서 가장 큰수또는 가장 작은수를 구할 때 기본적으로 for문을 돌릴 시 복잡도가 O(n)이나 힙을 사용하였을때 O(log&lt;sub&gt;n&lt;/sub&gt;)으로 표현할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;개념&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트하나에서 &lt;strong&gt;이진트리 구조&lt;/strong&gt;를 구현한다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;종류는 최소힙, 최대힙두가지로 나뉜다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;최소 힙 : 루트에 가장 작은 값이 오는 힙, 부모노드의 값이 자식노드보다 작음&lt;/li&gt;
+&lt;li&gt;최대 힙 : 루트에 가장 큰값이 오는 힙, 부모노드의 값이 자식노드보다 큼&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;자식 구하기&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;자신의 인덱스 * 2 : 왼쪽자식&lt;/li&gt;
+&lt;li&gt;자신의 인덱스 * 2 + 1 : 오른쪽 자식&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;부모 구하기&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;자신의 인덱스 / 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;구현&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c++&quot;&gt;&lt;pre class=&quot;language-c++&quot;&gt;&lt;code class=&quot;language-c++&quot;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;queue&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;functional&amp;gt;
+
+using namespace std;
+
+int main()
+{
+    // less가 디폴트 값이라 최대힙을 사용시 less&amp;lt;int&amp;gt;를 생략해도되며 priority_queue&amp;lt;자료형&amp;gt; 으로 만 사용해도 된다. 최소힙을 사용하기위해 첫번째, 세번째 파라미터가 필요로해졌기 때문에 그렇다.
+    priority_queue&amp;lt;int, vector&amp;lt;int&amp;gt;, less&amp;lt;int&amp;gt; &amp;gt; q;     // 최대힙
+    priority_queue&amp;lt;int, vector&amp;lt;int&amp;gt;, greater&amp;lt;int&amp;gt; &amp;gt; q1; // 최소힙
+    q.push(3);     // 큐에 추가
+    q.push(1);
+    q.push(7);
+    q1.push(3);
+    q1.push(1);
+    q1.push(7);
+    while (!q.empty())
+    {
+        cout &amp;lt;&amp;lt; q.top() &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt; q1.top()&amp;lt;&amp;lt; endl; // 루트노드 값 출력
+        q.pop(); // 루트노드 제거
+        q1.pop();
+    }
+    return 0;
+}
+// 7 1
+// 3 3
+// 1 7&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[PS총정리 (백준 플래달기)]]></title><description><![CDATA[공부중..들어오지마세요..]]></description><link>https://jeoungsulmo.github.io/posts/PS/1</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/PS/1</guid><pubDate>Mon, 26 Oct 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;ps-준비-자료구조-및-알고리즘&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ps-%EC%A4%80%EB%B9%84-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%EB%B0%8F-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98&quot; aria-label=&quot;ps 준비 자료구조 및 알고리즘 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;PS 준비 (자료구조 및 알고리즘)&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이 포스트는 제작중입니다:D&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;자료구조&lt;/p&gt;
+&lt;ul&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; &lt;a href=&quot;https://jeoungsulmo.github.io/posts/PS/2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;그래프&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; 탐색 방법&lt;/p&gt;
+&lt;ul&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; BFS&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; DFS&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; checked disabled&gt; &lt;del&gt;다익스트라(데이크스트라)&lt;/del&gt;&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; 플로이드 와샬&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[COMPILER 03장 정규언어(3) : 정규언어의 속성]]></title><description><![CDATA[3장 정규언어의 마지막 챕터입니다. 정규언어의 표현방법인 정규문법, 정규표현, 유한오토마타의 관계 및 변환 방법을 학습하였습니다.]]></description><link>https://jeoungsulmo.github.io/posts/compiler/6</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/compiler/6</guid><pubDate>Sun, 11 Oct 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;정규언어의-속성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EA%B7%9C%EC%96%B8%EC%96%B4%EC%9D%98-%EC%86%8D%EC%84%B1&quot; aria-label=&quot;정규언어의 속성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정규언어의 속성&lt;/h2&gt;
 &lt;p&gt;정규언어를 표현하는 3가지 방법을 배워왔다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;정규문법(rg)&lt;/li&gt;
