@@ -89,11 +89,12 @@
 <p>(1) A-> aB, A-> a | where a ∈ Vt &#x26;&#x26; A,B ∈ Vn <br>
 (2) if S -> ε , S가 다른 생성 규칙의 오른쪽에 나타나지 않아야 한다.</p>
 <h3 id="정규표현의-정의" style="position:relative;"><a href="#%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%9D%98-%EC%A0%95%EC%9D%98" aria-label="정규표현의 정의 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>정규표현의 정의</h3>
-<p>(1) (P + Q) is a regular expression denoting Lp U Lq. (union)<br>
-(2) (P • Q) is a regular expression denoting Lp ▪ Lq. (concatenation)<br>
-(3) (P*) is a regular expression denoting (closure)<br>
+<p>(1) (P + Q) : 정규표현 합집합으로 표시 Lp U Lq. (union)<br>
+(2) (P • Q) : 모든 내용이 연쇄적으로 표현하는 것 Lp ▪ Lq. (concatenation)<br>
+(3) (P*) : 공집합(입실론)을 포함한 전체를 의미 (closure)<br>
 {e} U Lp U Lp2 U … U Lpn …</p>
-<h3 id="정규표현식은-대수학을-기반으로-만들어져-수학적-접근이-가능하다-가능한공식은-아래와-같다" style="position:relative;"><a href="#%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D%EC%9D%80-%EB%8C%80%EC%88%98%ED%95%99%EC%9D%84-%EA%B8%B0%EB%B0%98%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A0%B8-%EC%88%98%ED%95%99%EC%A0%81-%EC%A0%91%EA%B7%BC%EC%9D%B4-%EA%B0%80%EB%8A%A5%ED%95%98%EB%8B%A4-%EA%B0%80%EB%8A%A5%ED%95%9C%EA%B3%B5%EC%8B%9D%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EB%8B%A4" aria-label="정규표현식은 대수학을 기반으로 만들어져 수학적 접근이 가능하다 가능한공식은 아래와 같다 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>정규표현식은 대수학을 기반으로 만들어져 수학적 접근이 가능하다. 가능한공식은 아래와 같다.</h3>
+<h3 id="정규표현식은-대수학을-기반으로-만들어져-수학적-접근이-가능하다" style="position:relative;"><a href="#%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D%EC%9D%80-%EB%8C%80%EC%88%98%ED%95%99%EC%9D%84-%EA%B8%B0%EB%B0%98%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A0%B8-%EC%88%98%ED%95%99%EC%A0%81-%EC%A0%91%EA%B7%BC%EC%9D%B4-%EA%B0%80%EB%8A%A5%ED%95%98%EB%8B%A4" aria-label="정규표현식은 대수학을 기반으로 만들어져 수학적 접근이 가능하다 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>정규표현식은 대수학을 기반으로 만들어져 수학적 접근이 가능하다.</h3>
+<p>가능한공식은 아래와 같다.</p>
 <ol>
 <li>α+β = β+α</li>
 <li>(α+β) +γ = α+ (β+γ)</li>
