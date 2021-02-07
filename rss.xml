@@ -1,4 +1,70 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 14 Nov 2020 04:21:37 GMT</lastBuildDate><item><title><![CDATA[django orm 정리 하기]]></title><description><![CDATA[졸업작품에 drf를 사용하게 될것같아 django orm과 추가적으로 조금씩 정리중입니다.]]></description><link>https://jeoungsulmo.github.io/posts/Django/1</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Django/1</guid><pubDate>Tue, 10 Nov 2020 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Django version === 3.1로 작성되었습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 07 Feb 2021 05:55:51 GMT</lastBuildDate><item><title><![CDATA[access token과 refresh token (jwt 활용)]]></title><description><![CDATA[djangorestframework-jwt를 사용하면서 인증 방식에대한 추가적인 정리입니다. 기존 access token만 사용하는 방식과 refresh token을 추가적으로 사용했을때의 방식이 있어 기록합니다.]]></description><link>https://jeoungsulmo.github.io/posts/Django/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Django/2</guid><pubDate>Sat, 06 Feb 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h4 id=&quot;궁굼했던거&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B6%81%EA%B5%BC%ED%96%88%EB%8D%98%EA%B1%B0&quot; aria-label=&quot;궁굼했던거 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;궁굼했던거&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;django에서 JWT의 세부 설정 방식&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;JWT_EXPIRATION_DELTA&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;JWT_REFRESH_EXPIRATION_DELTA&lt;/code&gt;의 차이&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;djangorestframework-jwt : jwt를 python 프레임워크인 django에서 사용하기위해 돕는 라이브러리입니다.&lt;/p&gt;
+&lt;p&gt;PyJWT : 파이썬에서 JWT를 다루기위한 라이브러리로 djangorestframewokr-jwt를 사용하기위해 필요하며 세부 설정과같은 부분에서 많은 정보를 가지고 있음으로 같이 참고하면 좋을듯 합니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://jpadilla.github.io/django-rest-framework-jwt/#additional-settings&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;djangorestframework-jwt&lt;/a&gt;의 공식문서에 있는 세팅예제이며 settings.py에서 작성하면 됩니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;JWT_AUTH &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_ENCODE_HANDLER&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rest_framework_jwt.utils.jwt_encode_handler&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_DECODE_HANDLER&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rest_framework_jwt.utils.jwt_decode_handler&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_PAYLOAD_HANDLER&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rest_framework_jwt.utils.jwt_payload_handler&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_PAYLOAD_GET_USER_ID_HANDLER&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_RESPONSE_PAYLOAD_HANDLER&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rest_framework_jwt.utils.jwt_response_payload_handler&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_SECRET_KEY&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; settings&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;SECRET_KEY&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_GET_USER_SECRET_KEY&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_PUBLIC_KEY&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_PRIVATE_KEY&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_ALGORITHM&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;HS256&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_VERIFY&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_VERIFY_EXPIRATION&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_LEEWAY&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_EXPIRATION_DELTA&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;timedelta&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;seconds &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_AUDIENCE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_ISSUER&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_ALLOW_REFRESH&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_REFRESH_EXPIRATION_DELTA&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;timedelta&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;days &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_AUTH_HEADER_PREFIX&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;JWT&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;JWT_AUTH_COOKIE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;jwt 설정 사항들을 확인해보던 중 두가지 설정의 차이가 궁굼해져 확인해 보았습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JWT&lt;em&gt;REFRESH&lt;/em&gt;EXPIRATION_DELTA: 토큰 리프레시 주기 설정 (Access Token)&lt;/li&gt;
+&lt;li&gt;JWT&lt;em&gt;EXPIRATION&lt;/em&gt;DELTA : 토큰 만료 시간 값 (Refresh Token)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;토큰 탈취에대한 보안적인 부분으로 기존 jwt의 방식에서 &lt;strong&gt;강화된 버전&lt;/strong&gt;이 있더군요. 기본적인 jwt 방식은 토큰을 탈취 당하면 유효한 기간동안 정보가 다 털릴 수 있습니다. 그래서 새로 고안해낸 방법이 refresh token을 추가로 사용하게 되는 방식입니다.&lt;/p&gt;
+&lt;p&gt;Access token(이하 at)과 refresh token(이하 rt)을 사용한 방식의 메커니즘은 다음과 같습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;1. 첫 로그인시 at와 rt를 모두 발급 받습니다.
+2. 클라이언트는 at와 rt를 모두 가지고 at를 사용합니다.
+3. at를 사용하던 도중 만료가 된 토큰이면 rt를 통해 at를 새로 발급 받습니다.
+4. rt의 기간 마저 만료되면 로그인을 새로 시도해야합니다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;refresh token과 access token은 같은 구조의 jwt이다.&lt;/li&gt;
+&lt;li&gt;로그인을 자주하지 않으면서 토큰의 만료기간을 줄이기 위한 방법이다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;보안이 더 강화된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;기존 at만 있을때보다 구현이 복잡해진다&lt;/li&gt;
+&lt;li&gt;추가적인 요청이 더 많이 발생한다. 만료가 되었을때를 백엔드에서 판단해야하기 때문에 at가 만료되면 다시 rt를 통한 at 생성절차를 거쳐야 하기때문이다.&lt;/li&gt;
+&lt;li&gt;프론트에서 만료 여부라도 판단하여 한번이라도 요청을 줄이는 방식을 사용하면 좋을듯 하다.(아직 안해봄..)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://tansfil.tistory.com/59&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;참고한 블로그&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[django orm 정리 하기]]></title><description><![CDATA[졸업작품에 drf를 사용하게 될것같아 django orm과 추가적으로 조금씩 정리중입니다.]]></description><link>https://jeoungsulmo.github.io/posts/Django/1</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Django/1</guid><pubDate>Tue, 10 Nov 2020 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Django version === 3.1로 작성되었습니다.&lt;/p&gt;
 &lt;h3 id=&quot;sql-query문-으로-변환&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sql-query%EB%AC%B8-%EC%9C%BC%EB%A1%9C-%EB%B3%80%ED%99%98&quot; aria-label=&quot;sql query문 으로 변환 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;sql query문 으로 변환&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;python manage.py sqlmigrate polls 0001&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;python manage.py sqlmigrate [ app이름 ] [ migrate 번호 ]&lt;/p&gt;
@@ -232,7 +298,7 @@ q&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;choice_set&lt;spa
 &lt;li&gt;추가 : 같은 레이어에서 컴포넌트들이 배치된 위치의 변화를 찾는지는 찾아보려는데 갑자기 gatsby의 작동이 이상해졌다… 추후 추가하겠음다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;어몽어스 캐릭터&lt;/strong&gt;가 날아다니는게 너무 &lt;strong&gt;귀엽다&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;디자이너는 대단하다&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;createelement와-cloneelement의-차이&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#createelement%EC%99%80-cloneelement%EC%9D%98-%EC%B0%A8%EC%9D%B4&quot; aria-label=&quot;createelement와 cloneelement의 차이 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;createElement와 cloneElement의 차이&lt;/h3&gt;
 &lt;p&gt;컴포넌트내부의 변화와 Propa의 변화가 가상돔의 비교에 영향&lt;/p&gt;
