@@ -1,4 +1,88 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 29 Jul 2021 14:49:05 GMT</lastBuildDate><item><title><![CDATA[GET과 POST의 차이]]></title><description><![CDATA[CS-네트워크: GET과 POST 차이점]]></description><link>https://jeoungsulmo.github.io/posts/network/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/network/3</guid><pubDate>Wed, 28 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;http&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#http&quot; aria-label=&quot;http permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;HTTP&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 30 Jul 2021 08:26:18 GMT</lastBuildDate><item><title><![CDATA[스케줄러의 종류:장기 ,중기, 단기 스케줄러]]></title><description><![CDATA[스케줄링의 단계를 정리해볼 생각입니다.]]></description><link>https://jeoungsulmo.github.io/posts/OS/1</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/OS/1</guid><pubDate>Thu, 29 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6522b74580d592d86ca1741a09ed47bf/820f7/state.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAACMklEQVQoz22SWW/TQBSF8+955AWBKsETlAeeUStEK0qFREsbZXFiZ3Gbxs1ix7tjx3s+xg5dCIx0Z8a+25lzT6MsS4qieLQsy0jTmCTZkKQJW3arOit/Fb+zBw9U16LIa3+j2uqEbVmfvi2jtN6hSu+JI4PEd3CmMht3VftT0SRNM7Jkjadf4S5+ksburoZo9E9BazVBan9lcd9hE/mY0jnj47fMmif4vs/KXBFtEnxnitp8zfDyJZ413i+4FQV3T9jEKfrSJgwToihGkiSUXrcOns8XLBa6uD8992FV+RWoR4QPP9MsRpk3uRieoM5kVisTy7bJ8qzmdzSX+N49Ql32HnOer7rgtswosog4TsQwEkYLibPWMcNJn8ALMAwD3/NrZJqpct7+gjxpkyapGESJri8EHabI92nEocG8d8D44gWB1cX0LNzARJvfIsltRhMFZy1Q+gYrd4nlGujmjNGNgjRo4YQus7szur/eoPYOK4Q5caDh6H3CtcNwNOSy2URWb7FdR1CQUGyFpLY5U+2Oi+sruoORaBoI5gu8wEfTBixnPaEKnUYUWthGB2vZIgwM1mIYn39IHHw65VqeUuY5juPgup7gMOfb1YBXh8ecXio7DYph5bnQcvmHw7V3w6DzAaXzkXh9LwIgiDaYTiCEnYngnECgqaziu5KMYftEgu+yfC70ohZ3o6zlMOduqtVD2RPDX1Pcn+hOKk9WI6w2dTxG7vdrWewHPv/+n2+/wW+5xo9hXv8V1QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/6522b74580d592d86ca1741a09ed47bf/8ac56/state.webp 240w,
+/static/6522b74580d592d86ca1741a09ed47bf/d3be9/state.webp 480w,
+/static/6522b74580d592d86ca1741a09ed47bf/e46b2/state.webp 960w,
+/static/6522b74580d592d86ca1741a09ed47bf/f992d/state.webp 1440w,
+/static/6522b74580d592d86ca1741a09ed47bf/882b9/state.webp 1920w,
+/static/6522b74580d592d86ca1741a09ed47bf/d8ed4/state.webp 2126w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/6522b74580d592d86ca1741a09ed47bf/8ff5a/state.png 240w,
+/static/6522b74580d592d86ca1741a09ed47bf/e85cb/state.png 480w,
+/static/6522b74580d592d86ca1741a09ed47bf/d9199/state.png 960w,
+/static/6522b74580d592d86ca1741a09ed47bf/07a9c/state.png 1440w,
+/static/6522b74580d592d86ca1741a09ed47bf/29114/state.png 1920w,
+/static/6522b74580d592d86ca1741a09ed47bf/820f7/state.png 2126w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/6522b74580d592d86ca1741a09ed47bf/d9199/state.png&quot;
+          alt=&quot;프로세스 상태&quot;
+          title=&quot;프로세스 상태&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;추가적으로-다시-찾아본-개념&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B6%94%EA%B0%80%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%8B%A4%EC%8B%9C-%EC%B0%BE%EC%95%84%EB%B3%B8-%EA%B0%9C%EB%85%90&quot; aria-label=&quot;추가적으로 다시 찾아본 개념 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;추가적으로 다시 찾아본 개념&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;커널 : 운영체제 핵심 내부구성으로 하드웨어와 사용자 프로그램 사이에서 시스템의 모든것을 통제한다. 커널에 구조에대한 여러가지 운영체제 구조가 있음&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;하드웨어 &amp;#x3C;-&gt; [커널]OS[시스템 콜 인터페이스] &amp;#x3C;-&gt; 응용프로세스&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;프로세스 : 커널에 등록된 실행 단위 (실행중인 프로그램)&lt;/li&gt;
+&lt;li&gt;다중프로그래밍 : 여러 프로세스를 동시에 처리하는 프로그래밍, 프로세스의 유휴시간에 다른 프로세스의 작업을 CPU가 할당 함.&lt;/li&gt;
+&lt;li&gt;스케줄링 : 자원을 할당할 프로세스를 선택해야 함. (스케줄링을 위한 따져볼 여러가지 개념, 상황들이 있음)&lt;/li&gt;
+&lt;li&gt;프로세스 버스트 : CPU를 사용하는 시간으로, 버스트의 길이에 따라 스케쥴링이 달라질 수 있다.(CPU burst, I/O burst)&lt;/li&gt;
+&lt;li&gt;프로세스 상태 : 실행(ready), 준비(running), 대기(blocked)&lt;/li&gt;
+&lt;li&gt;compute-bounded : 프로세서 버스트가 더 많은 작업을 말함&lt;/li&gt;
+&lt;li&gt;I/O-bounded : I/O 버스트가 더 많은 작업을 말함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;스케줄링-단계&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81-%EB%8B%A8%EA%B3%84&quot; aria-label=&quot;스케줄링 단계 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;스케줄링 단계&lt;/h3&gt;
+&lt;h4 id=&quot;장기-스케줄러job-scheduler&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9E%A5%EA%B8%B0-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%ACjob-scheduler&quot; aria-label=&quot;장기 스케줄러job scheduler permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;장기 스케줄러(Job scheduler)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;여러가지 처리해야할 JOB이 있을 거고, 이를 process로 커널에 등록 해주는게 장기 스케줄러의 역할입니다.&lt;/li&gt;
+&lt;li&gt;다중프로그래밍의 정도를 조절 (multiprogramming degree)
+시스템 내에 프로세스 수를 조절합니다.&lt;/li&gt;
+&lt;li&gt;현대 &lt;strong&gt;시분할 시스템&lt;/strong&gt;에서 사용되는 운영체제는 일반적으로 장기스케줄러를 두지 않는 경우가 대부분, 메모리가 더 이상 적지 않기 때문인듯 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;단기-스케줄러cpu-scheduler&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8B%A8%EA%B8%B0-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%ACcpu-scheduler&quot; aria-label=&quot;단기 스케줄러cpu scheduler permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;단기 스케줄러(CPU scheduler)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;가장 빈번하게 발생합니다.&lt;/li&gt;
+&lt;li&gt;CPU를 기다리는 ready상태의 작업물들 중 어떤 작업이 running상태로 올라갈지 정합니다.(즉, cpu를 할당해주는 스케줄러)&lt;/li&gt;
+&lt;li&gt;가장 많이 발생하는 작업임으로 단기스케줄러가 느릴 수록 오버해드가 심해집니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;중기-스케줄러&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A4%91%EA%B8%B0-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC&quot; aria-label=&quot;중기 스케줄러 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;중기 스케줄러&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;suspended ready상태인 작업을 ready상태로 올리기 위해, 누구한테 메모리를 줄지 결정해줍니다.
+suspended ready상태는 메모리가 없어 ready상태로 오르지못했지만 created된 작업물들입니다.&lt;/li&gt;
+&lt;li&gt;Job자체가 생성되는 일보단 자주 일어나 중기 스케줄러로 부릅니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h5&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=_gNeoGQx-Tc&amp;#x26;list=PLBrGAFAIyf5rby7QylRc6JxU5lzQ9c4tN&amp;#x26;index=8&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.youtube.com/watch?v=_gNeoGQx-Tc&amp;#x26;list=PLBrGAFAIyf5rby7QylRc6JxU5lzQ9c4tN&amp;#x26;index=8&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GET과 POST의 차이]]></title><description><![CDATA[CS-네트워크: GET과 POST 차이점]]></description><link>https://jeoungsulmo.github.io/posts/network/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/network/3</guid><pubDate>Wed, 28 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;http&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#http&quot; aria-label=&quot;http permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;HTTP&lt;/h2&gt;
 &lt;p&gt;HTTP는 HTML과 같은 문서나 리소스를 가져올 수 있도록 해주는 프로토콜입니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;http의 구조로 &lt;strong&gt;헤더&lt;/strong&gt;와 &lt;strong&gt;바디&lt;/strong&gt;로 구분되어 있음&lt;/li&gt;
