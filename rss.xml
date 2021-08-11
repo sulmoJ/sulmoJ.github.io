@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 11 Aug 2021 07:27:06 GMT</lastBuildDate><item><title><![CDATA[프로세스와 스레드 차이]]></title><description><![CDATA[프로세스와 스레드의 차이를 알아봅니다. 설명을 어떤식으로 쓸지 전혀 생각하지 않았어요.]]></description><link>https://jeoungsulmo.github.io/posts/OS/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/OS/3</guid><pubDate>Tue, 10 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;프로세스-process&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-process&quot; aria-label=&quot;프로세스 process permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;프로세스 (Process)&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 11 Aug 2021 07:58:01 GMT</lastBuildDate><item><title><![CDATA[프로세스와 스레드 차이]]></title><description><![CDATA[프로세스와 스레드의 차이를 알아봅니다. 설명을 어떤식으로 쓸지 전혀 생각하지 않았어요.]]></description><link>https://jeoungsulmo.github.io/posts/OS/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/OS/3</guid><pubDate>Tue, 10 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;프로세스-process&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-process&quot; aria-label=&quot;프로세스 process permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;프로세스 (Process)&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;운영체제로부터 시스템 자원을 할당받는 작업의 단위&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -859,16 +859,20 @@ n 개의 프로세스가 ready queue 에 있고 할당시간이 q(time quantum)�
 &lt;/blockquote&gt;
 &lt;h5 id=&quot;특징&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B9%EC%A7%95&quot; aria-label=&quot;특징 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;특징&lt;/h5&gt;
 &lt;ul&gt;
-&lt;li&gt;연결형 서비스로 가상 회선 방식을 제공
-발신지와 수신지를 연결하여 패킷을 전송하기 위한 논리적 경로를 배정&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;연결형 서비스로 &lt;strong&gt;가상 회선 방식&lt;/strong&gt;을 제공&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;발신지와 수신지를 연결하여 패킷을 전송하기 위한 논리적 경로를 배정&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;높은 신뢰성 보장&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;3-way handshaking과정을 통해 연결을 설정, 4-way handshaking을 통해 해제&lt;/li&gt;
-&lt;li&gt;전이중 : 전송이 양방향으로 동시에 일어날 수 있음을 의미&lt;/li&gt;
-&lt;li&gt;점대점 : 각 연결이 정확히 2개의 종단점을 가지고 있음&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;전이중 : 전송이 양방향으로 동시에 일어날 수 있음을 의미&lt;/li&gt;
+&lt;li&gt;점대점 : 각 연결이 정확히 2개의 종단점을 가지고 있음&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;흐름 제어 및 혼잡 제어&lt;/p&gt;
 &lt;ul&gt;
