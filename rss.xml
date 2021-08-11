@@ -1,4 +1,124 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 10 Aug 2021 06:54:04 GMT</lastBuildDate><item><title><![CDATA[데이터베이스 Index]]></title><description><![CDATA[ Index란 Index의 자료구조 Primary index vs Secondary index Composite index Index의 성능과 고려해야할 사항]]></description><link>https://jeoungsulmo.github.io/posts/Database/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Database/2</guid><pubDate>Sun, 08 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;db에서-index&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#db%EC%97%90%EC%84%9C-index&quot; aria-label=&quot;db에서 index permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;DB에서 Index&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 11 Aug 2021 06:27:43 GMT</lastBuildDate><item><title><![CDATA[프로세스와 쓰레드 차이]]></title><description><![CDATA[프로세스와 쓰레드의 차이를 알아봅니다. 설명을 어떤식으로 쓸지 전혀 생각하지 않았어요.]]></description><link>https://jeoungsulmo.github.io/posts/OS/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/OS/3</guid><pubDate>Tue, 10 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;프로세스-process&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-process&quot; aria-label=&quot;프로세스 process permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;프로세스 (Process)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;운영체제로부터 자원을 할당받은 작업의 단위&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;운영체제가 정적으로 저장만되어있는 프로그램들을 실행시키기위해 프로세스라는 작업단위로 프로세서를 운영한다.&lt;/p&gt;
+&lt;p&gt;프로세스는 해당 작업을 위해 운영체제로부터 준비, 대기, 실행 과같은 작업에대한 상태를 부여받고 실행상태가 되었을 때 자원을 할당받아 프로세스를 진행한다.&lt;/p&gt;
+&lt;p&gt;이때 이러한 상태나 프로세스 식별 등 프로세스에대한 정보를 PCB(Process Control Block)가 가지고 &lt;a href=&quot;https://jeoungsulmo.github.io/posts/OS/2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;스케줄링&lt;/a&gt;에 사용된다.&lt;/p&gt;
+&lt;p&gt;프로세스가 할당받은 자원을 아래와 같은 형식으로 할당해준다.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/602019b1acbaa278099534519fadb0f7/21b4d/process.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAACjklEQVQoz1WS204TURSG+1JeeGOM8RVEDVFBaTlVCJiAAqa0GCIgbaftHHqA0lI6xz17OjO0hWhiBA8RERO9MPoAxjtjgl7+rpmq0auVvf/9r/WttXbk1HNw6jv44ffiz90WvjIDB5l1vC4IeJFdx4eyjHeKiFe5NE6KMr67PHz7ry/I8811EHmrcZxoNo52LLxpMgTnT7qJPUGEmy+BpUX4hTIcQQHLSDjerOKjYeNE5zhWWegLYpDjC+eInL2rYSTfRSy/h6jQwZkZFY0yg6Q4uJDgmFSeIC4/xpDQxbl5C/vbLcyu6biYYKFvVNzHlRUX5++peNm0ERmUXCSbHcxVW1hSuxhSPGzJBgqShVjJQ6KxS5qDlNbFQJ6Dlw0sFRgmqu1Qm99qIantYSBj46DOEOnP2rhTsjGSbWJKYbgm2KgpBkSZ4QYlCO4CbZre9KctOBUTqbyFqMQxIZk9X5mjf83A4TYljBVdpJo+Zssmkjs+RkpuSChRovENH4sNDzMlotLaiIoBoYkHRHinvov7NYd8FtF3cEtgRGghcukRw23JRjSrI06xb50RoYmCbOEqtTEu2hjKkCZz9K2ZaG1YSOYsXM9xjFHi0Cc7NMffhHGiWDF8LGzoeKh7mKx6fwmniWJZdbFQ0bBqtTFWdGAT7TIVnqO5LzV46FtlHQznGZ4FhH0hIcdwjhEhx2UirBOhGBCmbcSJMNRCQiskTAWEQkDY08bJFxA+Dwhv0iYXVQ/TiopE00Os4qEi6RBoKaNVmlOjFWpJvY1Bas0sGlikVqcabczVaKFF0swOFWB4WiPCGg3V2LSgUWWdYo2GfkT/6XCHtl3u3f3R6qS9pw+8T99ju/K/1iDts8nxC5aSb/XmpyehAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/602019b1acbaa278099534519fadb0f7/8ac56/process.webp 240w,
+/static/602019b1acbaa278099534519fadb0f7/d3be9/process.webp 480w,
+/static/602019b1acbaa278099534519fadb0f7/e46b2/process.webp 960w,
+/static/602019b1acbaa278099534519fadb0f7/af3f0/process.webp 1280w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/602019b1acbaa278099534519fadb0f7/8ff5a/process.png 240w,
+/static/602019b1acbaa278099534519fadb0f7/e85cb/process.png 480w,
+/static/602019b1acbaa278099534519fadb0f7/d9199/process.png 960w,
+/static/602019b1acbaa278099534519fadb0f7/21b4d/process.png 1280w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/602019b1acbaa278099534519fadb0f7/d9199/process.png&quot;
+          alt=&quot;process&quot;
+          title=&quot;process&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;스택 : 프로세스로부터 스택형식으로 할당된 메모리 영역을 받고, 쓰레드별로 할당되어 쓰레드의 작동 관련 지역변수, 매개변수, 리턴값, 돌아올 주소 등등이 저장되고 함수 호출시 기록하고 종료되면 제거한다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;스택형식 이외의 메모리에서 아래 3가지 형식으로 영역 공유&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;힙 : 개발자가 필요할 때마다 사용하는 영역으로 런타임에 결정된다. c언어에서 동적 할당과 같이 사용하며 사용후 해제를 해야 메모리 누수가 일어나지 않는다.&lt;/li&gt;
+&lt;li&gt;데이터 : 코드에서 선언한 전역변수 또는 static 변수 등등이 저장된 공간, Read-Write&lt;/li&gt;
+&lt;li&gt;코드 : 프로세스가 실행할 코드와 매크로 상수가 기계어의 형태로 저장된 공간, 컴파일 타임에 결정, Read-Only&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;쓰레드&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%93%B0%EB%A0%88%EB%93%9C&quot; aria-label=&quot;쓰레드 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;쓰레드&lt;/h3&gt;
+&lt;p&gt;과거에는 프로세스하나가 실행 시작 ~ 끝까지 진행 했지만, 요즘 프로그램들은 복잡해지고 기능이 많아지며 프로세스 하나만을 사용해서 프로그램을 실행하기는 벅차다.&lt;/p&gt;
+&lt;p&gt;프로세스를 여러개 생성하기엔 운영체제 자체적으로 프로세스마다 자신에게 할당된 메모리만 접근이 가능하도록 제약이 있어 사용할 수 없고, 이를 해결하기위해 &lt;strong&gt;쓰레드&lt;/strong&gt;가 생겼다.&lt;/p&gt;
+&lt;p&gt;쓰레드는 프로세스를 대신하기위해 생긴 개념이라 동작과 특성은 비슷하지만 프로세스 내부에서 쓰레드끼리 자원을 공유하면서 작업을 진행할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/68cbe7d50e3bb9f7901f06395a595aa8/21b4d/process2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 25.83333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsSAAALEgHS3X78AAABb0lEQVQY002PyUsCcRzF558yOrVA0EKXOuWhoA26V4ciWkzLyrKCDlKhlW2WikuKozmjpaNtaJZ2SlDCQ4WH9uD3fY1z6vA5vc+D97iOeder2uBF05SdqQatrGpol6lkakb2WP3oIWvVWNjA2pxCm26D1Y3aWK2cVZyqf1QP77KGsQPGtUzaymvHAswukdadAkz2MCwuAQOrXnQuuCCcRxGO8QrReATdi270GT2KU3ErnXVHGCsHQTRP2MC1aY/Kv0854OWBfh6viRXThPc8+YIBMphNlEpHaJ8/Vbi6EWl5y0ROv4/wkSdWSNFP/prwnCMq5ahj1k5cu/a4/FXMInt/SeJZCKK84q14By8fgm7TimwmBo8QUsikzqA3W+Hw8/guZSFKEQjRENK3SXwWMlDrHeAaxw/LemsQM9t+0lhOMGk+gXE/gH6jG10GNy6SCUhSAnFJwtVFEr1LHvQsueWLvOJOyx3dlg/6nYBy+Q8+DCc5kuNFvQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/68cbe7d50e3bb9f7901f06395a595aa8/8ac56/process2.webp 240w,
+/static/68cbe7d50e3bb9f7901f06395a595aa8/d3be9/process2.webp 480w,
+/static/68cbe7d50e3bb9f7901f06395a595aa8/e46b2/process2.webp 960w,
+/static/68cbe7d50e3bb9f7901f06395a595aa8/af3f0/process2.webp 1280w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/68cbe7d50e3bb9f7901f06395a595aa8/8ff5a/process2.png 240w,
+/static/68cbe7d50e3bb9f7901f06395a595aa8/e85cb/process2.png 480w,
+/static/68cbe7d50e3bb9f7901f06395a595aa8/d9199/process2.png 960w,
+/static/68cbe7d50e3bb9f7901f06395a595aa8/21b4d/process2.png 1280w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/68cbe7d50e3bb9f7901f06395a595aa8/d9199/process2.png&quot;
+          alt=&quot;process와 thread&quot;
+          title=&quot;process와 thread&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&quot;차이점을-정리하면&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%9D%84-%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B4&quot; aria-label=&quot;차이점을 정리하면 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;차이점을 정리하면&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;프로세스는 실행중 죽어도 다른 프로세스에 영향이 없다.
+&lt;span style=&quot;color:#999999&quot;&gt;프로세스는 운영체제로부터 할당받은 자원을 프로세스끼리 공유할 수 없기때문&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;한 쓰레드가 종료되면 함께 동작하던 모든 쓰레드가 종료된다.
+&lt;span style=&quot;color:#999999&quot;&gt;쓰레드는 프로세스 내부동작 단위로, 할당받은 자원들 중 stack을 제외한 모든 자원을 공유한다.그래서 한 쓰레드가 작동중 에러가나면 다같이 종료 된다.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://selfish-developer.com/entry/%EC%8A%A4%ED%83%9D-%ED%9E%99-%EC%BD%94%EB%93%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%98%81%EC%97%AD&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;프로세스가 바라보는 메모리 영역&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://velog.io/@raejoonee/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EC%99%80-%EC%8A%A4%EB%A0%88%EB%93%9C%EC%9D%98-%EC%B0%A8%EC%9D%B4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;이 블로그에서 종결되었습니다.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[데이터베이스 Index]]></title><description><![CDATA[ Index란 Index의 자료구조 Primary index vs Secondary index Composite index Index의 성능과 고려해야할 사항]]></description><link>https://jeoungsulmo.github.io/posts/Database/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Database/2</guid><pubDate>Sun, 08 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;db에서-index&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#db%EC%97%90%EC%84%9C-index&quot; aria-label=&quot;db에서 index permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;DB에서 Index&lt;/h3&gt;
 &lt;p&gt;Database에서 index는 원하는 값을 조회할때, 말그대로 색인을 통해 값을 더 빠르게 찾기위한 추가적인 장치?입니다. 값과 해당 레코드가 저장된 주소를 메모리에 key와 value로 인덱스를 저장하여 사용합니다.&lt;/p&gt;
 &lt;p&gt;하지만 일반적으로 인덱싱이 모든 작업에서 효율적이진 못한데 이유는, 인덱스가 저장될 때 정렬이 된 상태로 저장됨으로 조회가 아닌 생성이나 삭제를 할때 순서에 맞게 공간을 만들고 이후의 데이터를 한틱씩 미루거나 당기는 작업이 추가적으로 발생하게 됩니다. 수정 또한 인덱스 자체에는 수정기능이 따로 없어 삭제 후 재생성 방식이라 부하가 더 심할수도 있다고 합니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -534,8 +654,10 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;li&gt;&lt;a href=&quot;https://www.zerocho.com/category/JavaScript/post/5741d96d094da4986bc950a0&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ZeroCho&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[CPU 스케줄링 알고리즘]]></title><description><![CDATA[CPU 스케줄러가 사용하는 스캐줄링 알고리즘을 정리해볼 생각입니다.]]></description><link>https://jeoungsulmo.github.io/posts/OS/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/OS/2</guid><pubDate>Thu, 05 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;cpu-스케줄러&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#cpu-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC&quot; aria-label=&quot;cpu 스케줄러 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;CPU 스케줄러&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;스케줄링 대상은 Ready Queue에 있는 프로세스들이다.&lt;/p&gt;
+&lt;p&gt;프로그램을 실행하기위한 프로세스들을 관리해주는 존재&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;사용자가 요청한여러가지 작업들을 프로세스와 PCB를 생성하고 이 정보들로 어떤 작업을 언제 어떤 순서로 실행할지를 정해준다.&lt;/p&gt;
+&lt;p&gt;이러한 작업을 수행하기위해 CPU가 어떻게 이용당하는지(선점, 비선점), 어떤 상황이 나타나고 어떻게 해결할지를 정할 여러가지 알고리즘이 있고 이를 정리합니다.&lt;/p&gt;
 &lt;h4 id=&quot;cpu-스케줄링이-결정되는-시점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#cpu-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81%EC%9D%B4-%EA%B2%B0%EC%A0%95%EB%90%98%EB%8A%94-%EC%8B%9C%EC%A0%90&quot; aria-label=&quot;cpu 스케줄링이 결정되는 시점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;CPU 스케줄링이 결정되는 시점&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -566,7 +688,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;ul&gt;
 &lt;li&gt;convoy effect &lt;a href=&quot;#convoy-effect&quot;&gt;👀&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&quot;sjfsjortest---job---first&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sjfsjortest---job---first&quot; aria-label=&quot;sjfsjortest   job   first permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SJF(Sjortest - Job - First)&lt;/h4&gt;
+&lt;h4 id=&quot;sjfshortest---job---first&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sjfshortest---job---first&quot; aria-label=&quot;sjfshortest   job   first permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SJF(Shortest - Job - First)&lt;/h4&gt;
 &lt;h5 id=&quot;특징-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B9%EC%A7%95-1&quot; aria-label=&quot;특징 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;특징&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;비선점형 스케줄링&lt;/li&gt;
@@ -639,7 +761,7 @@ n 개의 프로세스가 ready queue 에 있고 할당시간이 q(time quantum)�
 &lt;br/&gt;
 &lt;h4 id=&quot;개념-정리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B0%9C%EB%85%90-%EC%A0%95%EB%A6%AC&quot; aria-label=&quot;개념 정리 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;개념 정리&lt;/h4&gt;
 &lt;h5 id=&quot;선점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%A0%EC%A0%90&quot; aria-label=&quot;선점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;선점&lt;/h5&gt;
-&lt;p&gt;현재 수행중인 프로세스의 남은 burst time 보다 더 짧은 CPU burst time 을 가지는 새로운 프로세스가 도착하면 CPU 를 뺏긴다.&lt;/p&gt;
+&lt;p&gt;시분할 시스템에서 타임 슬라이스가 소진되었거나, 인터럽트나 시스템 호출 종료 시에 더 높은 우선 순위 프로세스가 발생 되었음을 알았을 때, 현 실행 프로세스로부터 강제로 CPU를 회수하는 것을 말한다.&lt;/p&gt;
 &lt;h5 id=&quot;비선점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B9%84%EC%84%A0%EC%A0%90&quot; aria-label=&quot;비선점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;비선점&lt;/h5&gt;
 &lt;p&gt;일단 CPU 를 잡으면 CPU burst 가 완료될 때까지 CPU 를 반환하지 않는다. 할당되었던 CPU 가 반환될 때만 스케줄링이 이루어진다.&lt;/p&gt;
 &lt;h5 id=&quot;startvation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#startvation&quot; aria-label=&quot;startvation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;startvation&lt;/h5&gt;
