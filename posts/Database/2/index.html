@@ -58,9 +58,9 @@
 
         gtag('config', 'UA-73379983-2', {"send_page_view":false});
       }
-      </script><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=624cc4a835e68430a8beec01cef8ac6c" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#F7A046"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=624cc4a835e68430a8beec01cef8ac6c"/><title data-react-helmet="true">데이터베이스 Index - Sulmo 블로그</title><meta data-react-helmet="true" name="google-site-verification" content="CdZyL3igH_8uwN3VepRUweYAu5PbBtb1dZdydNmGdGg"/><meta data-react-helmet="true" name="description" content=" Index란 Index의 자료구조 Primary index vs Secondary index Composite index Index의 성능과 고려해야할 사항"/><meta data-react-helmet="true" property="og:site_name" content="데이터베이스 Index - Sulmo 블로그"/><meta data-react-helmet="true" property="og:url" content="https://jeoungsulmo.github.io"/><meta data-react-helmet="true" property="og:image" content="https://jeoungsulmo.github.io/static/624cc4a835e68430a8beec01cef8ac6c/photo.jpg"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="데이터베이스 Index - Sulmo 블로그"/><meta data-react-helmet="true" name="twitter:description" content=" Index란 Index의 자료구조 Primary index vs Secondary index Composite index Index의 성능과 고려해야할 사항"/><meta data-react-helmet="true" name="twitter:image" content="https://jeoungsulmo.github.io/static/624cc4a835e68430a8beec01cef8ac6c/photo.jpg"/><link as="script" rel="preload" href="/webpack-runtime-596ce142db43864e9983.js"/><link as="script" rel="preload" href="/framework-eb684e3e828ad13b3940.js"/><link as="script" rel="preload" href="/532a2f07-b716085e22ead3eba281.js"/><link as="script" rel="preload" href="/app-8d1071991edbb6c35ba3.js"/><link as="script" rel="preload" href="/styles-407fe62976dc5310c43e.js"/><link as="script" rel="preload" href="/cd95ea5cbd2c605f26db819f07999610c9ff4310-a7b9b4b1e01debb78cd0.js"/><link as="script" rel="preload" href="/component---src-templates-post-template-js-67a0a83dd0cc3ba6607c.js"/><link as="fetch" rel="preload" href="/page-data/posts/Database/2/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/251939775.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/401334301.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/825871152.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="Layout-module--layout--3Pyz6"><div><a class="Post-module--post__home-button--16Kl0" href="/">All Articles</a><div><div class="Content-module--content--3p512"><h1 class="Content-module--content__title--2BDW9">데이터베이스 Index</h1><div class="Content-module--content__body--2TrQ-"><h3 id="db에서-index" style="position:relative;"><a href="#db%EC%97%90%EC%84%9C-index" aria-label="db에서 index permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DB에서 Index</h3>
-<p>Database에서 index는 원하는 값을 조회할때, 말그대로 색인을 통해 값을 더 빠르게 찾기위한 추가적인 장치?입니다. 값과 해당 레코드가 저장된 주소를 메모리에 key와 value로 인덱스를 저장하여 사용합니다.</p>
-<p>하지만 일반적으로 인덱싱이 모든 작업에서 효율적이진 못한데 이유는, 인덱스가 저장될 때 정렬이 된 상태로 저장됨으로 조회가 아닌 생성이나 삭제를 할때 순서에 맞게 공간을 만들고 이후의 데이터를 한틱씩 미루거나 당기는 작업이 추가적으로 발생하게 됩니다. 수정 또한 인덱스 자체에는 수정기능이 따로 없어 삭제 후 재생성 방식이라 부하가 더 심할수도 있다고 합니다.</p>
+      </script><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=624cc4a835e68430a8beec01cef8ac6c" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#F7A046"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=624cc4a835e68430a8beec01cef8ac6c"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=624cc4a835e68430a8beec01cef8ac6c"/><title data-react-helmet="true">데이터베이스 Index - Sulmo 블로그</title><meta data-react-helmet="true" name="google-site-verification" content="CdZyL3igH_8uwN3VepRUweYAu5PbBtb1dZdydNmGdGg"/><meta data-react-helmet="true" name="description" content=" Index란 Index의 자료구조 Primary index vs Secondary index Composite index Index의 성능과 고려해야할 사항"/><meta data-react-helmet="true" property="og:site_name" content="데이터베이스 Index - Sulmo 블로그"/><meta data-react-helmet="true" property="og:url" content="https://jeoungsulmo.github.io"/><meta data-react-helmet="true" property="og:image" content="https://jeoungsulmo.github.io/static/624cc4a835e68430a8beec01cef8ac6c/photo.jpg"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="데이터베이스 Index - Sulmo 블로그"/><meta data-react-helmet="true" name="twitter:description" content=" Index란 Index의 자료구조 Primary index vs Secondary index Composite index Index의 성능과 고려해야할 사항"/><meta data-react-helmet="true" name="twitter:image" content="https://jeoungsulmo.github.io/static/624cc4a835e68430a8beec01cef8ac6c/photo.jpg"/><link as="script" rel="preload" href="/webpack-runtime-596ce142db43864e9983.js"/><link as="script" rel="preload" href="/framework-eb684e3e828ad13b3940.js"/><link as="script" rel="preload" href="/532a2f07-b716085e22ead3eba281.js"/><link as="script" rel="preload" href="/app-8d1071991edbb6c35ba3.js"/><link as="script" rel="preload" href="/styles-407fe62976dc5310c43e.js"/><link as="script" rel="preload" href="/cd95ea5cbd2c605f26db819f07999610c9ff4310-a7b9b4b1e01debb78cd0.js"/><link as="script" rel="preload" href="/component---src-templates-post-template-js-67a0a83dd0cc3ba6607c.js"/><link as="fetch" rel="preload" href="/page-data/posts/Database/2/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/251939775.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/401334301.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/825871152.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="Layout-module--layout--3Pyz6"><div><a class="Post-module--post__home-button--16Kl0" href="/">All Articles</a><div><div class="Content-module--content--3p512"><h1 class="Content-module--content__title--2BDW9">데이터베이스 Index</h1><div class="Content-module--content__body--2TrQ-"><h3 id="db-index" style="position:relative;"><a href="#db-index" aria-label="db index permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DB Index</h3>
+<p>Database에서 index는 원하는 값을 조회할 때, 말 그대로 색인을 통해 값을 더 빠르게 찾기 위한 추가적인 장치?입니다. 값과 해당 레코드가 저장된 주소를 메모리에 key와 value로 인덱스를 저장하여 사용합니다.</p>
+<p>하지만 일반적으로 인덱싱이 모든 작업에서 효율적이진 못한데 이유는, 인덱스가 저장될 때 정렬이 된 상태로 저장됨으로 조회가 아닌 생성이나 삭제를 할 때 순서에 맞게 공간을 만들고 이후의 데이터를 한틱씩 미루거나 당기는 작업이 추가적으로 발생하게 됩니다. 수정 또한 인덱스 자체에는 수정 기능이 따로 없어 삭제 후 재생성 방식이라 부하가 더 심할 수도 있다고 합니다.</p>
 <ul>
 <li>장점 : 테이블 조회 속도 향상, 전반적인 시스템 부하를 줄임</li>
 <li>
@@ -73,15 +73,56 @@
 </li>
 </ul>
 <h4 id="index-자료구조" style="position:relative;"><a href="#index-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0" aria-label="index 자료구조 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index 자료구조</h4>
-<p>그렇다면 인덱싱 알고리즘 중 대표적인 것들을 정리해 보겠습니다.</p>
 <h5 id="btree와-b-tree" style="position:relative;"><a href="#btree%EC%99%80-b-tree" aria-label="btree와 b tree permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>B+Tree와 B-Tree</h5>
-<p>일반적인 이진 트리는 자식의 개수가 2개라는 약점이 있다. 그리고 균형이 맞지 않으면 검색 효율이 떨어지는 단점이 있는데 이를 개선하고자 하는 노력이 있었고</p>
+<p>일반적인 이진 트리는 자식의 개수가 2개라는 약점이 있습니다. 그리고 균형이 맞지 않으면 검색 효율이 떨어지는 단점이 있는데 이를 개선하면서 아래의 트리들이 생겼습니다.</p>
 <ul>
-<li>B-tree
-그 중에서 B-Tree는 이진트리를 확장해 더 많은 수의 자식을 가질 수 있게 일반화 했고 합니다. 그리고 스스로 균형을 맞추는 로직을 갖추었다. (최악의 경우에도 O(logN))</li>
-<li>B+tree
+<li><strong>B-tree</strong>
+B-Tree는 이진트리를 확장해 더 많은 수의 자식을 가질 수 있게 일반화 했고 합니다. 그리고 스스로 균형을 맞추는 로직을 갖추었다. (최악의 경우에도 O(logN))</li>
+<li><strong>B+tree</strong>
 B+Tree는 B-Tree의 순회작업이 꽤 난감하여 인덱스로 해결을 봤다. B-tree는 특정 key값이 하나의 노드에서만 조재 할 수 있지만 B+tree는 단말노드와 단말노드의 부모노드와 공존이 가능하다. (기존 B-tree + 데이터의 연결 리스트)
-<img src="img/B+tree%20index.jpeg" alt="BtreeIndex">
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/6cd9445dc620a174039c60760de6e961/ec605/B%2Btree-index.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 57.50000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAd1XIhh//8QAFhABAQEAAAAAAAAAAAAAAAAAQQAQ/9oACAEBAAEFAgwv/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAGRAAAgMBAAAAAAAAAAAAAAAAAAEQETEh/9oACAEBAAE/IbtuRWDwSh//2gAMAwEAAgADAAAAEMAP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGxABAAICAwAAAAAAAAAAAAAAAQARIYFBcfH/2gAIAQEAAT8QuwRuFtG9sJ6hz6gY8Sqn/9k='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+        <source
+          srcset="/static/6cd9445dc620a174039c60760de6e961/8ac56/B%2Btree-index.webp 240w,
+/static/6cd9445dc620a174039c60760de6e961/d3be9/B%2Btree-index.webp 480w,
+/static/6cd9445dc620a174039c60760de6e961/e46b2/B%2Btree-index.webp 960w,
+/static/6cd9445dc620a174039c60760de6e961/5543b/B%2Btree-index.webp 1125w"
+          sizes="(max-width: 960px) 100vw, 960px"
+          type="image/webp"
+        />
+        <source
+          srcset="/static/6cd9445dc620a174039c60760de6e961/09b79/B%2Btree-index.jpg 240w,
+/static/6cd9445dc620a174039c60760de6e961/7cc5e/B%2Btree-index.jpg 480w,
+/static/6cd9445dc620a174039c60760de6e961/6a068/B%2Btree-index.jpg 960w,
+/static/6cd9445dc620a174039c60760de6e961/ec605/B%2Btree-index.jpg 1125w"
+          sizes="(max-width: 960px) 100vw, 960px"
+          type="image/jpeg"
+        />
+        <img
+          class="gatsby-resp-image-image"
+          src="/static/6cd9445dc620a174039c60760de6e961/6a068/B%2Btree-index.jpg"
+          alt="BtreeIndex"
+          title="BtreeIndex"
+          loading="lazy"
+          style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        />
+      </picture>
+  </a>
+    </span>
 <span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
