@@ -1,4 +1,216 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 13 Aug 2021 08:30:58 GMT</lastBuildDate><item><title><![CDATA[데이터베이스 정규화에 대해서]]></title><description><![CDATA[정규화에대해서 모두 정리합니다. 탄생 배경, 정의, 정규형들, 장단점...]]></description><link>https://jeoungsulmo.github.io/posts/Database/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Database/3</guid><pubDate>Thu, 12 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br/&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 16 Aug 2021 09:39:39 GMT</lastBuildDate><item><title><![CDATA[Heap]]></title><description><![CDATA[자료구조 중 Heap에 대해서 정리해봅니다.]]></description><link>https://jeoungsulmo.github.io/posts/data_structure/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/data_structure/2</guid><pubDate>Sun, 15 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;br&gt;
+&lt;h3 id=&quot;heap&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#heap&quot; aria-label=&quot;heap permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Heap&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;완전 이진 트리의 일종으로 최대값이나 최솟값을 찾는데 최적화된 자료구조&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;특징&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B9%EC%A7%95&quot; aria-label=&quot;특징 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;특징&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;완전 이진트리의 일종이며, 우선순위 큐를 위해 만들어짐&lt;/li&gt;
+&lt;li&gt;반정렬 상태를 유지한다.(부모노드보다 자식노드가 작다/크다 로 유지)&lt;/li&gt;
+&lt;li&gt;중복된 값을 허용한다.(이진 탐색 트리는 허용 안함)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;힙의-종류&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%9E%99%EC%9D%98-%EC%A2%85%EB%A5%98&quot; aria-label=&quot;힙의 종류 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;힙의 종류&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;최대 힙(max heap): &lt;code class=&quot;language-text&quot;&gt;key(부모 노드) &amp;gt;= key(자식 노드)&lt;/code&gt;을 만족하는 완전 이진 트리&lt;/li&gt;
+&lt;li&gt;최소 힙(min heap): &lt;code class=&quot;language-text&quot;&gt;key(부모 노드) &amp;lt;= key(자식 노드)&lt;/code&gt;을 만족하는 완전 이진 트리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;삽입과-삭제&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%82%BD%EC%9E%85%EA%B3%BC-%EC%82%AD%EC%A0%9C&quot; aria-label=&quot;삽입과 삭제 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;삽입과 삭제&lt;/h4&gt;
+&lt;p&gt;* 최대힙을 기준으로 구현 및 설명 했습니다.&lt;/p&gt;
+&lt;p&gt;힙을 구현시 기본적으로 배열에 저장을 하며, 삽입과 삭제 과정이 있다. 완전 이진트리이기 때문에 부모와 자식의 접근에 있어서 점화식이 정해져 있고 이를 활용하여 비교하며 위치를 잡는다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;왼쪽 자식의 인덱스 = (부모의 인덱스) * 2&lt;/li&gt;
+&lt;li&gt;오른쪽 자식의 인덱스 = (부모의 인덱스) * 2 + 1&lt;/li&gt;
+&lt;li&gt;부모의 인덱스 = (자식의 인덱스) / 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;삽입&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%82%BD%EC%9E%85&quot; aria-label=&quot;삽입 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;삽입&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;배열의 가장 끝에 데이터를 추가한다.&lt;/li&gt;
+&lt;li&gt;부모와 비교 후 자신보다 작다면 swap한다.&lt;/li&gt;
+&lt;li&gt;부모노드의 값이 더 클때까지 반복&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;삭제&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%82%AD%EC%A0%9C&quot; aria-label=&quot;삭제 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;삭제&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;최대 값인 루트를 삭제한다.&lt;/li&gt;
+&lt;li&gt;배열의 가장 끝에 데이터를 트리의 루트로 가져온다.&lt;/li&gt;
+&lt;li&gt;자식 노드와 비교해 자신보다 큰 값과 swap한다.(자식 노드중에서도 더큰 자식 노드와 swap한다)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; sys
+
+&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt; 삽입
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;insert_heap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_heap&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; num&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    _heap&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;num&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    current_key &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_heap&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;current_key &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;current_key &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;current_key&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;current_key&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;current_key&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;current_key&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;current_key&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;current_key&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+                current_key &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;current_key&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;break&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;current_key&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;current_key&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;current_key&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;current_key&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;current_key&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;current_key&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+                current_key &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; current_key&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;break&lt;/span&gt;
+
+&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt; 삭제
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;delete_heap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_heap&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    max_val &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+    tmp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pop&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    parant &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+    child &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;child &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_heap&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; child &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_heap&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;and&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;child&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;child&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            child &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; tmp &lt;span class=&quot;token operator&quot;&gt;&gt;=&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;child&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;break&lt;/span&gt;
+
+        _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;parant&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;child&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+        parant &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; child
+        child &lt;span class=&quot;token operator&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_heap&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        _heap&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;parant&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; tmp
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; max_val
+
+
+n &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sys&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stdin&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;readline&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+_heap &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; _ &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    num &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sys&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stdin&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;readline&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; num &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_heap&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;delete_heap&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_heap&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        insert_heap&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_heap&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; num&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;(여기 구현 코드가 더 깔끔함)[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html]&lt;/li&gt;
+&lt;li&gt;(깃헙레포2)[https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Data%20Structure/%5BData%20Structure%5D%20Heap.md]&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Tree의 시작]]></title><description><![CDATA[자료구조 중 tree에 대해서 정리해봅니다. [Binary Tree, Full Binary Tree, Complete Binary Tree, BST (Binary Search Tree)]]]></description><link>https://jeoungsulmo.github.io/posts/data_structure/1</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/data_structure/1</guid><pubDate>Sun, 15 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br&gt;
+&lt;h3 id=&quot;tree&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tree&quot; aria-label=&quot;tree permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tree&lt;/h3&gt;
+&lt;h4 id=&quot;특징&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B9%EC%A7%95&quot; aria-label=&quot;특징 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;특징&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;비선형 자료구조&lt;/li&gt;
+&lt;li&gt;계층적 관계&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;표현에 집중된 자료구조라 한다. 무엇인가 저장하고 꺼낸다는 사고에서 벗어나 트리라는 자료구조를 볼 필요가 있다.&lt;/p&gt;
+&lt;h4 id=&quot;용어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9A%A9%EC%96%B4&quot; aria-label=&quot;용어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;용어&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Node (노드) : 트리를 구성하고 있는 각각의 요소를 의미한다.&lt;/li&gt;
+&lt;li&gt;Edge (간선) : 트리를 구성하기 위해 노드와 노드를 연결하는 선을 의미한다.&lt;/li&gt;
+&lt;li&gt;Root Node (루트 노드) : 트리 구조에서 최상위에 있는 노드를 의미한다.&lt;/li&gt;
+&lt;li&gt;Terminal Node ( = leaf Node, 단말 노드) : 하위에 다른 노드가 연결되어 있지 않은 노드를 의미한다.&lt;/li&gt;
+&lt;li&gt;Internal Node (내부노드, 비단말 노드) : 단말 노드를 제외한 모든 노드로 루트 노드를 포함한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;이진트리binary-tree&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%ACbinary-tree&quot; aria-label=&quot;이진트리binary tree permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이진트리(Binary Tree)&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;모든 노드가 정확히 두개의 서브트리를 가지는 트리&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;추가로 서브트리의 왼쪽과 오른쪽은 확실하게 구분되며&lt;/li&gt;
+&lt;li&gt;서브트리는 공백이 될 수 있다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Binary Tree는 노드의 개수가 n 개이고 root가 0이 아닌 1에서 시작할 때 i 번째 노드에 대해서 아래의 인덱스를 가진다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;parent(i) = i/2&lt;/li&gt;
+&lt;li&gt;left_child(i) = 2i&lt;/li&gt;
+&lt;li&gt;right_child(i) = 2i + 1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/87441101a69bce1e98ced24dca7bbabc/0b533/tree.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 76.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABcRAAAXEQHKJvM/AAADBklEQVQ4y21TS0wTQRieLeCLaCQxnPFgSFBCotHEK541evAAJ40XQWMiJl6kIcSEmHjRi1HjgaCGiB4QS0IrtkBLC7altNttu/RFt7sspbt9bHm2wDgzZagB5rDz7/d/880/3/wDwIFx46kV2FgRBEVNh/9n+XR7QNSgJ5YZpBzLvAhau2yEe2j0vDeDWHqDxDb/MuMKK7r+sQWQK0Ei6E9qVrUIYVzZgkaX2IAxk1tiBowLAHOtrMxgjEtqoOX2GwDiyiYR8yU0hm4CIQSrxS3yP+GVb/mFXNwVVhFbX9X1Mcbg/P9jJrRCuL/dQhlghbLYkCVS6wipjThuvm+paX/prDl4ojvd9mMX701V49jKrTR+HgvU4tgRLIuiY8pkHjDyp7zxjC2mFOEsrzzfq5TJbJRIRYUdSGaM4ZwzrL4QcruQTeQsr7/MnMTYqCOGlVOEMMmuNISX16BaghD5NoYxdzRXhUXQkYCdk8GHnxzYgWVvA2LBtIqSQUnbNjqF88Rbl8CAkLymq3iRfuQXtJHh6cUr1EvzvLzv7YR3maEVjs4K11ghb0BrOmg+vQEp92HN4fuv398IeQXswTRTyV2uOsxvK2u4I4oe9ZnsDCud1LcRW+SsbzFnQK3ATXqllkqFUpNfyHuRbyaDPXqu4qfyAGmk5qJqD+DldZjeRL4JeXQ71wnhbzhzM7sLYQGt8CXyb6mgdzHft44wdBcQXUr7HswEpQKPuZ6YWsTN2cMJOQnNj+nCYWu0zreYNaD+41AzX6M4qvYS2ngeeWf6NR2tp/3oCKY7EFdGFfYSoPeT/UTlWUn7Xt199rX6oFOnr3Yf4R8Aff0zx0mwulv2IbsFGf27P4A2Kd19aJw944nlXrmjGeoxwc2e5AVkxzfngvKEim5iTw2oGfF7HJ4KE9AeSJEZvW9SiTeh6TWkIqGPI6S00sVsIj+IehK98SI0e8RmjE35lnRHVQ9+WHgQSa2T5Fws28Ym1G2/kBWt/lQT5bgjaie/VChxybz9u5mvw9i4W2D+AfDsBHWQOmO7AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/87441101a69bce1e98ced24dca7bbabc/8ac56/tree.webp 240w,
+/static/87441101a69bce1e98ced24dca7bbabc/d3be9/tree.webp 480w,
+/static/87441101a69bce1e98ced24dca7bbabc/b0a15/tree.webp 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/87441101a69bce1e98ced24dca7bbabc/8ff5a/tree.png 240w,
+/static/87441101a69bce1e98ced24dca7bbabc/e85cb/tree.png 480w,
+/static/87441101a69bce1e98ced24dca7bbabc/0b533/tree.png 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/87441101a69bce1e98ced24dca7bbabc/0b533/tree.png&quot;
+          alt=&quot;tree&quot;
+          title=&quot;tree&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h5 id=&quot;포화-이진트리full-binary-tree&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8F%AC%ED%99%94-%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%ACfull-binary-tree&quot; aria-label=&quot;포화 이진트리full binary tree permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;포화 이진트리(full binary tree)&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이진트리가 보유할 수 있는 최대의 노드를 가진 형태&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;높이 별 존재할수 있는 노드는 다 존재하는 상태이다. 그래서 높이별 최대 노드수를 알수 있다. &lt;code class=&quot;language-text&quot;&gt;2^(h+1) - 1&lt;/code&gt;&lt;/p&gt;
+&lt;h5 id=&quot;완전-이진트리complete-binary-tree&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%99%84%EC%A0%84-%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%ACcomplete-binary-tree&quot; aria-label=&quot;완전 이진트리complete binary tree permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;완전 이진트리(complete binary tree)&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;마지막 층을 제외한 형태에서 포화 이진트리이며, 마지막 층을 왼쪽부터 채운 트리&lt;/p&gt;
+&lt;/blockquote&gt;
+ &lt;br&gt;
+&lt;h4 id=&quot;이진-탐색-트리binary-search-tree&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EC%A7%84-%ED%83%90%EC%83%89-%ED%8A%B8%EB%A6%ACbinary-search-tree&quot; aria-label=&quot;이진 탐색 트리binary search tree permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이진 탐색 트리(Binary Search Tree)&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;데이터를 저장하는 규칙이 존재하는 이진트리&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h6 id=&quot;규칙&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B7%9C%EC%B9%99&quot; aria-label=&quot;규칙 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;규칙&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;이진 탐색 트리의 노드에 저장된 키는 유일하다.&lt;/li&gt;
+&lt;li&gt;부모의 키가 왼쪽 자식 노드의 키보다 크다.&lt;/li&gt;
+&lt;li&gt;부모의 키가 오른쪽 자식 노드의 키보다 작다.&lt;/li&gt;
+&lt;li&gt;왼쪽과 오른쪽 서브트리도 이진 탐색 트리이다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;키값에 따라 특정 값을 찾는데 도움이 되지만 저장 순서에 따라 편향 이진 트리가 될수 있다. 이 문제점을 해결 하기위 해 AVL Tree, Red-Black Tree가 존재한다.&lt;/p&gt;
+&lt;p&gt;위의 문제점에의해 시간복잡도 의 차이가 있는데&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;균등 트리 : O(log N)&lt;/li&gt;
+&lt;li&gt;편향 트리 : O(N)
+&lt;span style=&quot;color:#999999&quot;&gt;* 노드 개수가 N개일 때&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;추후-추가될-무서븐-이진트리들&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B6%94%ED%9B%84-%EC%B6%94%EA%B0%80%EB%90%A0-%EB%AC%B4%EC%84%9C%EB%B8%90-%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%AC%EB%93%A4&quot; aria-label=&quot;추후 추가될 무서븐 이진트리들 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;추후 추가될 무서븐 이진트리들&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;아직 작성되지 않은 포스트들입니다. 눌러도 아무 반응 없어요..&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;AVL tree&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;Red-Black Tree&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/DataStructure#tree&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;github repo1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Data%20Structure/%5BData%20Structure%5D%20%EC%9D%B4%EC%A7%84%20%ED%83%90%EC%83%89%20%ED%8A%B8%EB%A6%AC.md&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;github repo2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[데이터베이스 정규화에 대해서]]></title><description><![CDATA[정규화에대해서 모두 정리합니다. 탄생 배경, 정의, 정규형들, 장단점...]]></description><link>https://jeoungsulmo.github.io/posts/Database/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Database/3</guid><pubDate>Thu, 12 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br/&gt;
 &lt;h5 id=&quot;entity-relation-table관계&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#entity-relation-table%EA%B4%80%EA%B3%84&quot; aria-label=&quot;entity relation table관계 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Entity, Relation, table관계&lt;/h5&gt;
 &lt;p&gt;&lt;span style=&quot;color:#999999&quot;&gt;개념 모델링 시 추출한 개체를 엔터티라 부르고, 논리 모델링을 통해 물리 모델링으로 엔터티를 테이블로 구성하고 테이블을 관계형 데이터 모델로 정의할 때는 릴레이션R이라고 합니다.&lt;/p&gt;
 &lt;p&gt;어떻게 보면 셋 다 같은 듯 보이지만, 보통은 개념/논리에서 도출된 엔터티(Entity)를 변환해서 물리의 테이블을 만듭니다.
