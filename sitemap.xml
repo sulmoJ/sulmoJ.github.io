@@ -17,8 +17,9 @@
 <url> <loc>https://jeoungsulmo.github.io/posts/react/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/OS/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/data_structure/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://jeoungsulmo.github.io/posts/OS/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/OS/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jeoungsulmo.github.io/posts/OS/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jeoungsulmo.github.io/posts/cloud/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/web/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/javascript/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/javascript/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -53,7 +54,9 @@
 <url> <loc>https://jeoungsulmo.github.io/tag/ps</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/redux</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/tcp-udp</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jeoungsulmo.github.io/tag/aws</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jeoungsulmo.github.io/tag/cloud</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/javascript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/jwt</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/language</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -80,6 +83,7 @@
 <url> <loc>https://jeoungsulmo.github.io/category/os</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/ps</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jeoungsulmo.github.io/category/cloud</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/compiler</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/compiler/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/javascript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
