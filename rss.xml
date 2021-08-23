@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 23 Aug 2021 08:21:45 GMT</lastBuildDate><item><title><![CDATA[Build your own React (Step 3,4,5)]]></title><description><![CDATA[AUSG 5기 스터디 FE-Deep-Dive 중 Build your own react를 참고해 작성된 포스트입니다. (Step 3,4,5)]]></description><link>https://jeoungsulmo.github.io/posts/react/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/react/3</guid><pubDate>Fri, 20 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 23 Aug 2021 09:50:18 GMT</lastBuildDate><item><title><![CDATA[DNS 라운드 로빈 방식]]></title><description><![CDATA[DNS에서 스케줄링 알고리즘 중 DNS round robin 방식을 정리합니다.]]></description><link>https://jeoungsulmo.github.io/posts/network/7</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/network/7</guid><pubDate>Sun, 22 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br&gt;
+&lt;h3 id=&quot;dns-round-robin-방식&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dns-round-robin-%EB%B0%A9%EC%8B%9D&quot; aria-label=&quot;dns round robin 방식 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;DNS round robin 방식&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DNS 로드밸런싱 기법 중 하나로, 도메인에 등록된 여러개의 IP리스트 중에서 라운드 로빈 방식으로 사용자에게 IP를 리턴하는 방식&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;DNS는 문자열로된 도메인 이름을 IP주소로 바꿔주는 역할을 하는데, 사용자가 많은 서비스들 같은경우 도메인 주소에 여러가지 공인 IP를 가지고 있는 경우가 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$  &lt;span class=&quot;token function&quot;&gt;nslookup&lt;/span&gt; naver.com
+Server:        &lt;span class=&quot;token number&quot;&gt;192.168&lt;/span&gt;.10.1
+Address:    &lt;span class=&quot;token number&quot;&gt;192.168&lt;/span&gt;.10.1&lt;span class=&quot;token comment&quot;&gt;#53&lt;/span&gt;
+
+Non-authoritative answer:
+Name:    naver.com
+Address: &lt;span class=&quot;token number&quot;&gt;223.130&lt;/span&gt;.195.95
+Name:    naver.com
+Address: &lt;span class=&quot;token number&quot;&gt;125.209&lt;/span&gt;.222.142
+Name:    naver.com
+Address: &lt;span class=&quot;token number&quot;&gt;223.130&lt;/span&gt;.195.200
+Name:    naver.com
+Address: &lt;span class=&quot;token number&quot;&gt;125.209&lt;/span&gt;.222.141&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이 경우 별도의 로드밸런서 장비를 달지 않고 DNS라운드로빈을 사용해 DNS에서 레코드 정보를 조회하는 시점에서 부하분산이 가능하다.&lt;/p&gt;
+&lt;h4 id=&quot;문제점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C%EC%A0%90&quot; aria-label=&quot;문제점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제점&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;부하 분산을 위해 서버 대수를 늘려 로드밸런싱 함으로 공인 IP가 각각 서버별로 있어야한다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;균등분배가 되지 않는 경우가 있음&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;스마트폰의 접속은 캐리어 게이트웨이 라고 하는 프록시 서버를 경유하는데 프록시 서버에서는 이름 변환 결과가 일정 시간동안 캐싱되어 같은 프록시 서버를 경유하는 접속은 항상 같은 서버로 연결되어 부하분산이 안됨.&lt;/li&gt;
+&lt;li&gt;PC 브라우저의 경우 DNS 질의 결과를 캐싱해 균등하게 부하분산 되지 않음.&lt;/li&gt;
+&lt;li&gt;DNS 레코드의 TTL값을 짧게 설정함으로 일부 해소가 가능하지만, 캐시를 해제하는것은 아님&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;서버가 다운되도 확인 할수 없다.&lt;/li&gt;
+&lt;li&gt;DNS 서버는 웹 서버의 부하나 접속 수 등의 상황에 따라 질의결과를 제어할 수 없다.&lt;/li&gt;
+&lt;li&gt;가용성이 필요한 경우 AWS Route53과 같은 헬스 체크기능이 있는 서비스를 이용하자&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;보완-방법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B3%B4%EC%99%84-%EB%B0%A9%EB%B2%95&quot; aria-label=&quot;보완 방법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;보완 방법&lt;/h4&gt;
+&lt;h5 id=&quot;weighted-round-robin-wrr&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#weighted-round-robin-wrr&quot; aria-label=&quot;weighted round robin wrr permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Weighted round robin (WRR)&lt;/h5&gt;
+&lt;p&gt;각각의 웹 서버에 가중치를 가미해서 분산 비율을 변경한다. 물론 가중치가 큰 서버일수록 빈번하게 선택되므로 처리능력이 높은 서버는 가중치를 높게 설정하는 것이 좋다.&lt;/p&gt;
+&lt;h5 id=&quot;least-connection&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#least-connection&quot; aria-label=&quot;least connection permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Least connection&lt;/h5&gt;
+&lt;p&gt;접속 클라이언트 수가 가장 적은 서버를 선택한다. 로드밸런서에서 실시간으로 connection 수를 관리하거나 각 서버에서 주기적으로 알려주는 것이 필요하다.&lt;/p&gt;
+&lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://byeongyeon.tistory.com/80&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;블로그 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://judo0179.tistory.com/127&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;블로그 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/Network#dns-round-robin-%EB%B0%A9%EC%8B%9D&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;깃헙 레포&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Build your own React (Step 3,4,5)]]></title><description><![CDATA[AUSG 5기 스터디 FE-Deep-Dive 중 Build your own react를 참고해 작성된 포스트입니다. (Step 3,4,5)]]></description><link>https://jeoungsulmo.github.io/posts/react/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/react/3</guid><pubDate>Fri, 20 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;AUSG 5기 스터디 FE-Deep-Dive 중 Build your own react를 참고해 작성된 포스트입니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://jeoungsulmo.github.io/posts/react/2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;저번주 스터디&lt;/a&gt; 전체 소스코드&lt;/p&gt;
