@@ -1,4 +1,225 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 Aug 2021 11:53:16 GMT</lastBuildDate><item><title><![CDATA[DNS 라운드 로빈 방식]]></title><description><![CDATA[DNS에서 스케줄링 알고리즘 중 DNS round robin 방식을 정리합니다.]]></description><link>https://jeoungsulmo.github.io/posts/network/7</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/network/7</guid><pubDate>Sun, 22 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 25 Aug 2021 09:22:14 GMT</lastBuildDate><item><title><![CDATA[렌더링 과정 (크롬기준)]]></title><description><![CDATA[html문서를 받아온 시점부터 브라우저 content로 화면에 그려지는 부분까지를 정리 해봅니다.(크롬기준)]]></description><link>https://jeoungsulmo.github.io/posts/web/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/web/2</guid><pubDate>Tue, 24 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;렌더링-과정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A0%8C%EB%8D%94%EB%A7%81-%EA%B3%BC%EC%A0%95&quot; aria-label=&quot;렌더링 과정 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;렌더링 과정&lt;/h3&gt;
+&lt;p&gt;html문서를 받아온 시점부터 브라우저 content로 화면에 그려지는 부분까지를 정리 해봅니다.&lt;/p&gt;
+&lt;h4 id=&quot;브라우저-구조&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B5%AC%EC%A1%B0&quot; aria-label=&quot;브라우저 구조 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;브라우저 구조&lt;/h4&gt;
+&lt;p&gt;일단 브라우저마다 구조는 조금씩 다르지만 기본적인 구조를 보면&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a81358cc5f702d0030ed63287fa7a1f4/d1d24/browser_architecture.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 72.91666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABcRAAAXEQHKJvM/AAAD3ElEQVQ4y32Te0xbZRTAL/+MOefMdK8wHLDBHkDrCg1r50QY7wKmhG3pA2RmrWNbRwvycIX2ytSlY20N0sdtC7S0vbfcPihQWTQsJlKn0c25DViIU2Eyp0N8/OMfBs3xu20wMeq+5JfzvCfnnPt9mNQx+7HEPjOFZFRin46KLDeiYuJ2VGy9yegfMfYx07WoxDYdI54Xy/+kzjFzGbsAa3ykpz8cDoPX6/0ekwd/AllgCRj5MrkIQt0k1BqmQOqYAeHFK1DT88Hf1Du/BHnoZ5D5mfxlOO5ZgGdNv26jSbd7dHQMSJIETOq41Y3QInCp/SYutl7HRZZrWqS/LrF90ScmPteIiRu4yPwpjmw8lueYUUvss311jul2DB2vx035/X7weDwr2KNOrRW2/l9M6ridvKoTNhut1+vB7XavYMqQYOIsXT5+hiobV40I4oQE44rh8oiCrv1QNVIZUQYrxpWhijEkJ5RBAa0KFW4W2e7vabSE1zEFTSYTrdPpwOfzrWD41RroeK8STtjy4ZT7MMgHCqDRVQiqUCnI7M+DvL8AXkG+tncFgF8VwrnJF+Ek+Ua1iHhQ2uD4jFMy+Eu6ZcB9xWoxMz/lD6wlWEqo/CVmheewReEpspwZesF0eqjS1eSrGjztKjDLrPkxv9JXbGZymwNlxvZQzpMi2709SsdErMPBQSdtMBjiI//n+QoSsfdhzaP2W2e/ldlkmUxkdBvaYW9vb3zkJQ2n/7tOjv1HLceOdPtyF9s6jx+ivu3O9z1QswnGx8SWtRzbkpbT/1Cb8w50rNtQPXB/t7p3eC1T0Gq10j09PUBR1AoG+jyYa86Cu6+yYK4lG+40Z8PXrdkw35oFix0spLNivm/a2ACX8gAucOE3dUYm1w1purftsZEJgoiNHOtwWcPx3lXzAwttLNc8An3ovtfOcl1vYpMLXfzAHeU+56wqa4jxPdRwfYv4IQ+cxZ4QOH/Y9abFn7ha0Gg0xgtiZkjguP7c+68lASSyxiD1H77LsHbvMKTHdzjNq9eFH1/dIbo68YIn9aObG/qmMo+f9z5df57acrTFuElwQrMtv+7cvuLGiwf4VQ3JRS+9lnxEeWnTsU5nSpnCyEvnVyWXddI5Ndrh7UxBkvRSgUCAeXq/MzbTBRPY/tiGp1IF+EhSSk7RRmRnIXYishEbKzTB3UgmINIQuYgkoeKt9RgmS6AoMhiJRICmacD2H21Ly5V07coVqVP3H2nNLO4gt+bVd+/cwS3np/Kqec/klDzHrlFllKrppINy/Y6UA1U8RF7aQSG38JQhg+mIIr1qdKnnUIdjfwG8cA/LeuEg2wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/a81358cc5f702d0030ed63287fa7a1f4/8ac56/browser_architecture.webp 240w,
+/static/a81358cc5f702d0030ed63287fa7a1f4/d3be9/browser_architecture.webp 480w,
+/static/a81358cc5f702d0030ed63287fa7a1f4/e46b2/browser_architecture.webp 960w,
+/static/a81358cc5f702d0030ed63287fa7a1f4/b0d42/browser_architecture.webp 987w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/a81358cc5f702d0030ed63287fa7a1f4/8ff5a/browser_architecture.png 240w,
+/static/a81358cc5f702d0030ed63287fa7a1f4/e85cb/browser_architecture.png 480w,
+/static/a81358cc5f702d0030ed63287fa7a1f4/d9199/browser_architecture.png 960w,
+/static/a81358cc5f702d0030ed63287fa7a1f4/d1d24/browser_architecture.png 987w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/a81358cc5f702d0030ed63287fa7a1f4/d9199/browser_architecture.png&quot;
+          alt=&quot;browser_architecture&quot;
+          title=&quot;browser_architecture&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;User Interface: 주소 표시줄, 이전/다음 버튼, 북마크 메뉴 등. 요청한 페이지를 보여주는 창을 제외한 나머지 모든 부분&lt;/li&gt;
+&lt;li&gt;Browser Engine: User Interface와 Rendering Engine 사이의 동작을 제어&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rendering Engine&lt;/strong&gt;: 요청한 콘텐츠를 표시, HTML을 요청하면 HTML과 CSS를 파싱 하여 화면에 표시함&lt;/li&gt;
+&lt;li&gt;Networking: HTTP 요청과 같은 네트워크 호출에 사용됨&lt;/li&gt;
+&lt;li&gt;Javascript Interpreter(또는 Engine): 자바스크립트 코드를 해석하고 실행함. 크롬에서는 V8 엔진을 사용함&lt;/li&gt;
+&lt;li&gt;Display Backend: 기본적인 위젯(콤보 박스 등..)을 그림&lt;/li&gt;
+&lt;li&gt;Data Persistence: Local Storage, 쿠키 등 클라이언트 사이드에서 데이터를 저장하는 영역&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이제 위의 구조 중 &lt;strong&gt;렌더링 엔진&lt;/strong&gt;에대해 정리 해보려합니다.&lt;/p&gt;
+&lt;h3 id=&quot;렌더링-엔진&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%97%94%EC%A7%84&quot; aria-label=&quot;렌더링 엔진 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;렌더링 엔진&lt;/h3&gt;
+&lt;p&gt;렌더링 엔진에는 content가 pixel로 그려지기 까지의 파이프라인이 있습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;parse &amp;#x3C;-&gt; style &amp;#x3C;-&gt; layout &amp;#x3C;-&gt; paint &amp;#x3C;-&gt; change&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;parse&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#parse&quot; aria-label=&quot;parse permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Parse&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DOM tree가 생성합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;network 요청이든 자신의 파일이든 html과 같은 &lt;strong&gt;content를 객체&lt;/strong&gt;로 파싱합니다. html같은 경우는 단순한 텍스트로 입력되고 렌더링 엔진은 이를 조작할 수 있는 객체로 변환하는데, 이 과정을 &lt;strong&gt;파싱&lt;/strong&gt; 이라고 합니다.&lt;/p&gt;
+&lt;p&gt;Blink는 크로미움의 렌더링 엔진입니다. Blink에서는 HTMLDocumentParser 로 텍스트를 읽으면서 HTMLTreeBuilder 로 Document Object Model (DOM) 트리를 하나씩 완성합니다. 이렇게 단순한 텍스트였던 문서는 JS로 콘텐츠를 조작할수 있는 모델이 되었습니다.&lt;/p&gt;
+&lt;h4 id=&quot;style&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#style&quot; aria-label=&quot;style permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Style&lt;/h4&gt;
+&lt;p&gt;스타일링 단계에서는 CSS 텍스트 파일에 정의된 스타일을 DOM 에 적용할 수 있도록 해석하는 작업을 진행합니다.&lt;/p&gt;
+&lt;p&gt;CSSParser를 통해 스타일 규칙, 스타일 셀렉터에대한 정보 정리 및 속성과 속성 값들을 객체화 합니다. 약간 DOM을 만드는것처럼 CSS에대한 CSSOM을 만드는 과정입니다. 여기서 만들어진 객체들을 DOM과 연결하여 사용할 준비가 되었습니다.&lt;/p&gt;
+&lt;h4 id=&quot;layout&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#layout&quot; aria-label=&quot;layout permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Layout&lt;/h4&gt;
+&lt;p&gt;DOM도 만들어졌고 styleSheetContents 또한 만들어 졌으면 다음단계로 Layout 작업이 시작됩니다.&lt;/p&gt;
+&lt;p&gt;레이아웃 단계는 각 요소들이 화면에서 어디에 배치할지를 결정하는 작업입니다.&lt;/p&gt;
+&lt;p&gt;기본적인 전체 레이아웃 구성관련한 트리를 만들고 이후 뷰포트에 맞춰 작용하는 속성들에대한 업데이트 또한 필요합니다.&lt;/p&gt;
+&lt;h4 id=&quot;paint&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#paint&quot; aria-label=&quot;paint permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Paint&lt;/h4&gt;
+&lt;p&gt;레이아웃 작업을 통해 만들어진 화면상의 위치정보 또한 만들어 졌습니다. 이제 텍스트, 색, 이미지, 그림자 효과와 같은 부분들이 처리되어 그려집니다.&lt;/p&gt;
+&lt;p&gt;먼저 화면에 무슨 타입의 효과와 색 그라데이션 등이 그려질지 페인팅 작업들을 보관하는 객체를 만듭니다. 이후 &lt;strong&gt;래스터라이징&lt;/strong&gt;이라는 과정을 통해 실제 이미지를 만드는 단계를 거칩니다.&lt;/p&gt;
+&lt;p&gt;래스터라이징 작업은 그래픽 연산이기 때문에 그래픽처리장치(GPU) 의 도움을 받아 빠르게 이미지를 만들도록 되어 있습니다.&lt;/p&gt;
+&lt;h4 id=&quot;change&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#change&quot; aria-label=&quot;change permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Change&lt;/h4&gt;
+&lt;p&gt;paint단계까지 마치면서 어렵게 화면을 구성하는데 성공했습니다. 이후 스크롤이나 사용자에 의해 화면이 변경될 수 있는데, 이 때문에 처음부터 모든걸 다시 재구성할 수 없습니다.&lt;/p&gt;
+&lt;p&gt;화면은 1초당 60개의 프래임을 보여줍니다. 자바스크립트 실행과정이나 페이지 스크롤, 이미지 등 위에서 본 여러 구간에서의 과정이 길어져 렌더링을 제대로 이루지 못하면 page junk가 발생합니다.&lt;/p&gt;
+&lt;p&gt;그래서 이러한 변화에대해 대응하는 방법들을 알아보겠습니다.&lt;/p&gt;
+&lt;h5 id=&quot;유효성검사&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9C%A0%ED%9A%A8%EC%84%B1%EA%B2%80%EC%82%AC&quot; aria-label=&quot;유효성검사 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;유효성검사&lt;/h5&gt;
+&lt;p&gt;화면 재구성에서 단계(style, layout, paint, raster)별로 유효성검사를 통해 업데이트가 필요한 부분의 데이터만 변경하는 방법입니다.&lt;/p&gt;
+&lt;h5 id=&quot;compositing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#compositing&quot; aria-label=&quot;compositing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;compositing&lt;/h5&gt;
+&lt;p&gt;레이어 합성입니다. 영상처리 기술에서는 이미 많이 알려진 방법이라고 하는데, 큰 화면을 레이어로 쪼개서 작업하고 관리하면 화면의 일부인 애니메이션을 표현하기 위해 전체 이미지를 계속 다시 그릴필요가 사라집니다.&lt;/p&gt;
+&lt;h5 id=&quot;tiling&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tiling&quot; aria-label=&quot;tiling permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;tiling&lt;/h5&gt;
+&lt;p&gt;화면을 거의 차지하는 스크롤 레이어가 있다면 합성의 효과도 미미해집니다. 레이어를 더 작은 단위인 타일로 쪼개고 타일의 위치나 특성에 따라 우선순위를 매겨 각 타일별 이미지를 만듭니다. 이렇게 하면 현재화면(viewport)에 아직 보여지지 않는 화면보다 보여지고 있는 화면의 우선순위를 둬 해당 부분을 더 빠르게 렌더링합니다.&lt;/p&gt;
+&lt;h4 id=&quot;activation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#activation&quot; aria-label=&quot;activation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;activation&lt;/h4&gt;
+&lt;p&gt;힙겹게 만들어진 레이어 이미지는 먼저 ‘pending tree’ 에 commit 되고, 다음 ‘draw’ 이벤트 전에 레이어를 합성하여 레스터라이징합니다.&lt;/p&gt;
+&lt;p&gt;레스터라이징이 끝나서 실제 화면에 표현할 준비가 되면 ractivation 작업을 통해 ‘pedding tree’ 를 ‘active tree’ 에 반영합니다. ‘active tree’ 는 특정 간격마다 draw 작업을 진행해서 렌더링된 이미지를 화면에 뿌립니다.&lt;/p&gt;
+&lt;h4 id=&quot;정리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EB%A6%AC&quot; aria-label=&quot;정리 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정리&lt;/h4&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3204ae27f9acac991cc96f59ba5cadf7/21b4d/rendering.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 54.58333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAACQklEQVQoz12S627aQBCFefw+Sv+0fyq1UitFaaq2SkgCmNSYYhts4/suvhDAYODr4CiV2pE+7Xo9PnNm1r3vV0+8e/tZ+MKH91/5NYgxh4kQ8fPGwuj7WMMUU84ng4TJ8ELaYcrzv8T0PEdejmZMDBvLcAjmKXFUovOSwMtZzhNhRexXhIuCpZv/JVpoYm9FJMSe7P2SXruraDcFtHthS7PO2FYpx91KzjWnpmJf2ijvB81qzGmnJK3gvC/JI0eKWaTLmYhb7Dci2NSaze6ZKJkReo/8Nu+k2qM4NdDxmIUzJJ7fMh1+xJ3c4LtDVGR063z2KLn3zKw7VsmE/XP1IrhrngkjU1q6R8Uua22TLCcUqSnCI3FioZOpiDyxsAfo6EnEHsSdQbYcdTmbYi4ORfAgNldaUZY1zbElCAaoPEApTZ7nZFmG1prpdNoRhiGWNaVpGi7RtsduPbYHGVdBby/z07FHqSLqImFmXmObt0zGAyLfxjT64swSxy4q8dFpQBLOWRdpJ9BuKw7bkl2VS8sieDqdOvULp7blIJfjBBauP8WLbMFhtpDWZRRR7mE5T/iRS5A5FJViXdfS3Zq6qjidjvT4L7b7DWEWUBYVtSTnuWI0Mro18AP6/T7r9YZaXGWrDMeecvPtDYuFLWPY0zufz7xyiY1ckJLf5hJyylGq5irn+voKd+6KqxLLS3Bjn1zaHhsGDw+fpOjgRfDV2atgKxezVB6h8gVZtd9xOYt00O39zMPPXbZS/OVbuIzuEn8Agl8u5MYzXF4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/3204ae27f9acac991cc96f59ba5cadf7/8ac56/rendering.webp 240w,
+/static/3204ae27f9acac991cc96f59ba5cadf7/d3be9/rendering.webp 480w,
+/static/3204ae27f9acac991cc96f59ba5cadf7/e46b2/rendering.webp 960w,
+/static/3204ae27f9acac991cc96f59ba5cadf7/af3f0/rendering.webp 1280w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/3204ae27f9acac991cc96f59ba5cadf7/8ff5a/rendering.png 240w,
+/static/3204ae27f9acac991cc96f59ba5cadf7/e85cb/rendering.png 480w,
+/static/3204ae27f9acac991cc96f59ba5cadf7/d9199/rendering.png 960w,
+/static/3204ae27f9acac991cc96f59ba5cadf7/21b4d/rendering.png 1280w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/3204ae27f9acac991cc96f59ba5cadf7/d9199/rendering.png&quot;
+          alt=&quot;전체&quot;
+          title=&quot;전체&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;하루만에 정리하기에 너무 많은 양이여서 둥굴게 둥굴게 정리하였는데 세부적으로 더 정리가 필요할 것 같습니다. 대충 이런 프로세스구나 만 확인된듯한..&lt;/p&gt;
+&lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://ibocon.tistory.com/239?category=879638&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;크롬의 렌더링 엔진&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://beomy.github.io/tech/browser/browser-rendering/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;렌더링 과정&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developers.google.com/web/fundamentals/performance/rendering/#the_pixel_pipeline&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;렌더링 성능&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[데이터베이스 트랜잭션]]></title><description><![CDATA[트랜잭션에대해 정리합니다. 개념적으로 이해하기 위함이 큽니다.]]></description><link>https://jeoungsulmo.github.io/posts/Database/4</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Database/4</guid><pubDate>Tue, 24 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br/&gt;
+&lt;h3 id=&quot;트랜잭션&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98&quot; aria-label=&quot;트랜잭션 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;트랜잭션&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;데이터들에대한 처리를 완벽하게 도와주는 개념의 작업단위&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;‘트랜잭션은 작업의 &lt;strong&gt;완전성&lt;/strong&gt;을 보장해주는 것이다’ 라고 합니다. 쿼리를 작성하여 조작을 할때 일정 부분별로 캐시하고 작업이 정상적으로 이루어졌을때 확정하는 방식으로 사용합니다.&lt;/p&gt;
+&lt;p&gt;사용자의 입장에서 작업의 논리적 단위로 이해하기 쉽고, 시스템의 입장에서는 데이터들을 접근 또는 변경하는 프로그램의 단위가 됩니다.&lt;/p&gt;
+&lt;h4 id=&quot;트랜잭션의-특성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%98-%ED%8A%B9%EC%84%B1&quot; aria-label=&quot;트랜잭션의 특성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;트랜잭션의 특성&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;원자성(Atomicity) : 트랜잭션이 DB에 모두 반영되거나 혹은 전혀 반영되지 않아야 한다.&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;color: #999999&quot;&gt;송금을 예로, 출금은 되었는데 입금과정중 에러로 입금이 되지 않으면 안된다. 이럴 시 송금이라는 트랜잭션에서 모두 반영되어서는 안된다.&lt;span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;일관성(Consistency)
+트랜잭션이 완료된 다음의 상태에서도 트랜잭션이 일어나기 전의 상황과 동일하게 데이터의 일관성을 보장해야 한다.(무결성이 위배되면 commit되어선 안된다.)&lt;/li&gt;
+&lt;li&gt;고립성(Isolation)
+둘 이상의 트랜잭션이 동시에 병행 실행되고 있을 때, 어떤 트랜잭션도 다른 트랜잭션 연산에 끼어들 수 없다.&lt;/li&gt;
+&lt;li&gt;지속성(Durability)
+트랜잭션이 정상적으로 종료된 다음에는 영구적으로 데이터베이스에 작업의 결과가 저장되어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;트랜잭션의-상태&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%98-%EC%83%81%ED%83%9C&quot; aria-label=&quot;트랜잭션의 상태 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;트랜잭션의 상태&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;활동(Active) : 트랜잭션이 실행중인 상태&lt;/li&gt;
+&lt;li&gt;실패(Failed) : 트랜잭션 실행에 오류가 발생하여 중단된 상태&lt;/li&gt;
+&lt;li&gt;철회(Aborted) : 트랜잭션이 비정상적으로 종료되어 Rollback 연산을 수행한 상태&lt;/li&gt;
+&lt;li&gt;부분 완료(Partially Committed) : 트랜잭션의 마지막 연산까지 실행했지만, Commit 연산이 실행되기 직전의 상태&lt;/li&gt;
+&lt;li&gt;완료(Committed) : 트랜잭션이 성공적으로 종료되어 Commit 연산을 실행한 후의 상태&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;트랜잭션-방식-종류&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98-%EB%B0%A9%EC%8B%9D-%EC%A2%85%EB%A5%98&quot; aria-label=&quot;트랜잭션 방식 종류 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;트랜잭션 방식 종류&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DB별로 작성방식이 조금씩 달라서 이런 종류의 방식이 있구나 정도의 이해를 위해 작성합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&quot;자동-커밋-트랜잭션&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9E%90%EB%8F%99-%EC%BB%A4%EB%B0%8B-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98&quot; aria-label=&quot;자동 커밋 트랜잭션 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;자동 커밋 트랜잭션&lt;/h5&gt;
+&lt;p&gt;DELETE, INSERT, SELECT문이나 CREATE TABLE문과 같이 개별 명령문이 바로 하나의 트랜잭션을 의미하는 경우이다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sql&quot;&gt;&lt;pre class=&quot;language-sql&quot;&gt;&lt;code class=&quot;language-sql&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;-- 자동 커밋 트랜잭션&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;USER&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;WHERE&lt;/span&gt; user_id&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;tester&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;-- 명시적 트랜잭션&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;BEGIN&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;TRAN&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;USER&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;WHERE&lt;/span&gt; user_id&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;tester&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;COMMIT&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;TRAN&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;명시적 트랜잭션과 마찬가지로 BEGIN TRAN문과 COMMIT문이 명령문 앞뒤에 자동으로 붙어 수행된다.&lt;/p&gt;
+&lt;p&gt;오라클의 경우 명시적으로 Commit문을 통해 트랜잭션을 종료하도록하는데 비하여 SQL은 자동으로 이러한 COMMIT문을 붙여서 이용한다.&lt;/p&gt;
+&lt;h5 id=&quot;명시적-트랜잭션&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%85%EC%8B%9C%EC%A0%81-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98&quot; aria-label=&quot;명시적 트랜잭션 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;명시적 트랜잭션&lt;/h5&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sql&quot;&gt;&lt;pre class=&quot;language-sql&quot;&gt;&lt;code class=&quot;language-sql&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;BEGIN&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;TRANSACTION&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 또는&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;BEGIN&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;TRAN&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// 실행할 SQL구문들&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;SAVEPOINT&lt;/span&gt; sp1
+
+&lt;span class=&quot;token comment&quot;&gt;// 실행할 SQL구문들&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;SAVEPOINT&lt;/span&gt; sp2
+
+&lt;span class=&quot;token comment&quot;&gt;// 실행할 SQL구문들&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;ROLLBACK&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;TRANSACTION&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 또는&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;ROLLBACK&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 또는&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;COMMIT&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;TRANSACTION&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 또는&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;COMMIT&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 또는&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;ROLLBACK&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;TO&lt;/span&gt; sp1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;한번에 명시적인 명령을 모두 작성하였습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;BEGIN : 트랜잭션의 시작지점을 정합니다.&lt;/li&gt;
+&lt;li&gt;COMMIT : 시작지점부터의 조작된 DB를 완전히 저장합니다.&lt;/li&gt;
+&lt;li&gt;ROLLBACK : 여러가지 예외상황들이 발생시 시작지점까지 복구합니다.&lt;/li&gt;
+&lt;li&gt;SAVEPOINT : 지정한 구간으로 롤백이 가능합니다.(실제로 잘 사용되지 않는다고 하네요..?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이런식으로 명시를 하고 제어하여 사용하는 방법이 있습니다. 롤백시 BEGIN지점 까지 복구됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://keep-cool.tistory.com/46&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;트랜잭션 컨트롤 언어(tcl)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://coding-factory.tistory.com/226&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;트랜잭션 개념적 이해&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/Database#transaction&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;레포&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[DNS 라운드 로빈 방식]]></title><description><![CDATA[DNS에서 스케줄링 알고리즘 중 DNS round robin 방식을 정리합니다.]]></description><link>https://jeoungsulmo.github.io/posts/network/7</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/network/7</guid><pubDate>Sun, 22 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br&gt;
 &lt;h3 id=&quot;dns-round-robin-방식&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dns-round-robin-%EB%B0%A9%EC%8B%9D&quot; aria-label=&quot;dns round robin 방식 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;DNS round robin 방식&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;DNS 로드밸런싱 기법 중 하나로, 도메인에 등록된 여러개의 IP리스트 중에서 라운드 로빈 방식으로 사용자에게 IP를 리턴하는 방식&lt;/p&gt;
