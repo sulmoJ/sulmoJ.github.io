@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 29 Aug 2021 06:28:32 GMT</lastBuildDate><item><title><![CDATA[시스템 콜]]></title><description><![CDATA[시스템 콜에대해서 알아봅니다.]]></description><link>https://jeoungsulmo.github.io/posts/OS/6</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/OS/6</guid><pubDate>Fri, 27 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 30 Aug 2021 10:04:04 GMT</lastBuildDate><item><title><![CDATA[React Lifecyle]]></title><description><![CDATA[React Lifecycle에대해 간략한 정리입니다.]]></description><link>https://jeoungsulmo.github.io/posts/react/4</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/react/4</guid><pubDate>Sun, 29 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;처음 라이프사이클에대한 간단한 숙지 이후 점차 생각치 않게되어 간략히 다시 정리해봅니다.&lt;/p&gt;
+&lt;h2 id=&quot;react-lifecycle&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#react-lifecycle&quot; aria-label=&quot;react lifecycle permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;React Lifecycle&lt;/h2&gt;
+&lt;p&gt;리액트에서 컴포넌트는 생명주기가 존재합니다. 둥글게 말하면 컴포넌트가 생성되어 돔에 그려지고 용도를 다하면 다시 제거되는 과정까지를 컴포넌트의 라이프사이클이라는 개념으로 구분지어 놓았습니다.&lt;/p&gt;
+&lt;p&gt;이제 라이프사이클 상태별로 나눠 정리하고, 클래스형 컴포넌트에서 사용가능한 라이프사이클 함수들을 시점별로 간단히 정리해보겠습니다.&lt;/p&gt;
+&lt;p&gt;리액트측에서 &lt;strong&gt;함수형 컴포넌트&lt;/strong&gt;를 사용할것을 권장하고, 최근 대부분 함수형 컴포넌트로 작업을 하고있어 사용하지 않지만 과거부터 이어온 프로젝트의 경우 클래스형 컴포넌트를 사용중인 프로젝트도 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;color:#999&quot;&gt;함수형 컴포넌트와 클래스형 컴포넌트의 기능적차이가 있지는 않으니 기존의 클래스형을 굳이 바꾸진 않아도 된다고합니다. (혹시 레거시 덩어리를 만질수도 있으니 간단하게 알아는 놓는걸로..)&lt;span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;라이프사이클의-상태&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4%EC%9D%98-%EC%83%81%ED%83%9C&quot; aria-label=&quot;라이프사이클의 상태 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;라이프사이클의 상태&lt;/h3&gt;
+&lt;p&gt;컴포넌트가 생성되고 사라지기까지 중 시기에 맞는 액션(?)같은게 존재합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#mount&quot;&gt;Mount&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Update&lt;/li&gt;
+&lt;li&gt;UnMount&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이렇게 세가지로 나뉘어 집니다.&lt;/p&gt;
+&lt;h4 id=&quot;mount&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mount&quot; aria-label=&quot;mount permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Mount&lt;/h4&gt;
+&lt;p&gt;마운트는 컴포넌트를 돔 노드로 생성, 돔 트리에 삽입, 그리고 삽입 직후까지의 범위입니다. 조금 둥글게 말하면 컴포넌트가 그려질 때까지의 상황입니다.&lt;/p&gt;
+&lt;p&gt;마운트에 해당하는 &lt;strong&gt;클래스형 컴포넌트&lt;/strong&gt; 라이프사이클 함수로&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;constructor()&lt;/strong&gt; : 메서드 바인딩이나 state초기화를 위해 사용합니다. 필요하지 않다면 생략가능&lt;/li&gt;
+&lt;li&gt;static getDerivedStateFromProps() : 최초 마운트 시와 갱신 시 이렇게 두가지 상황에서 render 메서드를 호출하기 직전에 호출됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;render()&lt;/strong&gt; : 필수로 작성해야하는 함수입니다. JSX가 반환되며 DOM노드를 만들도록 지시하는 함수입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;componentDidMount()&lt;/strong&gt; : 마운트 일어난 직후 호출되는 함수입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이렇게 4가지가 순서대로 진행됩니다.&lt;/p&gt;
+&lt;!--
+함수형 컴포넌트에서는 useEffect를 활용하여 componentDidMount에 해당하는 기능을 사용합니다.
+
+```javascript
+useEffect(() =&gt; {
+  console.log(&quot;component did mount with useEffect!&quot;);
+});
+return (
+  &lt;div&gt;
+    &lt;h1&gt;Hello?&lt;/h1&gt;
+  &lt;/div&gt;
+);
+``` --&gt;
+&lt;h4 id=&quot;update&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#update&quot; aria-label=&quot;update permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Update&lt;/h4&gt;
+&lt;p&gt;한번 마운트된 컴포넌트에서는 상태나 props가 갱신되는 경우 그에 맞게 다시 렌더링을 해줘야합니다.&lt;/p&gt;
+&lt;p&gt;업데이트 과정에 있어서 라이프사이클 함수들은 아래와 같은 순서로 진행됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;static getDerivedStateFromProps() : 최초 마운트 시와 갱신 시 모두에서 render 메서드를 호출하기 직전에 호출됩니다.&lt;/li&gt;
+&lt;li&gt;shouldComponentUpdate() : props 또는 state가 새로운 값으로 갱신되어서 렌더링이 발생하기 직전에 호출됩니다.&lt;/li&gt;
+&lt;li&gt;render() : 마운트가 수정되어 이뤄질때 다시 사용합니다.&lt;/li&gt;
+&lt;li&gt;getSnapshotBeforeUpdate() : 가장 마지막으로 렌더링된 결과가 DOM 등에 반영되었을 때에 호출됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;componentDidUpdate()&lt;/strong&gt; : 갱신이 일어난 직후에 호출됩니다. 이 메서드는 최초 렌더링에서는 호출되지 않습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;unmount&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#unmount&quot; aria-label=&quot;unmount permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Unmount&lt;/h4&gt;
+&lt;p&gt;DOM상에서 컴포넌트가 제거될때를 말합니다. 제거 이후에는 컨트롤 할 이유도 없고 접근할 이유도 없습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;componentWillUnmount()&lt;/strong&gt; : 컴포넌트가 마운트 해제되어 제거되기 직전에 호출됩니다. 메서드 내의 타이머 제거나 네트워크 요청취소 등을 작업하며, 상태를 설정하는 함수들은 사용하지 않습니다. 다시 &lt;code class=&quot;language-text&quot;&gt;render&lt;/code&gt;함수가 호출되면 안됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;마무리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A7%88%EB%AC%B4%EB%A6%AC&quot; aria-label=&quot;마무리 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;마무리&lt;/h4&gt;
+&lt;p&gt;함수형 컴포넌트로 리액트를 처음부터 배우다보니 클래스형 컴포넌트가 많이 어색해 보였는데, 아주 약간은 해소가 된것 같습니다.&lt;/p&gt;
+&lt;p&gt;함수형 컴포넌트에서 위와 같은 상황에서 어떻게 사용하는지는 따로 정리해볼 예정이며 위에 bold처리된 함수들은 가장 많이 쓰이고, 함수형 컴포넌트로 생명주기를 이해할때 비교하며 사용됨으로 꼭 인지 해보려합니다.&lt;/p&gt;
+&lt;p&gt;이외에도 많은 함수들이 존재합니다. 꼭 공식문서를 같이 확인해봅시다.&lt;/p&gt;
+&lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://krpeppermint100.medium.com/js-useeffect%EB%A5%BC-%ED%86%B5%ED%95%9C-react-hooks%EC%9D%98-lifecycle-%EA%B4%80%EB%A6%AC-3a65844bcaf8&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ko.reactjs.org/docs/react-component.html#componentdidmount&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;공식문서&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[시스템 콜]]></title><description><![CDATA[시스템 콜에대해서 알아봅니다.]]></description><link>https://jeoungsulmo.github.io/posts/OS/6</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/OS/6</guid><pubDate>Fri, 27 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br&gt;
 &lt;h2 id=&quot;system-call&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#system-call&quot; aria-label=&quot;system call permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;system call&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;운영체제의 커널이 제공하는 서비스에 대해, 응용프로그램의 요청에 따라 커널에 접근하기 위한 인터페이스이다.&lt;/p&gt;
@@ -261,6 +321,9 @@
 &lt;li&gt;지속성(Durability)
 트랜잭션이 정상적으로 종료된 다음에는 영구적으로 데이터베이스에 작업의 결과가 저장되어야 한다.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&quot;lock&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#lock&quot; aria-label=&quot;lock permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;LOCK&lt;/h4&gt;
+&lt;p&gt;Lock은 트랜잭션에서 순차성을 보장하기 위함으로 사용된다. 일반적으로는 여러 커넥션에서 동시에 동일한 자원을 요청할 경우 순서대로 한 시점에는 하나의 커넥션만 변경할 수 있게 해주는 역할이다.&lt;/p&gt;
+&lt;p&gt;DBMS마다 Lock을 구현하는 방식과 세부적인 방법이 다릅니다. 따라서 DBMS를 효과적으로 이용하기 위해서는 해당 DB의 Lock에 대한 이해가 요구된다.&lt;/p&gt;
 &lt;h4 id=&quot;트랜잭션의-상태&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%98-%EC%83%81%ED%83%9C&quot; aria-label=&quot;트랜잭션의 상태 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;트랜잭션의 상태&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;활동(Active) : 트랜잭션이 실행중인 상태&lt;/li&gt;
@@ -320,6 +383,7 @@
 &lt;li&gt;&lt;a href=&quot;https://keep-cool.tistory.com/46&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;트랜잭션 컨트롤 언어(tcl)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://coding-factory.tistory.com/226&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;트랜잭션 개념적 이해&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/Database#transaction&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;레포&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sabarada.tistory.com/121&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Lock&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[DNS 라운드 로빈 방식]]></title><description><![CDATA[DNS에서 스케줄링 알고리즘 중 DNS round robin 방식을 정리합니다.]]></description><link>https://jeoungsulmo.github.io/posts/network/7</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/network/7</guid><pubDate>Sun, 22 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br&gt;
 &lt;h3 id=&quot;dns-round-robin-방식&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dns-round-robin-%EB%B0%A9%EC%8B%9D&quot; aria-label=&quot;dns round robin 방식 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;DNS round robin 방식&lt;/h3&gt;
 &lt;blockquote&gt;
