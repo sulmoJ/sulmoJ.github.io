@@ -1,4 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 31 Aug 2021 07:10:06 GMT</lastBuildDate><item><title><![CDATA[React Lifecyle]]></title><description><![CDATA[React Lifecycle에대해 간략한 정리입니다.]]></description><link>https://jeoungsulmo.github.io/posts/react/4</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/react/4</guid><pubDate>Sun, 29 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;처음 라이프사이클에대한 간단한 숙지 이후 점차 생각치 않게되어 간략히 다시 정리해봅니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 31 Aug 2021 08:51:14 GMT</lastBuildDate><item><title><![CDATA[javascript event 정리 1]]></title><description><![CDATA[자바스크립트에서 event에대해 알아봅니다.]]></description><link>https://jeoungsulmo.github.io/posts/javascript/4</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/javascript/4</guid><pubDate>Mon, 30 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;지금까지 단순히 화면에서 사용자의 움직임에대한 추가적인 기능을 붙이기 위함으로만 알고 사용해왔던 event에대해서 간단하게 정리합니다.&lt;/p&gt;
+&lt;h2 id=&quot;자바스크립트-이벤트&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%9D%B4%EB%B2%A4%ED%8A%B8&quot; aria-label=&quot;자바스크립트 이벤트 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;자바스크립트 이벤트&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이벤트는 사용자의 조작에 반응해 추가적인 기능을 처리하거나 돔노드간의 정보를 제공하기도하는 많은 기능을 가진 인터페이스입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;이벤트종류&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%A2%85%EB%A5%98&quot; aria-label=&quot;이벤트종류 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이벤트종류&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;cached : 애플리케이션이 캐시될 때&lt;/li&gt;
+&lt;li&gt;load : 웹 페이지의 로드가 완료되었을 때&lt;/li&gt;
+&lt;li&gt;unload : 웹 페이지가 unload 될 때 (새로운 페이지를 요청한 경우)&lt;/li&gt;
+&lt;li&gt;error : 브라우저가 자바스크립트 오류를 만났거나 리소스 로드를 실패했을 때&lt;/li&gt;
+&lt;li&gt;resize : 브라우저 창의 크기를 조정했을 때&lt;/li&gt;
+&lt;li&gt;scroll : 사용자가 페이지를 위아래로 스크롤 할 때&lt;/li&gt;
+&lt;li&gt;focus : 엘리먼트가 포커스를 받았을 때(버블링하지 않음)&lt;/li&gt;
+&lt;li&gt;click : 엘리먼트를 클릭 할 때&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;이벤트-리스너&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A6%AC%EC%8A%A4%EB%84%88&quot; aria-label=&quot;이벤트 리스너 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이벤트 리스너&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;onIncreaseCountHandler&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// 이벤트 처리 로직&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; increaseButton &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;#increase-btn&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+increaseButton&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;click&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; onIncreaseCountHandler&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;일단 위와같이 DOM요소에 접근하여 이벤트를 추가할 수 있다. &lt;code class=&quot;language-text&quot;&gt;addEventListener&lt;/code&gt;라는 Api에 이벤트 타입과 이벤트 발생시 사용할 콜백 함수를 넘겨준다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;자세한 사용 방법&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;콜백&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BD%9C%EB%B0%B1&quot; aria-label=&quot;콜백 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;콜백&lt;/h3&gt;
+&lt;p&gt;이벤트의 특성상 먼저 사용자의 요청이라고도 보이는 이벤트들이 발생하고 그 이후 작업이 진행되야 한다. 그래서 자바스크립트의 특성상 이렇게 비동기적으로 처리되어야 할때 콜백 함수를 작성하여 이벤트 함수의 진행이 끝난 후에 실행하도록 한다.&lt;/p&gt;
+&lt;p&gt;이러한 비동기처리에 대해서 콜백을 사용하는데는 가독성이 떨어지는 한계가 있고, 이를 위한 promise객체와 async/await를 통해 더 알아보기 쉽도록 이용가능하다. 이부분은 추가적으로 정리 하겠습니다.&lt;/p&gt;
+&lt;p&gt;그래서 위에 &lt;code class=&quot;language-text&quot;&gt;addEventListener&lt;/code&gt;를 사용할 때 &lt;code class=&quot;language-text&quot;&gt;onIncreaseCountHandler&lt;/code&gt;가 이벤트 발동 된 이후 실행될 수 있도록 준비한 함수로 콜백함수라 부른다.&lt;/p&gt;
+&lt;h3 id=&quot;이벤트-버블링과-캡처링&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B2%84%EB%B8%94%EB%A7%81%EA%B3%BC-%EC%BA%A1%EC%B2%98%EB%A7%81&quot; aria-label=&quot;이벤트 버블링과 캡처링 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이벤트 버블링과 캡처링&lt;/h3&gt;
+&lt;p&gt;이벤트가 발생하는 순서를 이벤트 흐름(event flow)이라고 하며, 이벤트가 흐르는 방식은 다음의 두 가지가 있다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 938px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/77f429586332c83c7d8a2f0251dd0c74/dc333/event.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAABnklEQVQoz11Ti26DMBDj//9x0rq1omMtryQFQoJnH6TrhhQlufM5vgfVtm3Ql3O2/aNr0Y8j4rKgfMIUnN3nGVvwiN0d4faNdZ6euKqQpZTM2IwDLnWNrut+iQ4ynbMbkR8BDED4uqI+n+G/G2B6QKhKZGUpsO473Nr2qboot7snGZXng9w1X3De7z4q3khaSdmrwkt7x/vphGLP3PXyFhcLElnB3s+fuF6vJiQJ690/QkbWQ49uGEyBbKkQThMSa5Xzbpc/MNXwYKqKVzlCQLWuq6koryrl0bk/hFm1ZGBiuul4XCSeDZn4UCFMTN8ILYhr4fmtvaHpe0vj6Ts6uyplBdIukokKZ9oVu4qUfktZgXOMaFgDx5HRPvG+atFnHVYAJ2B/JCPSN1ChlYsrUqkmoFJqcj7YIdXvws59sjGeKS5M8c/YUM3COZ1Zy4nne9thJmZm7SLtZN8JdzQQCLxR3UDA9jIu2zEmh1RTEvn4yn1hzTXkQtkcCuNZzIGd1TB7NiSQsGcdHc94IdPf0xMnbM9ZdYYZMbJMUqzvB+nsXGEjg3P4AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/77f429586332c83c7d8a2f0251dd0c74/8ac56/event.webp 240w,
+/static/77f429586332c83c7d8a2f0251dd0c74/d3be9/event.webp 480w,
+/static/77f429586332c83c7d8a2f0251dd0c74/e5056/event.webp 938w&quot;
+          sizes=&quot;(max-width: 938px) 100vw, 938px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/77f429586332c83c7d8a2f0251dd0c74/8ff5a/event.png 240w,
+/static/77f429586332c83c7d8a2f0251dd0c74/e85cb/event.png 480w,
+/static/77f429586332c83c7d8a2f0251dd0c74/dc333/event.png 938w&quot;
+          sizes=&quot;(max-width: 938px) 100vw, 938px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/77f429586332c83c7d8a2f0251dd0c74/dc333/event.png&quot;
+          alt=&quot;event&quot;
+          title=&quot;event&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;버블링 : 자식의 이벤트가 부모에게도 전파 되는 것을 의미&lt;/li&gt;
+&lt;li&gt;캡처링 : 부모의 이벤트가 자식에게 전파되는 것을 의미&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;이벤트-객체&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B0%9D%EC%B2%B4&quot; aria-label=&quot;이벤트 객체 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이벤트 객체&lt;/h3&gt;
+&lt;p&gt;DOM에 대해 이벤트를 연결했다면 event라는 이름으로 이벤트 객체를 매개변수로 전달할 수 있으며,&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/API/Event#%EB%A9%94%EC%84%9C%EB%93%9C&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;이벤트 객체&lt;/a&gt;에는 이벤트에 대한 정보와, 이벤트를 조작하는 메서드들이 내장되어 있다.&lt;/p&gt;
+&lt;p&gt;대표적인 예로 아래와 같은 기능들이 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;preventDefault : 태그의 기본 동작(ex, a 태그는 클릭 시 링크이동, form 태그은 폼 내용 전송)을 하지 않게 막음&lt;/li&gt;
+&lt;li&gt;stopPropagation : 이벤트가 버블링되지 않도록 함&lt;/li&gt;
+&lt;li&gt;stopImmediatePropagation : 버블링을 막음과 동시에 같은 이벤트의 다른 리스너도 실행되지 않도록 함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;이벤트-위임&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9C%84%EC%9E%84&quot; aria-label=&quot;이벤트 위임 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이벤트 위임&lt;/h3&gt;
+&lt;p&gt;이벤트 리스너를 지정하는 요소가 많으면 많을수록 페이지의 실행 속도는 느려진다. 이벤트는 target 엘리먼트를 포함하고 있는 부모 요소에도 영향을 미치기 때문에 &lt;strong&gt;자식 요소를 포함하는 부모 요소에 이벤트 리스너를 지정하여 관리&lt;/strong&gt;한다.&lt;/p&gt;
+&lt;p&gt;즉, 이벤트 리스너가 실행할 작업을 부모 요소에게 위임(Delegation)하는 것이 이벤트 위임이다.&lt;/p&gt;
+&lt;p&gt;이러한 패턴은 아래와 같은 장점을 가진다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;동적으로 추가되는 요소들에도 동작가능&lt;/li&gt;
+&lt;li&gt;코드가 간결해짐&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://velog.io/@ljinsk3/JavaScript%EB%A1%9C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;블로그&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ko.javascript.info/event-delegation&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;이벤트 위임&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[React Lifecyle]]></title><description><![CDATA[React Lifecycle에대해 간략한 정리입니다.]]></description><link>https://jeoungsulmo.github.io/posts/react/4</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/react/4</guid><pubDate>Sun, 29 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;처음 라이프사이클에대한 간단한 숙지 이후 점차 생각치 않게되어 간략히 다시 정리해봅니다.&lt;/p&gt;
 &lt;h2 id=&quot;react-lifecycle&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#react-lifecycle&quot; aria-label=&quot;react lifecycle permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;React Lifecycle&lt;/h2&gt;
 &lt;p&gt;리액트에서 컴포넌트는 생명주기가 존재합니다. 둥글게 말하면 컴포넌트가 생성되어 돔에 그려지고 용도를 다하면 다시 제거되는 과정까지를 컴포넌트의 라이프사이클이라는 개념으로 구분지어 놓았습니다.&lt;/p&gt;
 &lt;p&gt;이제 라이프사이클 상태별로 나눠 정리하고, 클래스형 컴포넌트에서 사용가능한 라이프사이클 함수들을 시점별로 간단히 정리해보겠습니다.&lt;/p&gt;
