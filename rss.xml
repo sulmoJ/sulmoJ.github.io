@@ -1,4 +1,150 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 01 Sep 2021 10:59:11 GMT</lastBuildDate><item><title><![CDATA[callback, promise, async/await]]></title><description><![CDATA[콜백함수를 promise와 async/await를 통해 간결하게 사용해 봅니다.]]></description><link>https://jeoungsulmo.github.io/posts/javascript/5</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/javascript/5</guid><pubDate>Tue, 31 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;이번 시도에서 자바스크립트의 동기/비동기 처리를 마무리 할수 있을지 모르겠지만 시도합니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 04 Sep 2021 08:05:53 GMT</lastBuildDate><item><title><![CDATA[OSI 7계층 정.리.]]></title><description><![CDATA[OSI 7계층 간단 정리입니다.]]></description><link>https://jeoungsulmo.github.io/posts/network/9</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/network/9</guid><pubDate>Fri, 03 Sep 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br&gt;
+&lt;h2 id=&quot;osi-7계층&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#osi-7%EA%B3%84%EC%B8%B5&quot; aria-label=&quot;osi 7계층 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;OSI 7계층&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;네트워크 통신 과정을 7개의 계층으로 구분한 산업 표준 참조 모델&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;네트워크 통신에 있어 OSI 7계층의 목적은 &lt;strong&gt;표준&lt;/strong&gt;과 &lt;strong&gt;학습도구&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;여러 통신업체들 장비들이 자신의 업체 장비끼리만 연결이 되었고 호환성이 떨어졌습니다. 그래서 전세계 표준 제정 위원회에서 선정된 위원들로 구성된 국제 표준 기구에서 OSI 7계층을 정의했고 표준이 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2b2a424937272f5ce4ffca9a4f61da49/df438/osi7.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 76.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAAD0ElEQVQ4yzWU21NTVxTG85/40pe+0fYv6KMzrZ1xdOp02hnb6lRULAMUaJnaOxe5adBBp52pCqgQkFvETLiKxQSSmACBhCREcoeE5OQCJCcXft05tmvOmrP3mvV9e521z7dUR4eHhIJB4QH2dncJh4Ik4nHS6TRyXubgIMe2S43P200uJyPLMtFoVOSFCAbeYiLhMPuxGGUuVb5QJH2URS6WOJLz5MQ+WygJsgLHpRLiIZV8TTplEutjJZYVxJlsjqzIkdIZ8sdwKBcoc6nymRQ5vxv3q3ke93SwOvMMecdJTtpHcCHncsIlCrJEMZ9XYjkpTsHvwr6gZ/ieGseLaWSxl1MSqiPXGv62azh+u8zGTxfF+lsW675gc2aSssWCEezmGjYtVaT3dhVC39IMvubLOH6/wvr1C3iarxJsreJgfRlVRhBuNVfhbq/FIzxws4H+S59i1k0ohBGPB+9qO9trLSR8XiVmnJ6iv/Ic/u56BbfdUacUlFg1ojr0rBPoqiHc00DwVj2ZP39EV38e27RWAQctK7jNjXisdYQtRiX24rkW9flTxHubCKnridxuZF9dS2bDJCrcsOGsu8BWYyXOhkvs/VyN9quzmCZHkQXYpZ/CZf6VTdN1fPM65ZMN2nFGvjyD+4crb3HCd7//hozFgCplXcN5sRpHZS3Oyjq2rzagOf0ZlkktRQF2DA7gtjTisn6HS9OPuGjMej2PTp/DK3Ltl2qwC6z762skX4kehkP7jA4tMj7yD6PDL9FpLdy62YfBsELm4BDX5ASBzRv4t1pxTzwVN55naWmZ1uZetGNGxgRm4ukSE6Mr+H0xVJH4HpOGaaZW5ni2PMvCphF1312MlmXi8QSvB/rwWpt4Y2/E1n8fKSGxYjXT+ZcanXlBwTw3zaO3LRKIhlAZwm5ODrXw8WArHw22cEZ/h/frPufhuAbrGzfmgYe4RP8c5iZsj+6zseNlbHGGD9ur+WSkXWBaOaVp46S2kzn/Biqdz8G7wx28N9JNxXAXFbpeTvxRxd8zWha31rGMDLFtu4HX3ob5SR9zq2aGX85y4pdKPhjvoULTqWDfGe1ixG1DlRX6i0djhANBIsEQIZ+fqNDn7Nwc/Q8eMDA4SN+AhsdPRrl99x53enqwWa1srq2DkFpeyLYgvJSVSSdTqAqFAkWhT78QusPhIBqLKv/a8fExCUkSPUsIjyMJuZXFLyVFLJkkL2RYfjudTnZ8PjKZDMWi0DL/WZmgbOVEk8mEzWYlIA4JiMp3RcVBMZHiYgqFxWQpxyVxWNnKJCVR0P/4fwH2X+j2APW+fgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/2b2a424937272f5ce4ffca9a4f61da49/8ac56/osi7.webp 240w,
+/static/2b2a424937272f5ce4ffca9a4f61da49/d3be9/osi7.webp 480w,
+/static/2b2a424937272f5ce4ffca9a4f61da49/e46b2/osi7.webp 960w,
+/static/2b2a424937272f5ce4ffca9a4f61da49/f992d/osi7.webp 1440w,
+/static/2b2a424937272f5ce4ffca9a4f61da49/75bcc/osi7.webp 1556w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/2b2a424937272f5ce4ffca9a4f61da49/8ff5a/osi7.png 240w,
+/static/2b2a424937272f5ce4ffca9a4f61da49/e85cb/osi7.png 480w,
+/static/2b2a424937272f5ce4ffca9a4f61da49/d9199/osi7.png 960w,
+/static/2b2a424937272f5ce4ffca9a4f61da49/07a9c/osi7.png 1440w,
+/static/2b2a424937272f5ce4ffca9a4f61da49/df438/osi7.png 1556w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/2b2a424937272f5ce4ffca9a4f61da49/d9199/osi7.png&quot;
+          alt=&quot;osi7layer&quot;
+          title=&quot;osi7layer&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;응용계층&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%91%EC%9A%A9%EA%B3%84%EC%B8%B5&quot; aria-label=&quot;응용계층 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;응용계층&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;가장 사용자랑 가장 가까운 계층으로 응용SW를 돕는 계층&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;가장 간단한 예로 한 서비스 서버에서 외부의 요청에 의해 html파일(Data)을 보내줘야 할때, 서버에서 전송을 위해 http에 맞춰 데이터를 캡슐화 합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;프로토콜 : DHCP, DNS, FTP, HTTP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;표현계층&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%91%9C%ED%98%84%EA%B3%84%EC%B8%B5&quot; aria-label=&quot;표현계층 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;표현계층&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;송신층과 수신측 사이에 데이터형식을 정해준다. 받은 데이터를 코드변환, 구문 겁색, 암호화, 압축의 과정등을 올바른 표준 방식으로 변환해 줌&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;프로토콜 : JPG, MPEG, SMB, AFP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;세션계층&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%B8%EC%85%98%EA%B3%84%EC%B8%B5&quot; aria-label=&quot;세션계층 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;세션계층&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;통신 세션을 구성하는 계층, &lt;code class=&quot;language-text&quot;&gt;포트&lt;/code&gt;번호를 기반으로 연결한다. &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;동시송수신(Duplex), 반이중(Half-Duplex), 전이중(Full-Duplex) 방식의 통신과 함께 체크 포인팅과 유후, 종료, 다시 시작 과정 등을 수행합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;프로토콜 : NetBIOS, SSH, TLS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;전송계층&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%84%EC%86%A1%EA%B3%84%EC%B8%B5&quot; aria-label=&quot;전송계층 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;전송계층&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;전체 메시지를 &lt;code class=&quot;language-text&quot;&gt;발신지 &amp;lt;-&amp;gt; 목적지&lt;/code&gt; 간 제어와 에러를 관리한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;패킷들의 전송이 유효한지 확인하고 실패한 패킷은 다시보내는 등 신뢰성 있는 통신을 보장하며, 헤더에 &lt;strong&gt;세그먼트&lt;/strong&gt; 가 포함됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PDU : 세그먼트&lt;/li&gt;
+&lt;li&gt;프로토콜 : TCP, UDP  &lt;/li&gt;
+&lt;li&gt;장비 : 게이트웨이, L4 스위치&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;네트워크계층&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EA%B3%84%EC%B8%B5&quot; aria-label=&quot;네트워크계층 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;네트워크계층&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;기기에서 데이터그램(Datagram)이 가는 경로를 설정해주는 역할을 한다. 라우팅 알고리즘을 사용하여 최적의 경로를 선택하고 송신측으로부터 수신측으로 전송한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;PDU : 패킷(Packet)&lt;/li&gt;
+&lt;li&gt;프로토콜 : IP, ICMP 등&lt;/li&gt;
+&lt;li&gt;장비 : 라우터, L3 스위치&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;링크계층&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A7%81%ED%81%AC%EA%B3%84%EC%B8%B5&quot; aria-label=&quot;링크계층 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;링크계층&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;네트워크 기기들 사이의 데이터 전송을 하는 역할&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;스위치 같은경우 MAC주소를 통해 정확한 장치로 정보전달이 가능합니다. 3계층에서 정보를 받아 주소와 제어정보를 헤더와 테일에 추가합니다.(다른 계층은 헤더만 있었음)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PDU : 프레임(Frame)&lt;/li&gt;
+&lt;li&gt;프로토콜 : 이더넷, MAC, PPP, ATM, LAN, Wifi&lt;/li&gt;
+&lt;li&gt;장비 : 브릿지, 스위치&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;물리계층&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%BC%EB%A6%AC%EA%B3%84%EC%B8%B5&quot; aria-label=&quot;물리계층 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;물리계층&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;상위 계층에서 전송된 데이터를 물리 매체(허브, 라우터, 케이블 등)를 통해 다른 시스템에 전기적 신호를 전송하는 역할&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;진짜 데이터들을 0과1의 비트로, 기계어를 전기적 신호로 바꿔서 와이어에 실어줍니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PDU : 비트(Bit)&lt;/li&gt;
+&lt;li&gt;프로토콜 : Modem, Cable, Fiber, RS-232C&lt;/li&gt;
+&lt;li&gt;장비 : 허브, 리피터&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;캡슐화&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BA%A1%EC%8A%90%ED%99%94&quot; aria-label=&quot;캡슐화 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;캡슐화&lt;/h3&gt;
+&lt;p&gt;이렇게 정리한 순서대로가 &lt;strong&gt;캡슐화&lt;/strong&gt;가 되는 순서이고, 반대로 다시 많은 네트워크를 거쳐 응용프로그램이 원하는 데이터로 풀어가는게 &lt;strong&gt;역캡슐화&lt;/strong&gt;라고 합니다.&lt;/p&gt;
+&lt;h2 id=&quot;tcpip-모델&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tcpip-%EB%AA%A8%EB%8D%B8&quot; aria-label=&quot;tcpip 모델 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;TCP/IP 모델&lt;/h2&gt;
+&lt;p&gt;위에서 정말 개론적으로 공부한 OSI는 말그대로 &lt;strong&gt;참조 모델&lt;/strong&gt;이며 &lt;strong&gt;학습도구&lt;/strong&gt;에 해당합니다.&lt;/p&gt;
+&lt;p&gt;현재 우리가 사용하는 인터넷 프로토콜 스택은 대부분 &lt;strong&gt;TCP/IP&lt;/strong&gt;를 따릅니다.&lt;/p&gt;
+&lt;p&gt;이 모델은 데이터의 흐름 관리, 정확성 확인, 패킷의 목적지 보장을 담당합니다. &lt;strong&gt;데이터의 정확성 확인은 TCP가, 패킷을 목적지까지 전송하는 일은 IP가 담당&lt;/strong&gt;합니다.&lt;/p&gt;
+&lt;p&gt;OSI 7계층과 다르게 4계층으로 이뤄져있지만 응용계층에 표현,세션계층의 기능이 추가적으로 있는 모양입니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Data → Segment → Datagram → Frame&lt;/code&gt; DPU의 변화도 차이가 없습니다. 이러한 순서로 캡슐화를 진행하고 사용중에 있습니다.&lt;/p&gt;
+&lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;#x26;blogId=demonicws&amp;#x26;logNo=40117378644&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;blog1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://velog.io/@hidaehyunlee/%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-%EC%A0%84%EB%8B%AC%EB%90%98%EB%8A%94-%EC%9B%90%EB%A6%AC-OSI-7%EA%B3%84%EC%B8%B5-%EB%AA%A8%EB%8D%B8%EA%B3%BC-TCPIP-%EB%AA%A8%EB%8D%B8#5-tcpip-%EB%AA%A8%EB%8D%B8&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;blog2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Build your own React (Step 6)]]></title><description><![CDATA[AUSG 5기 스터디 FE-Deep-Dive 중 Build your own react를 참고해 작성된 포스트입니다. (Step 6)]]></description><link>https://jeoungsulmo.github.io/posts/react/5</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/react/5</guid><pubDate>Thu, 02 Sep 2021 16:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;AUSG 5기 스터디 FE-Deep-Dive 중 Build your own react를 참고해 작성된 포스트입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;reconciliation--재조정-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#reconciliation--%EC%9E%AC%EC%A1%B0%EC%A0%95-&quot; aria-label=&quot;reconciliation  재조정  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Reconciliation ( 재조정 )&lt;/h2&gt;
+&lt;p&gt;리액트는 컴포넌트의 상태나 props가 변한다면 render함수를 통해 변화한 부분을 다시 렌더링합니다.&lt;/p&gt;
+&lt;p&gt;이때 리액트는 실제 돔트리와 가상 돔트리를 비교해 다른 부분을 수정하는 방식인데 이때 두 트리의 비교연산에대해 알아봅니다.&lt;/p&gt;
+&lt;p&gt;일반적인 유명한 비교 알고리즘으로는 O(n^3)의 복잡도를 보이는데, 리액트에서 아래 두가지 가정을 기반으로 O(n)의 &lt;strong&gt;휴리스틱&lt;/strong&gt; 알고리즘을 구현했습니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;서로 다른 타입의 두 엘리먼트는 서로 다른 트리를 만들어낸다.&lt;/li&gt;
+&lt;li&gt;개발자가 key prop을 통해, 여러 렌더링 사이에서 어떤 자식 엘리먼트가 변경되지 않아야 할지 표시해 줄 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;비교-알고리즘-diffing-algorithm&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B9%84%EA%B5%90-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-diffing-algorithm&quot; aria-label=&quot;비교 알고리즘 diffing algorithm permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;비교 알고리즘 (Diffing Algorithm)&lt;/h3&gt;
+&lt;p&gt;두개의 트리를 비교할 때, React는 두 엘리먼트의 루트 엘리먼트 부터 비교하고 이후 동작은 루트 엘리먼트의 타입에 따라 다릅니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;두 트리의 루트 엘리먼트를 비교한다.&lt;/li&gt;
+&lt;li&gt;루트 엘리먼트의 타입이 다를 시 기존의 트리를 버리고 새로 돔트리를 구성한다.&lt;/li&gt;
+&lt;li&gt;Dom 엘리먼트의 타입이 같은 경우, 다음으로 속성을 비교하는데 속성은 다른 부분만 새로 갱신한다.&lt;/li&gt;
+&lt;li&gt;style이 갱신될 때는, 스타일 속성중에서도 변경된 부분만 갱신한다.&lt;/li&gt;
+&lt;li&gt;같은 타입의 컴포넌트가 갱신되면, 인스턴스는 동일하게 유지되고 state가 유지됩니다. 업데이트된 새로운 엘리먼트의 내용을 반영하기 위해 현재 컴포넌트 인스턴스의 props를 갱신합니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;리액트의 키 속성은 같은 형제 돔노드끼리 중 유일하면 됩니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[callback, promise, async/await]]></title><description><![CDATA[콜백함수를 promise와 async/await를 통해 간결하게 사용해 봅니다.]]></description><link>https://jeoungsulmo.github.io/posts/javascript/5</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/javascript/5</guid><pubDate>Tue, 31 Aug 2021 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;이번 시도에서 자바스크립트의 동기/비동기 처리를 마무리 할수 있을지 모르겠지만 시도합니다.&lt;/p&gt;
 &lt;h3 id=&quot;callback-함수&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#callback-%ED%95%A8%EC%88%98&quot; aria-label=&quot;callback 함수 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;callback 함수&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;자바스크립트에서 비동기처리를 위한 매커니즘으로, 다른 코드(함수 또는 메서드)에 인자로 넘겨줌으로써 그 제어권도 함께 위임한 함수&lt;/p&gt;
