@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Sep 2021 12:50:49 GMT</lastBuildDate><item><title><![CDATA[NoSQL]]></title><description><![CDATA[NoSQL에대해 알아봅니다.]]></description><link>https://jeoungsulmo.github.io/posts/Database/5</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Database/5</guid><pubDate>Wed, 08 Sep 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br/&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 11 Sep 2021 09:36:36 GMT</lastBuildDate><item><title><![CDATA[Build your own React (Step 7)]]></title><description><![CDATA[AUSG 5기 스터디 FE-Deep-Dive 중 Build your own react를 참고해 작성된 포스트입니다. (Step 6)]]></description><link>https://jeoungsulmo.github.io/posts/react/6</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/react/6</guid><pubDate>Thu, 09 Sep 2021 16:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;AUSG 5기 스터디 FE-Deep-Dive 중 Build your own react를 참고해 작성된 포스트입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;function-components&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#function-components&quot; aria-label=&quot;function components permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Function Components&lt;/h2&gt;
+&lt;p&gt;이번엔 함수형 컴포넌트를 지원할수있도록 해봅니다.&lt;/p&gt;
+&lt;p&gt;함수형 컴포넌트 파이버는 기존의 파이버와 두가지 차이가 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;함수형 컴포넌트의 파이버는 돔노드가 없다.&lt;/li&gt;
+&lt;li&gt;파이버의 자식요소는 실행 중인 함수에서 가져오는데, 대신 props로부터 바로 얻습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;일단 이렇게만 알아두고 코드로 넘어가 보겠습니다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;performUnitOfWork&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;fiber&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; isFunctionComponent &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;type &lt;span class=&quot;token keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Function&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;isFunctionComponent&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token function&quot;&gt;updateFunctionComponent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token function&quot;&gt;updateHostComponent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;파이버의 타입을 체크해 업데이트 방식을 나눕니다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;updateFunctionComponent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;fiber&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// TODO&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+​
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;updateHostComponent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;fiber&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;createDom&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;reconcileChildren&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;children&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;updateHostComponent&lt;/code&gt;함수는 기존의 파이버를 업데이트하는 방식이라 차이가 없습니다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;함수형 컴포넌트 업데이트 방식 처리를 위해 분리되었는데, &lt;code class=&quot;language-text&quot;&gt;updateFunctionComponent&lt;/code&gt; 함수에서는 함수형 컴포넌트의 children을 가져오기위해 만들어진 함수입니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;updateFunctionComponent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;fiber&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; children &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;reconcileChildren&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; children&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위에서 본 두가지 차이점 중 두번째가 이 부분인 듯 합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;App&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Hi &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위와 같은 함수가 현재 type에 들어있으면, 지금 App이라는 파이버는 아래처럼 존재 하고&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; App&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  props&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;foo&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;여기서 &lt;code class=&quot;language-text&quot;&gt;fiber.type(fiber.props)&lt;/code&gt;처럼 함수 실행중 props를 바로 가져다 사용하게 됩니다. 이렇게 App함수는 h1 앨리먼트를 반환해 재조정에 들어갑니다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;다음으로 수정이 필요한 부분은 &lt;code class=&quot;language-text&quot;&gt;commitWork&lt;/code&gt;함수입니다.&lt;/p&gt;
+&lt;p&gt;아래 코드가 기존 &lt;code class=&quot;language-text&quot;&gt;commitWork&lt;/code&gt;함수입니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;commitWork&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;fiber&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+​
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; domParent &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;parent&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;effectTag &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;PLACEMENT&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+    fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    domParent&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;effectTag &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;UPDATE&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+    fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;updateDom&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+      fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;alternate&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;effectTag &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;DELETION&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    domParent&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;removeChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+​
+  &lt;span class=&quot;token function&quot;&gt;commitWork&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;child&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;commitWork&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sibling&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;첫번째 특징에 함수형 컴포넌트는 &lt;code class=&quot;language-text&quot;&gt;파이버의 형태에서 dom을 가지고 있지 않다&lt;/code&gt; 라고 했습니다.&lt;/p&gt;
+&lt;p&gt;그래서 commit작업에서 DOM노드가 없는 파이버에대한 처리를 두가지 정도 해줘야 합니다.&lt;/p&gt;
+&lt;br/&gt;
+첫번째로
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// 기존 코드&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; domParent &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;parent&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom
+
+&lt;span class=&quot;token comment&quot;&gt;// 이렇게 바꿔줍니다.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; domParentFiber &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;parent
+  &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;domParentFiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    domParentFiber &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; domParentFiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;parent
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; domParent &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; domParentFiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;기존 파이버에서 1촌 부모 파이버의 돔노드를 가져왔다면, 함수형 컴포넌트 파이버를 고려해, 가장 가까운 직계조상 파이버의 DOM노드를 찾을때까지 반복문을 돌립니다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;두번째로&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; commitWork&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// 기존&lt;/span&gt;
+  domParent&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;removeChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// 변경 후&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;commitDeletion&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; domParent&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;commitDeletion&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; domParent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    domParent&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;removeChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;commitDeletion&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;child&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; domParent&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;기존에 DOM노드 삭제 과정에서도 마찬가지로 직계 자손에 DOM노드가 존재하는지의 여부를 체크하며 재귀를 통해 찾아줍니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[NoSQL]]></title><description><![CDATA[NoSQL에대해 알아봅니다.]]></description><link>https://jeoungsulmo.github.io/posts/Database/5</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/Database/5</guid><pubDate>Wed, 08 Sep 2021 15:00:00 GMT</pubDate><content:encoded>&lt;br/&gt;
 &lt;h2 id=&quot;nosql&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#nosql&quot; aria-label=&quot;nosql permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;NoSQL&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;관계형 데이터베이스 이외의 형식으로 데이터를 저장하는 데이터베이스&lt;/p&gt;
