@@ -1,4 +1,294 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 22 Sep 2021 08:40:47 GMT</lastBuildDate><item><title><![CDATA[그림으로 배우는 클라우드 인프라와 API구조 9, 10장]]></title><description><![CDATA[ausg 5기 클라우드-테라폼 스터디 중 '그림으로 배우는 클라우드 인프라와 API구조'라는 책의 9, 10장 정리입니다.]]></description><link>https://jeoungsulmo.github.io/posts/cloud/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/cloud/2</guid><pubDate>Wed, 15 Sep 2021 15:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 22 Sep 2021 12:03:05 GMT</lastBuildDate><item><title><![CDATA[그림으로 배우는 클라우드 인프라와 API구조 10장]]></title><description><![CDATA[ausg 5기 클라우드-테라폼 스터디 중 '그림으로 배우는 클라우드 인프라와 API구조'라는 책의 10장 정리입니다.]]></description><link>https://jeoungsulmo.github.io/posts/cloud/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/cloud/3</guid><pubDate>Tue, 21 Sep 2021 15:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;이전 파트들은 항상 두장 중 한장까지만 정리되어서 블로그에 올라와있지 않습니다… 언젠가 다 정리하는걸로..&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;오브젝트-스토리지-리소스-제어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%A0%9C%EC%96%B4&quot; aria-label=&quot;오브젝트 스토리지 리소스 제어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;오브젝트 스토리지 리소스 제어&lt;/h2&gt;
+&lt;h3 id=&quot;오브젝트-스토리지-리소스&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%A6%AC%EC%86%8C%EC%8A%A4&quot; aria-label=&quot;오브젝트 스토리지 리소스 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;오브젝트 스토리지 리소스&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;블록 스토리지&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;볼륨과 스냅샷으로 구분&lt;/li&gt;
+&lt;li&gt;스토리지 관점에서는 블록 단위로 데이터를 인식&lt;/li&gt;
+&lt;li&gt;OS관점에서는 블록 스토리지 내부 파일들을 파일 시스템상의 다른 파일들과 동일하게 인식하고 처리&lt;/li&gt;
+&lt;li&gt;서버관점에서 스토리지를 디바이스로 인식하는데 주로 로컬 디스크나 DB를 사용하면서 온라인 시스텐의 정보 처리 용도로 활용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;네트워크 스토리지(AWS EFS)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TCP/IP로 네트워크를 연결해 사용하는 특징이 있으며, NFS라는 프로토콜을 사용합니다. OS의 파일 시스템 관점에서는 다른 파일들과 다를 바 없이 똑같이 파일로 인식&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;오브젝트 스토리지&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;파일 단위로 데이터를 관리하고 HTTP/HTTPS 프로토콜로 데이터에 접근. 스토리지를 마운트해 사용하는 경우가 거의 없고 개별적인 파일단위로 사용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;오브젝트-스토리지의-내부-구성과-활용-방법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80%EC%9D%98-%EB%82%B4%EB%B6%80-%EA%B5%AC%EC%84%B1%EA%B3%BC-%ED%99%9C%EC%9A%A9-%EB%B0%A9%EB%B2%95&quot; aria-label=&quot;오브젝트 스토리지의 내부 구성과 활용 방법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;오브젝트 스토리지의 내부 구성과 활용 방법&lt;/h4&gt;
+&lt;p&gt;오브젝트 스토리지는 HTTP/HTTPS로 파일을 제어해 내부적으로 HTTP 서버를 내장하고 있습니다. 그래서 HTTP 서버를 통해 외부에 파일 공개도 가능합니다.&lt;/p&gt;
+&lt;p&gt;블록 스토리지를 활용하는 것은 우리가 HDD, SDD를 사용하는것과 같은 접근이 이뤄지는것과 비슷합니다. 웹사이트를 구축한 경우로 생각해보면 블록 스토리지는 기본적으로 외부와의 연결을 위해 서버 리소스가 필요합니다. 서버 인스턴스를 대여하고 OS에 nginx나 아파치 톰캣과 같은 소프트웨어를 설치해 포트를 통해 요청을 받아 OS의 파일시스템을 통해 블록스토리지(볼륨)에 접근하는 과정이 필요합니다.&lt;/p&gt;
+&lt;p&gt;하지만 오브젝트 스토리지는 기본적으로 HTTP서버, 파일시스템, 네트워크 디바이스 접속까지 필요한 내용은 모두 포함되어있어 위와같은 설정과정이 필요 없습니다.&lt;/p&gt;
+&lt;p&gt;추가적인 오브젝트 스토리지의 장점으로&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;리플리케이션 기능이 있어 백업이 필요 없음.&lt;/li&gt;
+&lt;li&gt;용량 산정에 크게 고민하지 않아도 됨&lt;/li&gt;
+&lt;li&gt;API로 파일이 제어가능&lt;/li&gt;
+&lt;li&gt;HTTP/HTTPS로 파일에 접근&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 있습니다.&lt;/p&gt;
+&lt;h5 id=&quot;오브젝트-스토리지-활용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%ED%99%9C%EC%9A%A9&quot; aria-label=&quot;오브젝트 스토리지 활용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;오브젝트 스토리지 활용&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;정적인 웹사이트 제공&lt;/li&gt;
+&lt;li&gt;용량이 큰 동영상 파일 제공&lt;/li&gt;
+&lt;li&gt;빅데이터와 같은 용량이 폭발적으로 늘어나 분석이 쉽지 않은 로그파일&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;블록스터리지-활용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B8%94%EB%A1%9D%EC%8A%A4%ED%84%B0%EB%A6%AC%EC%A7%80-%ED%99%9C%EC%9A%A9&quot; aria-label=&quot;블록스터리지 활용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;블록스터리지 활용&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;안전성 높은 입출력&lt;/li&gt;
+&lt;li&gt;파일의 정합성을 위한 LOCK이 필요한 경우&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;오브젝트-스토리지-기본-api&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EA%B8%B0%EB%B3%B8-api&quot; aria-label=&quot;오브젝트 스토리지 기본 api permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;오브젝트 스토리지 기본 API&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;어카운트 : 테넌트에 해당, 평소엔 그닥 인지 못하는 단위이지만 크로스 어카운트시 필요&lt;/li&gt;
+&lt;li&gt;버킷(컨테이너) : AWS S3로 파일 시스템과 비유시 최상위 폴더에 해당. 버킷 이름이 FQND로 공개되어 버킷 이름이 고유해야함&lt;/li&gt;
+&lt;li&gt;오브젝트&lt;/li&gt;
+&lt;li&gt;버킷 안에 저장되는 파일들.&lt;/li&gt;
+&lt;li&gt;버킷안에 버킷을 생성하는건 불가능, 대신 폴더 경로처럼 프리픽스를 접두어로 분류 체계를 만들 수 있음&lt;/li&gt;
+&lt;li&gt;프리픽스와 파일명을 포함한것을 key라고 함 (Bucket_name/Object)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 634px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8bc26d756dc33a8abf2827cae3c7c365/374ac/s3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 112.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAD70lEQVQ4y01VaXMbVRDcvxu+QAUKVwFfIC5AIb6I7MjWsTpWe2jv+5BkOw78rqF7duXwoes9vaOnp2feyvh8yKQrdnJsQmlyVx7bSF6OmXw+pLrG3xyfu1jXvjxm8s9TLv8+F/IF516Oqbxw/Zjqb+NQR7I1J2Iv72Uzv5PVbCxlbEuV2OJusLYYY30sHuY760HBNe41mSNPXSSPRBvq3HjqUgkcEwfnEtimpP4G40LSYI2Lt0oWeaZ41r0ku6Ve7EoPWXlyrIOesA0HwliMIxTWmSdV6kqZOFJhfqhD2VehqqxSW7JwrQFoyfM+1oscCVrypHYksAUKK5BkgYXDntQA1VSpo54dm16Bqmj6lPbVDgH91xR55vSbig369dgmErpL+DLVVOKdKW3hqTqizk5wVGUebdQCrpGMpBoQMAoQaqqJK5yTIHQXUmJMgpXksSW+A3/duc4zkCXhRuz1RBJ/ifNbvUNf94CxrwJsrBURTHetqZIdELXFAY4kKpOt7BtfWqaM9PJ4o1kw1UO9kz2BPYM91pY7KZFKAe8USKUc0IA0iVAUoC5QuNxW0iRcaUAGISFTV0JOaiXrCYoBVeEoWYf9DAqLtFfY8TJUh7uFBjm0/qs6pq2EnFQ5fMx7Io7lgKbyVI1rT6UuXf1N0hCFo58dg3CNwbFvVKhcSWOhKoUSGp7FPfLU0kARzE/xW4MiIIl9FImqu8HXBns1BBgxGjZm4+JCiKIwcozqnpAnluxwOVRSC0G2SuzgCZYZK2zhpU0xbhSGpokDWgQcPhWD6gpcoJooWMrOmakFLAwV0cPAW8jH6/dy/usvcvfxA/pzLUbNNFgIJfuKIrWUlCQBLlPlyWOSptFKJneXcnb2k7x58428ffuDbFefxGBKWbLRiql3SY80Rm/iEuf0i5bUICMR99raU0turkby9/VIbi5/x4OYflWoqgaU+bav8tA+LAoz8JHiX6NzGf3xm9h8ADgbenO8f2KGl7YSo2ErIIV6qGDvU59WPqRND53tvVxcvJcfz36W7779Xs7fvZMC2bEoRYLiRShasADhQFYPRaFPDELC+tSTQ6Fm07FcXozk8sOf8un2Cm99ibsoXGb1YJXZjC0usjnb0gFc2bd4DR2eVBfo6zi2gTwfIrQQPr5IL/YXIDMVbQkBIG1A2ECtoe+wQWMWthJ2MLvM2TKWVjoN+2KxJSp41gyFYe+lIFSytCerEdDYD4TuZiIO0FWuWOZYFg/XYj7cyPy+Hy3zVnw8Pw8NPUW7zCdX+LtYvCr7HyG+GCA51J5+NZh+6M6AuX5oI/Rg7Jv4XK31aRVsrRBVh8oGnp1QJ8gAZ/4DPy1sgxcyjO0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/8bc26d756dc33a8abf2827cae3c7c365/8ac56/s3.webp 240w,
+/static/8bc26d756dc33a8abf2827cae3c7c365/d3be9/s3.webp 480w,
+/static/8bc26d756dc33a8abf2827cae3c7c365/14369/s3.webp 634w&quot;
+          sizes=&quot;(max-width: 634px) 100vw, 634px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/8bc26d756dc33a8abf2827cae3c7c365/8ff5a/s3.png 240w,
+/static/8bc26d756dc33a8abf2827cae3c7c365/e85cb/s3.png 480w,
+/static/8bc26d756dc33a8abf2827cae3c7c365/374ac/s3.png 634w&quot;
+          sizes=&quot;(max-width: 634px) 100vw, 634px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/8bc26d756dc33a8abf2827cae3c7c365/374ac/s3.png&quot;
+          alt=&quot;s3&quot;
+          title=&quot;s3&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+그림에서 key값에 Account에 해당하는 test가 포함되어있는데 AWS는 Account값을 뺸 경로로 사용합니다.&lt;/p&gt;
+&lt;h3 id=&quot;오브젝트-스토리지-api&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-api&quot; aria-label=&quot;오브젝트 스토리지 api permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;오브젝트 스토리지 API&lt;/h3&gt;
+&lt;h4 id=&quot;내-s3-목록-조회-및-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%82%B4-s3-%EB%AA%A9%EB%A1%9D-%EC%A1%B0%ED%9A%8C-%EB%B0%8F-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;내 s3 목록 조회 및 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;내 s3 목록 조회 및 생성&lt;/h4&gt;
+&lt;p&gt;오브젝트를 만드는 방식은 CLI 방식과 API 방식이 있습니다. 책에서는 오픈스택 기준으로 설명을 해 내부 작동구조나 원리 모두 오픈스택 기준의 설명입니다. &lt;del&gt;뭐.. 비슷하겠죠..?&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;일단 AWS는 아래와 같이 생성할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-services-s3-commands.html#using-s3-commands-listing-buckets&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;공식 문서 👀&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;color:#999&quot;&gt;위에 링크로 들어가시면 aws cli 명령어를 알려줍니다.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8a3627cac23541b764d4491d07bf6e3a/e92cd/s3bucket.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABi0lEQVQoz32RS27bMBCGdYXW8UOy9UhEiZSsFy3JetiKlRbuAbIuuikKBG0XQS+QY3TXq/4dMjbgGkgXH2Yozvz6Z2gcmhLRJkcYphBRruE8BRcZWNIhKvdIt/fIZAsRS3h3EVZOANsNNY4bwD3h052RyAZtP6Jq9yiqFtv+gLqjvBzxKD/ji2D4WsQ49ntwxrGcL2Gb9isLG6bp4EaxcDChs9EPH1A2e8i6x4aQVa9Fq7rDYxLg99rCHzHDS3KLX8zCj9V7/LQn+E48r97hU+Bj4XFM5zampguj7gbtbtvdY7PdUT6g3VHefITovkEULVhc0GgMC3JgLT1YlqtR7uYkooSUQy2YyhrDeESzG5GXjY67wwi2HrHKXhBEEjzO4dNOXRbjNkxwRztW3JyEzmIqGsrR8HCkMZXD/iT4gLg4ICif4PMcni+wdJhuml0wNV+F/nEY0t+zTYM4K8HXhY6ZrGjMDqJ+QkqPdm48u7nkUkwLvlU4oSUrrpuvuf5uzCzvzeLrhv/VnfkLHoYFOUtfb90AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/8a3627cac23541b764d4491d07bf6e3a/8ac56/s3bucket.webp 240w,
+/static/8a3627cac23541b764d4491d07bf6e3a/d3be9/s3bucket.webp 480w,
+/static/8a3627cac23541b764d4491d07bf6e3a/e46b2/s3bucket.webp 960w,
+/static/8a3627cac23541b764d4491d07bf6e3a/f992d/s3bucket.webp 1440w,
+/static/8a3627cac23541b764d4491d07bf6e3a/da455/s3bucket.webp 1778w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/8a3627cac23541b764d4491d07bf6e3a/8ff5a/s3bucket.png 240w,
+/static/8a3627cac23541b764d4491d07bf6e3a/e85cb/s3bucket.png 480w,
+/static/8a3627cac23541b764d4491d07bf6e3a/d9199/s3bucket.png 960w,
+/static/8a3627cac23541b764d4491d07bf6e3a/07a9c/s3bucket.png 1440w,
+/static/8a3627cac23541b764d4491d07bf6e3a/e92cd/s3bucket.png 1778w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/8a3627cac23541b764d4491d07bf6e3a/d9199/s3bucket.png&quot;
+          alt=&quot;s3bucket&quot;
+          title=&quot;s3bucket&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;9장에서 배운대로 IAM사용자를 생성하고 s3 버킷을 만들어 보았습니다. cli방식으로는 저런식으로 생성 해볼 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bec268e327d15a330ad73349d76cb5b4/5b2ff/create_bucket.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 36.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABLklEQVQoz11RW04DMRDL/a/CF7fgoxIHQEIq0Hbb5j1J9lVkPFmoRD+81mQnY49jQoywziGlhNYa2tg2fkCpFfUBkXd8CPDeI5CzCIx+9vuPjpQyf0TEmKBCMQlsbgilYVkWzPP8D9pvnYdNHF4XCEVMyhkpCx3QRSkQKZ1Lka6YWGfW6kZrKdt/5UrntbJ+30HeXpCDhVG7n18H2JA4bBtySa07U1croXwfQEx018ax81gF9fUZbfcEcQOMZiNdUXrzOE1oExvn5b6mXlxvN6zr2vG38tLFWANo30Dkpmakkq7rmdfEIfo4jo+k5yqgl/QBHLNS1nVnnmVG5X3Y+iRjGrfIjPzmdHIJkayPcTieMJwvOBOZqpqzxqLnx9PQY9FML9crrHXsPfce3fQHHL4ZBgC/c34AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/bec268e327d15a330ad73349d76cb5b4/8ac56/create_bucket.webp 240w,
+/static/bec268e327d15a330ad73349d76cb5b4/d3be9/create_bucket.webp 480w,
+/static/bec268e327d15a330ad73349d76cb5b4/e46b2/create_bucket.webp 960w,
+/static/bec268e327d15a330ad73349d76cb5b4/f992d/create_bucket.webp 1440w,
+/static/bec268e327d15a330ad73349d76cb5b4/882b9/create_bucket.webp 1920w,
+/static/bec268e327d15a330ad73349d76cb5b4/94170/create_bucket.webp 2190w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/bec268e327d15a330ad73349d76cb5b4/8ff5a/create_bucket.png 240w,
+/static/bec268e327d15a330ad73349d76cb5b4/e85cb/create_bucket.png 480w,
+/static/bec268e327d15a330ad73349d76cb5b4/d9199/create_bucket.png 960w,
+/static/bec268e327d15a330ad73349d76cb5b4/07a9c/create_bucket.png 1440w,
+/static/bec268e327d15a330ad73349d76cb5b4/29114/create_bucket.png 1920w,
+/static/bec268e327d15a330ad73349d76cb5b4/5b2ff/create_bucket.png 2190w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/bec268e327d15a330ad73349d76cb5b4/d9199/create_bucket.png&quot;
+          alt=&quot;create bucket&quot;
+          title=&quot;create bucket&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;AWS console에서도 확인이 가능합니다.&lt;/p&gt;
+&lt;p&gt;내부동작은 오픈스택기준 설명을 보았을 때 저렇게 작성한 정보들(access key ID, secret Access key)을 https 요청으로 헤더와 url에 정보를 담아 요청시 AWS측에서 생성해 주는것 같습니다.&lt;/p&gt;
+&lt;p&gt;오픈스택기준 설명에서 특이한 점은 생성인데 PUT요청을 사용해 버킷을 생성하는데, Account기준으로 보았을 때 트리구조로 이루어져 컨테이너나 오브젝트가 생성이 아닌 추가 되는걸로 보이기 때문이라고 합니다.&lt;/p&gt;
+&lt;p&gt;이후 &lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/API/API_CreateBucket.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;문서&lt;/a&gt;를 찾았는데 AWS 버킷 생성은&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;http&quot;&gt;&lt;pre class=&quot;language-http&quot;&gt;&lt;code class=&quot;language-http&quot;&gt;PUT / HTTP/1.1
+&lt;span class=&quot;token header-name keyword&quot;&gt;Host:&lt;/span&gt; Bucket.s3.amazonaws.com
+&lt;span class=&quot;token header-name keyword&quot;&gt;x-amz-acl:&lt;/span&gt; ACL
+&lt;span class=&quot;token header-name keyword&quot;&gt;x-amz-grant-full-control:&lt;/span&gt; GrantFullControl
+&lt;span class=&quot;token header-name keyword&quot;&gt;x-amz-grant-read:&lt;/span&gt; GrantRead
+&lt;span class=&quot;token header-name keyword&quot;&gt;x-amz-grant-read-acp:&lt;/span&gt; GrantReadACP
+&lt;span class=&quot;token header-name keyword&quot;&gt;x-amz-grant-write:&lt;/span&gt; GrantWrite
+&lt;span class=&quot;token header-name keyword&quot;&gt;x-amz-grant-write-acp:&lt;/span&gt; GrantWriteACP
+&lt;span class=&quot;token header-name keyword&quot;&gt;x-amz-bucket-object-lock-enabled:&lt;/span&gt; ObjectLockEnabledForBucket
+&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&amp;lt;CreateBucketConfiguration xmlns=&quot;http://s3.amazonaws.com/doc/2006-03-01/&quot;&gt;
+   &amp;lt;LocationConstraint&gt;string&amp;lt;/LocationConstraint&gt;
+&amp;lt;/CreateBucketConfiguration&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이러한 구조로 권한 설정과 ACL설정 등 설정 옵션과 함께 문서에 작성되어 있습니다.&lt;/p&gt;
+&lt;h4 id=&quot;멀티파트-업로드하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A9%80%ED%8B%B0%ED%8C%8C%ED%8A%B8-%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EA%B8%B0&quot; aria-label=&quot;멀티파트 업로드하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;멀티파트 업로드하기&lt;/h4&gt;
+&lt;p&gt;업로드할 오브젝트의 크기가 크면 파일을 분할해 병렬적으로 업로드 처리를 하는 멀티파트 업로드라는 기능이 있습니다.&lt;/p&gt;
+&lt;p&gt;크게 3단게로 작동하는데&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;오브젝트를 분할해서 파트를 생성&lt;/li&gt;
+&lt;li&gt;생성된 파트를 업로드&lt;/li&gt;
+&lt;li&gt;파트를 결합해 원래 오브젝트를 생성&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;이렇게 3가지 단계의 API로 AWS는 구현이 되어있고, 오픈스택은 한번에 처리하는 API가 있습니다.&lt;/p&gt;
+&lt;p&gt;3가지 단계를 작업하는데 멀티파트업로드의 추가적인 API가 궁굼하시다면 &lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/mpuoverview.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;여기로&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;aws-s3-cli&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#aws-s3-cli&quot; aria-label=&quot;aws s3 cli permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;AWS S3 CLI&lt;/h4&gt;
+&lt;p&gt;위에서 버킷 생성하는 부분을 AWS CLI통해 잠깐 보았습니다. 이러한 AWS CLI는 명령을 통해 여러 API를 조합해 기능단위로 사용하기 편합니다.&lt;/p&gt;
+&lt;p&gt;AWS CLI를 통해 유닉스나 리눅스의 명령 처럼 ls mv같은 파일리스트나 이동을 이해하기 쉽게 사용할 수 있습니다. 다만 sync 명령은 리눅스에서 메모리의 데이터를 디스크로 저장하는데 s3는 인수에 동기화할 원본 경로와 동기화할 대상 경로를 지정하면 그 경로 아래 모든 오브젝트를 동기화 하는 기능임으로 차이도 있으니 주의해야 합니다.&lt;/p&gt;
+&lt;p&gt;위에서본 Multipart Upload와 같이 대용량 파일을 업로드하는 방식이 있는데 CLI를 이용시 일정 기준이상 자동으로 사용해 줍니다. 직접 API를 골라 사용하지 않고도 쉽게 이러한 기능들을 사용할 수 있도록 돕습니다.&lt;/p&gt;
+&lt;h3 id=&quot;오브젝트-스토리지의-설정-변경을-위한-api&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80%EC%9D%98-%EC%84%A4%EC%A0%95-%EB%B3%80%EA%B2%BD%EC%9D%84-%EC%9C%84%ED%95%9C-api&quot; aria-label=&quot;오브젝트 스토리지의 설정 변경을 위한 api permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;오브젝트 스토리지의 설정 변경을 위한 API&lt;/h3&gt;
+&lt;h4 id=&quot;acl-기능&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#acl-%EA%B8%B0%EB%8A%A5&quot; aria-label=&quot;acl 기능 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ACL 기능&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;버킷, 오브젝트, 모드를 대상으로 접근 제어를 할 수 있는 기능입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;9장에서 본 사용자를 대상으로 이들을 &lt;strong&gt;오브젝트 스토리지 그룹&lt;/strong&gt;에 포함시켜 권한을 부여합니다.&lt;/p&gt;
+&lt;p&gt;그룹은 총 3가지가 존재합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Authenticated User : 인증이 필요하고 인증 후에는 관리 권한을 가진 그룹&lt;/li&gt;
+&lt;li&gt;Everyone : 인증이 필요없고 일반적인 접근이 허용되는 그룹&lt;/li&gt;
+&lt;li&gt;Log delivery: 로그를 관리하는 사용자들 그룹&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;버저닝과-수명주기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B2%84%EC%A0%80%EB%8B%9D%EA%B3%BC-%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0&quot; aria-label=&quot;버저닝과 수명주기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;버저닝과 수명주기&lt;/h4&gt;
+&lt;h5 id=&quot;버저닝&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B2%84%EC%A0%80%EB%8B%9D&quot; aria-label=&quot;버저닝 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;버저닝&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;한 오브젝트가 변경될 때마다 그 사실을 이력으로 남겨 여러 버전을 보관하는 기능&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;기본적으로 버저닝 기능이 활성화 되어있으면 조회시 가장 최신 버전의 오브젝트를 반환해줍니다. 삭제에 있어서도 이전 버전 ID를 명시적으로 말해주지 않는이상 최신 버전만 삭제되고 이전 오브젝트가 다 남아있습니다.&lt;/p&gt;
+&lt;h5 id=&quot;수명-주기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%88%98%EB%AA%85-%EC%A3%BC%EA%B8%B0&quot; aria-label=&quot;수명 주기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;수명 주기&lt;/h5&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;공식문서&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;일정 기간 후에 오브젝트를 물리적으로 삭제하도록 규칙을 정할 수 있는 기능&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;버저닝과 조합하면 버저닝의 이력 기간을 제어할수 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;오브젝트의 생성 일자 기준 며칠 후&lt;/li&gt;
+&lt;li&gt;해당 오브젝트가 최신 버전이 되거나 최신 버전이 아니게 된지 몇칠 후&lt;/li&gt;
+&lt;li&gt;등등&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이런식으로 다양하게 구성 가능합니다.&lt;/p&gt;
+&lt;h4 id=&quot;암호화&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%95%94%ED%98%B8%ED%99%94&quot; aria-label=&quot;암호화 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;암호화&lt;/h4&gt;
+&lt;p&gt;민감한 정보가 저장되는 경우 암호화가 필요합니다. S3는 2가지 방식을 제공합니다.&lt;/p&gt;
+&lt;h5 id=&quot;서버측-암호화&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%9C%EB%B2%84%EC%B8%A1-%EC%95%94%ED%98%B8%ED%99%94&quot; aria-label=&quot;서버측 암호화 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;서버측 암호화&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;버킷 전체에 암호화를 적용하는 방법&lt;/li&gt;
+&lt;li&gt;버킷에 저장할 때 암호화, 조회시 복호화&lt;/li&gt;
+&lt;li&gt;접근 권한과 키정보만 있으면 조회 가능&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;클라이언트-측-암호화&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%B8%A1-%EC%95%94%ED%98%B8%ED%99%94&quot; aria-label=&quot;클라이언트 측 암호화 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;클라이언트 측 암호화&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;클라이언트가 오브젝트를 암호화 후 업로드&lt;/li&gt;
+&lt;li&gt;암호화 키는 클라우드 안에서 메타 데이터로 관리&lt;/li&gt;
+&lt;li&gt;다운로드 이후에도 복호화 하지않으면 정보를 볼 수 없음&lt;/li&gt;
+&lt;li&gt;클라우드에 의존하지 않는 방식의 암호화&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;웹-사이트-기능&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9B%B9-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EA%B8%B0%EB%8A%A5&quot; aria-label=&quot;웹 사이트 기능 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;웹 사이트 기능&lt;/h4&gt;
+&lt;p&gt;앞서 말한것 처럼 HTTP/HTTPS서버가 내장되어있어 접근시 웹서버를 띄울 수 있다.&lt;/p&gt;
+&lt;p&gt;기능을 활성화하지 않고 접근 권한만 공개시 &lt;code class=&quot;language-text&quot;&gt;https://{bucket_name}s3.amazonaws.com/index.html&lt;/code&gt;이런식으로 경로가 다 작성되야 합니다.&lt;/p&gt;
+&lt;p&gt;권한을 활성화시 도큐먼트 루트나 커스텀 에러, 그리고 리다이렉트와 같은 기본적인 웹 서버의 기능들을 지원합니다.&lt;/p&gt;
+&lt;p&gt;도큐먼트 루트로 리다이렉트 됨으로 오브젝트 경로는 빠질 수 있으며 에러페이지 또한 aws기본제공화면이 아닌 커스텀된 에러페이지를 보여줄 수 있다.&lt;/p&gt;
+&lt;h5 id=&quot;cors&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#cors&quot; aria-label=&quot;cors permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;CORS&lt;/h5&gt;
+&lt;p&gt;보안상 XMLHttpRequest가 서로 다른 도메인을 넘나들 때 보안상 접근이 제한되는 제약 이 있습니다.&lt;/p&gt;
+&lt;p&gt;이렇게 외부 도메인의 웹사이트에서 접근을 시도하면 동일 출처 정책에 걸리게 되는걸 막기위해 S3는 API 바디에 CORS를 위한 설정을 추가해 허용해줄 수 있습니다.&lt;/p&gt;
+&lt;p&gt;버킷에 허용할 도메인을 걸어주면 HTTP헤더를 통해 보안검사를 통과하게 됩니다.&lt;/p&gt;
+&lt;p&gt;pre-flight와 같은 사전검사요청은 브라우저 지원마다 좌우 될 수 있다고 합니다.&lt;/p&gt;
+&lt;h3 id=&quot;10장-끝&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#10%EC%9E%A5-%EB%81%9D&quot; aria-label=&quot;10장 끝 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;10장 끝.&lt;/h3&gt;
+&lt;p&gt;모든 개념을 완벽하게 이해하지는 못한 것 같습니다. 분명히 틀린 부분도 있을 것 같은데 혹시 발견하신 분이 있다면 코멘트 부탁드립니다..!&lt;/p&gt;
+&lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;</content:encoded></item><item><title><![CDATA[그림으로 배우는 클라우드 인프라와 API구조 9장(인증과 보안)]]></title><description><![CDATA[ausg 5기 클라우드-테라폼 스터디 중 '그림으로 배우는 클라우드 인프라와 API구조'라는 책의 9장 정리입니다.]]></description><link>https://jeoungsulmo.github.io/posts/cloud/2</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/cloud/2</guid><pubDate>Wed, 15 Sep 2021 15:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;이전 파트들은 항상 두장 중 한장까지만 정리되어서 블로그에 올라와있지 않습니다… 언젠가 다 정리하는걸로..&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;9장-인증과-보안&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#9%EC%9E%A5-%EC%9D%B8%EC%A6%9D%EA%B3%BC-%EB%B3%B4%EC%95%88&quot; aria-label=&quot;9장 인증과 보안 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;9장 인증과 보안&lt;/h2&gt;
@@ -545,6 +835,8 @@ EC2 인스턴스에 적용하는 두가지를 확인 했고, 방향과 관련해
 &lt;p&gt;AWS에서도 페더레이션을 연계해 제 3자에게 ID를 위임해줄 수 있습니다. IAM사용자를 생성해 지급하는게 아닌 &lt;strong&gt;IAM 자격 증명 공급자&lt;/strong&gt;를 사용할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;AWS 외부의 사용자 자격 증명을 관리할 수 있고 이 외부 사용자 자격 증명에 계정의 AWS 리소스에 대한 사용 권한을 부여할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_roles_providers.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;자세한 연동 가이드&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;9장-끝&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#9%EC%9E%A5-%EB%81%9D&quot; aria-label=&quot;9장 끝 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;9장 끝.&lt;/h3&gt;
+&lt;p&gt;모든 개념을 완벽하게 이해하지는 못한 것 같습니다. 분명히 틀린 부분도 있을 것 같은데 혹시 발견하신 분이 있다면 코멘트 부탁드립니다..!&lt;/p&gt;
 &lt;h4 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://devdy.tistory.com/14&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;공개키, 대칭키&lt;/a&gt;&lt;/li&gt;
