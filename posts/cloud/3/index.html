@@ -63,6 +63,7 @@
 </blockquote>
 <h2 id="오브젝트-스토리지-리소스-제어" style="position:relative;"><a href="#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%A0%9C%EC%96%B4" aria-label="오브젝트 스토리지 리소스 제어 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>오브젝트 스토리지 리소스 제어</h2>
 <h3 id="오브젝트-스토리지-리소스" style="position:relative;"><a href="#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%A6%AC%EC%86%8C%EC%8A%A4" aria-label="오브젝트 스토리지 리소스 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>오브젝트 스토리지 리소스</h3>
+<p>먼저 스토리지 분류별 간단한 특징을 정리하면</p>
 <ul>
 <li>
 <p>블록 스토리지</p>
@@ -86,6 +87,7 @@
 </ul>
 </li>
 </ul>
+<p>우리는 이중 오브젝트 스토리지의 내부 구조를 살펴보며 더 자세히 알아볼 예정입니다.</p>
 <h4 id="오브젝트-스토리지의-내부-구성과-활용-방법" style="position:relative;"><a href="#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80%EC%9D%98-%EB%82%B4%EB%B6%80-%EA%B5%AC%EC%84%B1%EA%B3%BC-%ED%99%9C%EC%9A%A9-%EB%B0%A9%EB%B2%95" aria-label="오브젝트 스토리지의 내부 구성과 활용 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>오브젝트 스토리지의 내부 구성과 활용 방법</h4>
 <p>오브젝트 스토리지는 HTTP/HTTPS로 파일을 제어해 내부적으로 HTTP 서버를 내장하고 있습니다. 그래서 HTTP 서버를 통해 외부에 파일 공개도 가능합니다.</p>
 <p>블록 스토리지를 활용하는 것은 우리가 HDD, SDD를 사용하는것과 같은 접근이 이뤄지는것과 비슷합니다. 웹사이트를 구축한 경우로 생각해보면 블록 스토리지는 기본적으로 외부와의 연결을 위해 서버 리소스가 필요합니다. 서버 인스턴스를 대여하고 OS에 nginx나 아파치 톰캣과 같은 소프트웨어를 설치해 포트를 통해 요청을 받아 OS의 파일시스템을 통해 블록스토리지(볼륨)에 접근하는 과정이 필요합니다.</p>
@@ -113,7 +115,7 @@
 <h3 id="오브젝트-스토리지-기본-api" style="position:relative;"><a href="#%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EA%B8%B0%EB%B3%B8-api" aria-label="오브젝트 스토리지 기본 api permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>오브젝트 스토리지 기본 API</h3>
 <ul>
 <li>어카운트 : 테넌트에 해당, 평소엔 그닥 인지 못하는 단위이지만 크로스 어카운트시 필요</li>
-<li>버킷(컨테이너) : AWS S3로 파일 시스템과 비유시 최상위 폴더에 해당. 버킷 이름이 FQND로 공개되어 버킷 이름이 고유해야함</li>
+<li>버킷(컨테이너) : AWS S3로 파일 시스템과 비유시 최상위 폴더에 해당. 버킷 이름이 FQDN으로 공개되어 버킷 이름이 고유해야함</li>
 <li>오브젝트</li>
 <li>버킷 안에 저장되는 파일들.</li>
 <li>버킷안에 버킷을 생성하는건 불가능, 대신 폴더 경로처럼 프리픽스를 접두어로 분류 체계를 만들 수 있음</li>
