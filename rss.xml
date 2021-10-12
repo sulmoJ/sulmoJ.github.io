@@ -1,4 +1,146 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 27 Sep 2021 07:19:35 GMT</lastBuildDate><item><title><![CDATA[CSS in JS]]></title><description><![CDATA[CSS in JS에 대한 요약? 입니다.]]></description><link>https://jeoungsulmo.github.io/posts/web/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/web/3</guid><pubDate>Sun, 26 Sep 2021 16:00:00 GMT</pubDate><content:encoded>&lt;br/&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sulmo 블로그]]></title><description><![CDATA[sulmo 개발 블로그]]></description><link>https://jeoungsulmo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 12 Oct 2021 00:01:51 GMT</lastBuildDate><item><title><![CDATA[상태관리 1]]></title><description><![CDATA[상태관리를 이해하기 위한 여러가지 개념들]]></description><link>https://jeoungsulmo.github.io/posts/frontend/1</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/frontend/1</guid><pubDate>Fri, 08 Oct 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;상태-관리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%81%ED%83%9C-%EA%B4%80%EB%A6%AC&quot; aria-label=&quot;상태 관리 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;상태 관리&lt;/h2&gt;
+&lt;p&gt;프론트엔드에서 엔터프라이즈급 어플리케이션을 만들기위해 상태관리 툴은 거의 필수적인 느낌입니다. 무지성으로 사용하던 Redux나 Vuex같은 상태관리 툴의 동작방식을 알아보는 좋은 기회가 될것 같습니다.&lt;/p&gt;
+&lt;p&gt;상태관리 툴을 사용하는 대표적인 이유로 &lt;strong&gt;상태관리가 복잡해지고 컴포넌트의 Depth가 깊어&lt;/strong&gt;져 props로 단방향 처리나 이벤트 함수를 통해 올려보내는 식의 상태조작은 한계가 있습니다.&lt;/p&gt;
+&lt;p&gt;이 때 &lt;code class=&quot;language-text&quot;&gt;중앙 집중식 저장소 역할을 하면 예측 가능한 방식으로 상태를 변경&lt;/code&gt; 할 수 있도록 도와주는 상태관리 툴들의 기본적인 동작 방식을 알아봅니다.&lt;/p&gt;
+&lt;h3 id=&quot;observer-pattern-발행구독-패턴pubsub&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#observer-pattern-%EB%B0%9C%ED%96%89%EA%B5%AC%EB%8F%85-%ED%8C%A8%ED%84%B4pubsub&quot; aria-label=&quot;observer pattern 발행구독 패턴pubsub permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Observer Pattern? 발행/구독 패턴(Pub/Sub)?&lt;/h3&gt;
+&lt;p&gt;이 둘의 패턴이 같다라고 하는 글도 보였고 반대다?라는 글도 보여서 혼란스럽습니다. 뭔가 각잡고 파지 않으면 이상하게 기억될 것 같아 무서운데.. 일단 간단하게 이해한 느낌은&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 527px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a37a089715720805ab6c8e885af561a8/44385/observer_pub_sub.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 85.41666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsSAAALEgHS3X78AAADPElEQVQ4y21UW3PaRhTmZ3c6zUs77STpTDv5AX3pZZpO3ZdObceJcSbEuZgYQwFxMZIMlkBAAGm1u1ohkL6eFRfXaXfnaG/nfPudPeeowBhDyEP4zAfjNJdhPup1GIYQQtwTFjIE+kyQrrjT1ThaChGPYAsbZfUB7xfvUZq8RpmV83WfD/Bps/kNLuQF3s3f4fXkHG9pLEcfYIUWYhmjIJhAL+6hQv3YfYafr35BcXaGS+qWsIA1kFFPs1RP0JMm3qRvcTg4xEHrAM+GJ6R5ha68hhIRCvrTD1yce1ewEwvW6gbWkhjPGhiGXs5KA2ZZls+HfAiDGzBjE/WgjerHK5S9MhzmQEmFwjJWmC4kbNfPGfBAIFEx+s4M4znfAG7B9uPW/VJlgKPjImo1A/pISklvSJ+AWGoW6/UapmXCNE1YNFrDOdI0vQcm5y7ksIrlpIl2tYTbxhl8+wKRP4SMiGFAkQmE3Bv8uznTAGqZbAC3wNwswTn6Cv3jh3BOHsF5/i2mp98g7L2EVAkKfqAB41xZs9GyA5/4HGx7tgOU9jmmxcdwT7/H+OUTDM+eYPbqOwirBJED5gzVPWY7QGfKiOFqc9l2z3VdNOpVJIs+PLOGsVlFvfIGrjNAHFPaKBVh9HGOSuUSzWYd3W5bm+dy482w/uQNpxS0eL2dz+Zw3CEGdInt+YgiuQHk0RrTucKKniveeEgBiTCYiD27HaBQa9Tq18Syi5Zh5iEfBxn6HscypjzkVCmc17AI/sRyWYSKXxDoCwxGB1j4rT27LNswZczAaPIH2RxRGf4FFZ2gP/qd2P4NpZYoMKYQqUO66BHq9Qckn+H29ksyfUx5VcLG43QPKGWR9L9Grfo5Wq0HaDa+oHR7SPunVOsUlDBUEPIVlskPSJKnJL9itXqarzm/xMbTO8CI6jZNfySd3/a6WfYTeXZJgMRQ/0HSdEXGPhqNKiV1B7bdo3VANyf/ifx4PMr1Wq16Lr1eG51OE87tgFxW2mVKDSo1Qcnd6dBDt9q47mlAkSvoctqJXk8mExhGK5du95oyw6C5kVcX5xyFu0e/XymMBbnxbDaD7/vwPA+j0QiLxQI6M/6vaYx/ACxv941LLnj1AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/a37a089715720805ab6c8e885af561a8/8ac56/observer_pub_sub.webp 240w,
+/static/a37a089715720805ab6c8e885af561a8/d3be9/observer_pub_sub.webp 480w,
+/static/a37a089715720805ab6c8e885af561a8/042cc/observer_pub_sub.webp 527w&quot;
+          sizes=&quot;(max-width: 527px) 100vw, 527px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/a37a089715720805ab6c8e885af561a8/8ff5a/observer_pub_sub.png 240w,
+/static/a37a089715720805ab6c8e885af561a8/e85cb/observer_pub_sub.png 480w,
+/static/a37a089715720805ab6c8e885af561a8/44385/observer_pub_sub.png 527w&quot;
+          sizes=&quot;(max-width: 527px) 100vw, 527px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/a37a089715720805ab6c8e885af561a8/44385/observer_pub_sub.png&quot;
+          alt=&quot;observer pub sub&quot;
+          title=&quot;observer pub sub&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&quot;observer-pattern&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#observer-pattern&quot; aria-label=&quot;observer pattern permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Observer Pattern&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;결합도가 높은데 이유가 Subject에 Observer들이 등록되어 직접 알려줌으로 서로를 인지하고 있어야 하기 때문인것 같습니다.&lt;/li&gt;
+&lt;li&gt;상태의 궁굼증과 상관없이 항상 통보받습니다.&lt;/li&gt;
+&lt;li&gt;동기적으로 작동합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;pubsub-pattern발행구독-모델&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#pubsub-pattern%EB%B0%9C%ED%96%89%EA%B5%AC%EB%8F%85-%EB%AA%A8%EB%8D%B8&quot; aria-label=&quot;pubsub pattern발행구독 모델 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Pub/Sub Pattern(발행/구독 모델)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Pub/Sub 패턴은 관찰자와 관찰대상 이 외에 추가적인 컴포넌트가 존재하는데 여기서 관찰자와 관찰대상의 소통을 담당한다.&lt;/li&gt;
+&lt;li&gt;위와 같은 이유로 Observer Pattern보다 결합도가 낮다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;objectdefinepropertyobject-prop-descriptor&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#objectdefinepropertyobject-prop-descriptor&quot; aria-label=&quot;objectdefinepropertyobject prop descriptor permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Object.defineProperty(object, prop, descriptor)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;객체에 직접 새로운 속성을 정의하거나 이미 존재하는 속성을 수정한 후, 그 객체를 반환합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;위와 같은 정의를 가지고 있지만 우리가 여기에서 사용할 기능은 매개변수 &lt;code class=&quot;language-text&quot;&gt;descriptor&lt;/code&gt;에서 get, set을 이용해 값의 변화에 따라 관찰자를 통한 함수 실행입니다.&lt;/p&gt;
+&lt;p&gt;여러가지 속성이 있는데 이 부분은 &lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#%EC%84%A4%EB%AA%85&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;MDN&lt;/a&gt;에서 확인해 봅시다!&lt;/p&gt;
+&lt;p&gt;(추가적으로 &lt;code class=&quot;language-text&quot;&gt;defineProperty&lt;/code&gt;는 IE를 지원하기위한 문법입니다. 최신 브라우저에서는 &lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Proxy&lt;/a&gt;를 이용하면 더 쉽게 만들 수 있습니다. )&lt;/p&gt;
+&lt;h4 id=&quot;예제&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%88%EC%A0%9C&quot; aria-label=&quot;예제 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;예제&lt;/h4&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  a&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  b&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; stateKeys &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Object&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;state&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;observer&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;a + b = &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;state&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;a &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; state&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;b&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; key &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; stateKeys&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; _value &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; state&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;key&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  Object&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;defineProperty&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;state&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; key&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; _value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      _value &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token function&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+state&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+state&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위의 코드를 통해 우리가 관찰하고 싶은 상태가 값이 변할 때마다 observer가 실행됨을 볼 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이런 구조의 코드를 함수화 하여 중앙 저장소의 값을 관찰하면, 구독되어있는 컴포넌트들에 전역으로 쉽게 상태를 사용할 수 있습니다.&lt;/p&gt;
+&lt;h3 id=&quot;flux-패턴&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#flux-%ED%8C%A8%ED%84%B4&quot; aria-label=&quot;flux 패턴 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Flux 패턴&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 820px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8ef687083384d183ff57c029daa5a6c4/9f82e/flux.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 30%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsSAAALEgHS3X78AAABK0lEQVQY02WPv0vDQBTH85+JU7G5H8nd5e5yd7mraUhKaLEFRWKtAQepg6uTHQQppZuiTh0cHLs691/xREFE+AyP977f9943wCj6D/LAGIRQKDto2qpp8+EYhQhB3/+VBT9qgL+A2NcQ4DhCgmMKO6PZxXy7u97upqvnlAJGcUL9CvTHTGNCPBHxzgiTVJBUMhSCXlVPF6tmsRpf3UQAMMK0pIKx7/sBDKG2h2cPj7P16+ndUqXCWWuNtiYzSnGZdrk74BZzbaQc3B6Nlif1/UQ5A0MUgC5wRXW52c7fP9qnt9ypIndGaU+/Z5TN9ni+L/IOz8qeqdeTyea8fjnOCge7KPA5SUxdWdtqaIuB/ydhnCdCcBn7NDHjUjOhEpH6kelbXWZZ6Qih3vgJAEOGEz5S2jkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/8ef687083384d183ff57c029daa5a6c4/8ac56/flux.webp 240w,
+/static/8ef687083384d183ff57c029daa5a6c4/d3be9/flux.webp 480w,
+/static/8ef687083384d183ff57c029daa5a6c4/b1f58/flux.webp 820w&quot;
+          sizes=&quot;(max-width: 820px) 100vw, 820px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/8ef687083384d183ff57c029daa5a6c4/8ff5a/flux.png 240w,
+/static/8ef687083384d183ff57c029daa5a6c4/e85cb/flux.png 480w,
+/static/8ef687083384d183ff57c029daa5a6c4/9f82e/flux.png 820w&quot;
+          sizes=&quot;(max-width: 820px) 100vw, 820px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/8ef687083384d183ff57c029daa5a6c4/9f82e/flux.png&quot;
+          alt=&quot;flux&quot;
+          title=&quot;flux&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Vuex와 Redux에서 사용되는 패턴입니다. 특징은 기존 다른 패턴들과 다르게 &lt;strong&gt;단방향흐름&lt;/strong&gt;을 가지고있습니다.&lt;/p&gt;
+&lt;p&gt;이전의 패턴들에서 문제는 대표적으로 Facebook 알림(notification) 버그가 있었다고 합니다. 양방향에 비동기적으로 변경이 생길 수 있었고 예측이 힘들어 디버깅이 어려웠던 근본적인 문제를 Flux를 통해 해결했다고 합니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://bestalign.github.io/translation/cartoon-guide-to-flux/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;여기&lt;/a&gt;에서 flux패턴설명을 재밌게 봤습니다.&lt;/p&gt;
+&lt;h4 id=&quot;참고자료&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0%EC%9E%90%EB%A3%8C&quot; aria-label=&quot;참고자료 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고자료&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/#_1-%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%8B%E1%85%A1%E1%86%BC-%E1%84%8C%E1%85%B5%E1%86%B8%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%89%E1%85%B5%E1%86%A8-%E1%84%89%E1%85%A1%E1%86%BC%E1%84%90%E1%85%A2%E1%84%80%E1%85%AA%E1%86%AB%E1%84%85%E1%85%B5&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;바닐라로 상태관리&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://bestalign.github.io/translation/cartoon-guide-to-flux/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;flux 패턴&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[CSS in JS]]></title><description><![CDATA[CSS in JS에 대한 요약? 입니다.]]></description><link>https://jeoungsulmo.github.io/posts/web/3</link><guid isPermaLink="false">https://jeoungsulmo.github.io/posts/web/3</guid><pubDate>Sun, 26 Sep 2021 16:00:00 GMT</pubDate><content:encoded>&lt;br/&gt;
 &lt;p&gt;CSS in JS라는 주제를 처음 들어 보았습니다. 이전까지 css 파일로 따로 생성하기도 보기도 불편했었고 클래스명 중복 안되기위한 주렁주렁 등등을 해결해주는 친구로알고 React를 사용할 때 sytledComponent나 material-ui에서 제공한 makeStyles를 함께 사용했었습니다. 아무것도 모르는 학생이기에 뭐 성능이고 뭐고 생각도 없었지만..&lt;/p&gt;
 &lt;p&gt;더 많은 정보와 사례들을 보여주는 &lt;a href=&quot;https://blueshw.github.io/2020/09/14/why-css-in-css/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;이 글&lt;/a&gt;을 읽으시는걸 더 추천합니다.&lt;/p&gt;
 &lt;p&gt;요기 밑에 나오는 글은 제기준.. 요약입니다 ㅎㅎ&lt;/p&gt;

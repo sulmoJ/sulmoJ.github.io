@@ -49,13 +49,14 @@
 <url> <loc>https://jeoungsulmo.github.io/posts/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/Database/5</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/react/6</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://jeoungsulmo.github.io/posts/web/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/cloud/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/PS/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/cloud/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/Django/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/Django/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jeoungsulmo.github.io/posts/web/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/pages/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jeoungsulmo.github.io/posts/frontend/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/posts/Django/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/pages/contacts/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/cs</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -65,6 +66,7 @@
 <url> <loc>https://jeoungsulmo.github.io/tag/database</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/database/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/django</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jeoungsulmo.github.io/tag/frontend</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/http</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/http-method</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/tag/https</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -108,6 +110,7 @@
 <url> <loc>https://jeoungsulmo.github.io/category/database</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/database/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/django</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jeoungsulmo.github.io/category/frontend</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/os</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/os/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jeoungsulmo.github.io/category/ps</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
